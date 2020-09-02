@@ -3,22 +3,22 @@ import router from './router'
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
 // import firebaseui from 'firebaseui'
-import firebase from 'firebase'
+import * as firebase from 'firebase'
 
 import {
-  config
-} from './router/index'
+  firebaseConfig
+} from './firebase'
 import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
 Vue.config.productionTip = false
-
+  
 new Vue({
   vuetify,
   router,
   create() {
-    firebase.initializeApp(config);
+    firebase.initializeApp(firebaseConfig);
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
           this.$router.push('/dashboard')
@@ -30,5 +30,6 @@ new Vue({
 
     );
   },
+  el: '#app',
   render: h => h(App)
-}).$mount('#app')
+});

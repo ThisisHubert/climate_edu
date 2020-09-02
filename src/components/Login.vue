@@ -1,18 +1,18 @@
-<template lang="html">
-<div class="container">
-<h1> Auth </h1>
-  <div id="firebaseui-auth-container"></div>
-  </div>
+<template>
+  <v-container>
+    auth
+    <div id='firebaseui-auth-container'></div>
+  </v-container>
 </template>
 
 <script>
-import firebase from 'firebase';
-import firebaseui from 'firebaseui'
-// import {config} from '../firebase';
+import * as firebase from 'firebase';
+import * as firebaseui from 'firebaseui'
+// import {firebaseConfig} from '../firebase';
 export default {
   name: 'auth',
   mounted() {
-    var uiConfig = {
+    var uiConfig = {    
       signInSuccessUrl: '/dashboard',
       signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
