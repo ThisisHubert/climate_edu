@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <v-main>
+      <Header/>
       <HelloWorld/>
         <router-view/>
     </v-main>
@@ -8,17 +9,9 @@
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld';
 
 export default {
   name: 'App',
 
-  // components: {
-  //   HelloWorld,
-  // },
-
-  data: () => ({
-    //
-  }),
 };
 </script>

@@ -20,7 +20,7 @@
         <v-toolbar-title class="font-weight-black headline">
           CLIMATE Talk
         </v-toolbar-title>
-        <div class="button-right" style="padding-left:1400px">
+        <div class="button-right" style="padding-left:1000px">
           <v-btn class="ma-2" outlined color="indigo">Sign in</v-btn>
         </div>
       </v-app-bar>

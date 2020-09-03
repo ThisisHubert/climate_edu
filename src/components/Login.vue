@@ -1,8 +1,7 @@
 <template>
-  <v-container>
-    auth
+  <section>
     <div id='firebaseui-auth-container'></div>
-  </v-container>
+  </section>
 </template>
 
 <script>
@@ -13,7 +12,7 @@ export default {
   name: 'auth',
   mounted() {
     var uiConfig = {    
-      signInSuccessUrl: '/dashboard',
+      signInSuccessUrl: '/#/dashboard',
       signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
         firebase.auth.EmailAuthProvider.PROVIDER_ID
