@@ -20,9 +20,6 @@
         <v-toolbar-title class="font-weight-black headline">
           CLIMATE Talk
         </v-toolbar-title>
-        <div class="button-right" style="padding-left:1000px">
-          <v-btn class="ma-2" outlined color="indigo">Sign in</v-btn>
-        </div>
       </v-app-bar>
 
       
@@ -66,9 +63,9 @@
                     class="ma-2"
                     
                     outlined
-                    @click="$vuetify.goTo('#features')"
+                    href="/#/login"
                     color = "white"
-                  > Join and kick off your journey!
+                  > Sign in and kick off your journey!
                   </v-btn>
                 </v-row>
               </v-container>
