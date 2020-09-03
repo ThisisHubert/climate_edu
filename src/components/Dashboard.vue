@@ -1,7 +1,7 @@
 <template>
 <div>
     <h1>Success</h1>
-    <button @click='logout'>Logout</button>
+    <button href="/#/home">Logout</button>
     <p>{{name}}</p>
 
     <img :src="photo">

@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="signup-card">
     <v-layout row>
       <v-flex xs12 sm6 offset-sm3>
         <v-card>
@@ -84,3 +84,13 @@
     }
   }
 </script>
+
+
+
+<style scoped>
+.signup-card{
+    text-align: justify;
+    padding-top: 250px;
+
+}
+</style>

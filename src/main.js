@@ -16,8 +16,8 @@ Vue.config.productionTip = false
   
 new Vue({
   vuetify,
-  router,
-  create() {
+  router,   
+  created() {
     firebase.initializeApp(firebaseConfig);
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {

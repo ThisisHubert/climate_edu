@@ -2,7 +2,7 @@ import * as firebase from 'firebase/app'
 
 
 
-const firebaseConfig = {
+export const firebaseConfig = {
     apiKey: "AIzaSyDv8I4nGtBckADC-QmhTrFyzJjlrkIE2nk",
     authDomain: "climate-edu.firebaseapp.com",
     databaseURL: "https://climate-edu.firebaseio.com",

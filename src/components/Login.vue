@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="sign-in">
     <section id='firebaseui-auth-container'></section>
   </div>
 </template>
@@ -26,4 +26,16 @@ export default {
     },
 }
 </script>
+
+
+
+
+<style scoped>
+
+.sign-in{
+  text-align: center;
+}
+
+
+</style>
 
