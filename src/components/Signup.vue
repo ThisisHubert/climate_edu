@@ -5,11 +5,11 @@
         <v-card>
           <v-card-text>
             <v-container>
-              <form @submit.prevent="onSignup">
+              <form @submit.prevent="onSignup">  
                 <v-layout row>
                   <v-flex xs12>
                     <v-text-field
-                      name="email"
+                      name="email" 
                       label="Mail"
                       id="email"
                       v-model="email"
@@ -58,7 +58,7 @@
     data () {
       return {
         email: '',
-        password: '',
+        password: '',  
         confirmPassword: ''
       }
     },
