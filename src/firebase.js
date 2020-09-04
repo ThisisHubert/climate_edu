@@ -1,6 +1,6 @@
 
-
-
+import * as firebase from 'firebase';
+ 
 export const firebaseConfig = {
     apiKey: "AIzaSyDv8I4nGtBckADC-QmhTrFyzJjlrkIE2nk",
     authDomain: "climate-edu.firebaseapp.com",
@@ -12,5 +12,5 @@ export const firebaseConfig = {
     measurementId: "G-6S34BB4SLD"
   };
   // Initialize Firebase
-// firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 // firebase.analytics();
