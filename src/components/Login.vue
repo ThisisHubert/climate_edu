@@ -11,7 +11,7 @@
                     <v-text-field
                       name="email"
                       label="Mail"
-                      id="email"
+                      id="email"     
                       v-model="email"
                       type="email"
                       required></v-text-field>
@@ -31,6 +31,7 @@
                 <v-layout row>
                   <v-flex xs12>
                     <v-btn type="submit">Sign in</v-btn>
+                    <v-btn href="/#/signup" color="success" dark>Sign up</v-btn>
                   </v-flex>
                 </v-layout>
               </form>

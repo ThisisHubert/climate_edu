@@ -41,7 +41,7 @@
                 </v-layout>
                 <v-layout row>
                   <v-flex xs12>
-                    <v-btn type="submit">Sign up</v-btn>
+                    <v-btn @click="SignUp()" type="submit">Sign up</v-btn>
                   </v-flex>
                 </v-layout>
               </form>
@@ -80,7 +80,8 @@
     methods: {
       onSignup () {
         this.$store.dispatch('signUserUp', {email: this.email, password: this.password})
-      }
+      },
+      
     }
   }
 </script>

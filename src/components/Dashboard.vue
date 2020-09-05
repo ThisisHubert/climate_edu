@@ -1,7 +1,7 @@
 <template>
 <div>
     <h1>Success</h1>
-    <v-btn href="/#/login">Logout</v-btn>
+    <v-btn @click="logOut()">Logout</v-btn>
     <p>{{name}}</p>
 
     <img :src="photo">

@@ -34,9 +34,13 @@ new Vue({
     );
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
-          this.$router.push('/dashboard')
+          this.$router.push('/dashboard');
+          user.sendEmailVerification().then(function() {
+            console.log('send Verification');
+            document.getElementById("verifMessage").innerHTML = "Check your inbox for verification email!";
+        });
         } else {
-          this.$router.push('/login')
+          this.$router.push('/home')
 
         }
       }

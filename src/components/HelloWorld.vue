@@ -65,7 +65,7 @@
                     outlined
                     href="/#/login"
                     color = "white"
-                  > Sign in and kick off your journey!
+                  > Let's Get Started!
                   </v-btn>
                 </v-row>
               </v-container>
