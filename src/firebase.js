@@ -1,5 +1,5 @@
 
-import * as firebase from 'firebase';
+import * as firebase from 'firebase'
  
 export const firebaseConfig = {
     apiKey: "AIzaSyDv8I4nGtBckADC-QmhTrFyzJjlrkIE2nk",
@@ -14,3 +14,5 @@ export const firebaseConfig = {
   // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 // firebase.analytics();
+
+

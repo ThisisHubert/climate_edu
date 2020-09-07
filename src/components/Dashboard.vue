@@ -1,7 +1,7 @@
 <template>
 <div>
     <h1>Success</h1>
-    <v-btn @click="logOut()">Logout</v-btn>
+    <v-btn href="/#/home" v-on:click="logOut">Logout</v-btn>
     <p>{{name}}</p>
 
     <img :src="photo">
@@ -31,9 +31,15 @@ export default {
     },
     methods:{
         logOut(){
-            firebase.auth().signOut();
-        }
+            firebase.auth().logOut();
+            // .then(() => {
+            //     this.$router.replace('./home');
+            // })
+            // .catch((err) =>{
+            //     console.log(err);
+            // });
     }
     
 }
+};
 </script>

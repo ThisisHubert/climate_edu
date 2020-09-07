@@ -9,6 +9,17 @@
                 <v-layout row>
                   <v-flex xs12>
                     <v-text-field
+                      name="Name" 
+                      label="Name"
+                      id="Name"
+                      v-model="Name"
+                      type="Name"
+                      required></v-text-field>
+                  </v-flex>
+                </v-layout>
+                <v-layout row>
+                  <v-flex xs12>
+                    <v-text-field
                       name="email" 
                       label="Mail"
                       id="email"
@@ -43,6 +54,7 @@
                   <v-flex xs12>
                     <v-btn @click="SignUp()" type="submit">Sign up</v-btn>
                   </v-flex>
+                 
                 </v-layout>
               </form>
             </v-container>
@@ -57,6 +69,7 @@
   export default {
     data () {
       return {
+        Name: '',
         email: '',
         password: '',  
         confirmPassword: ''
@@ -92,6 +105,7 @@
 .signup-card{
     text-align: justify;
     padding-top: 250px;
+    width: 1100px;
 
 }
 </style>
