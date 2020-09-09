@@ -1,11 +1,13 @@
 <template>
 <div>
     <h1>Success</h1>
-    <v-btn href="/#/home" v-on:click="logOut">Logout</v-btn>
-    <p>{{name}}</p>
-
-    <img :src="photo">
+    <v-btn v-on:click="logOut">Logout</v-btn>
+    <p> Hi, {{email}}</p>
+    
+    <!-- <img :src="photo"> -->
 </div>
+
+
 </template>
 
 
@@ -17,27 +19,24 @@ export default {
     data() {
         return {
             
-            name:'',
-            photo:'',
+            name:null,
+            email:null,
             user: {}
         }
     },
     created(){
         this.user = firebase.auth().currentUser;
-        if(this.user){
-            this.name = this.user.displayName;
+        if(this.user != null){
+            this.name = this.user.name;  
+            this.email = this.user.email;
             this.photo = this.user.photoURL;
         }
+       
     },
     methods:{
         logOut(){
-            firebase.auth().logOut();
-            // .then(() => {
-            //     this.$router.replace('./home');
-            // })
-            // .catch((err) =>{
-            //     console.log(err);
-            // });
+            firebase.auth().signOut();
+           
     }
     
 }
