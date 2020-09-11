@@ -19,7 +19,16 @@ Vue.use(VueRouter);
 
 Vue.use(Vuetify);
 
-Vue.component('Navbar', require('./components/Navbar.vue').default);
+Vue.component('Navbar', require('./components/Navbar.vue').default)
+Vue.component('card', require('./components/Card.vue').default)
+Vue.component('stats-card', require('./components/StatsCard.vue').default)
+Vue.component('base-header', require('./components/BaseHeader.vue').default)
+Vue.component('dashboard-navbar', require('./layout/DashboardNavbar.vue').default)
+Vue.component('social-traffic-table', require('./components/Dashboard/SocialTrafficTable.vue').default)
+Vue.component('base-table', require('./components/BaseTable.vue').default)
+
+
+
 
 Vue.config.productionTip = false;
   
