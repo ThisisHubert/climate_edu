@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
-import Login from '@/components/Login'
 import Forum from '@/components/Forum' 
 import Learn from '@/components/Learn'
 import Dashboard from '@/components/Dashboard'
 import Signup from '@/components/Signup'
+
 
 
 Vue.use(Router)
@@ -17,11 +17,6 @@ export default new Router({
             path: '/home',
             name: 'home',
             component: HelloWorld
-        },
-        {
-            path: '/login',
-            name: 'login',
-            component: Login
         },
         {
             path: '/forum',
@@ -42,8 +37,8 @@ export default new Router({
             path: '/signup',
             name: 'signup',
             component: Signup
-        }
-
+        },
+        
 
 
     ]

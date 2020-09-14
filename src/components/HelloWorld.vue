@@ -37,15 +37,73 @@
                     </span>
 
                   </v-col>
+                  <v-dialog v-model="dialog" persistent max-width="600px">
+                   <template v-slot:activator="{ on, attrs }">
+                      <v-btn
+                        class="ma-2"
+                        color="white"
+                        outlined
+                        v-bind="attrs"
+                        v-on="on"
+                      >
+                        Let's Get Started!
+                      </v-btn>
+                  </template>
+                    <!-- login -->
 
-                  <v-btn
-                    class="ma-2"
-                    
-                    outlined
-                    href="/#/login"
-                    color = "white"
-                  > Let's Get Started!
-                  </v-btn>
+                        <v-card>
+                          <v-card-title>
+                            <span class="headline">Login</span>
+                          </v-card-title>
+                          <v-card-text>
+                            <v-container>
+                              <v-row>
+                                <form @submit.prevent="onSignin">  
+                                <div class="loginform"> 
+                                  <v-layout row>
+                                    <v-flex xs12>
+                                      <v-text-field
+                                        name="email"
+                                        label="Mail"
+                                        id="email"     
+                                        v-model="email"
+                                        type="email"
+                                        required></v-text-field>
+                                    </v-flex>
+                                  </v-layout>
+                                  <v-layout row>
+                                    <v-flex xs12>
+                                      <v-text-field
+                                        name="password"
+                                        label="Password"
+                                        id="password"
+                                        v-model="password"
+                                        type="password"
+                                        required></v-text-field>
+                                    </v-flex>
+                                  </v-layout>
+                                </div>
+                                <small>*indicates required field</small>
+                                  <v-layout row>
+                                    <v-card-actions>
+                                      <v-spacer></v-spacer>
+                                      <v-btn class="ma-2" color="green" dark type="submit">Sign in</v-btn>
+                                      <v-btn class="ma-2" color="green" dark @click="socialLogin()" type="submit"><v-icon left>mdi-email</v-icon>Sign in with Google</v-btn>
+                                    </v-card-actions>
+                                  </v-layout>
+                                </form>
+
+                              </v-row>
+                            </v-container>
+                          </v-card-text>
+                          <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn href="/#/signup" color="green darken-1" text dark>Sign up</v-btn>
+                            <v-btn color="green darken-1" text @click="dialog = false">Close</v-btn>
+                          </v-card-actions>
+                        </v-card>
+                      <!-- login -->
+                  </v-dialog>  
                 </v-row>
               </v-container>
             </v-theme-provider>
@@ -339,10 +397,48 @@
 <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
 <script>
+import * as firebase from 'firebase'
   export default {
     name: 'HelloWorld',
+    data () {
+      return {
+        name: '',
+        email: '',
+        password: ''  
+      }
+    },
+    computed: {
+      user () {
+        return this.$store.getters.user  
+      }
+    },
+    watch: {     
+      user (value) {
+        if (value !== null && value !== undefined) {
+          this.$router.push('/dashboard')
+        }
+      }
+    },
+    methods: {
+      onSignin () {
+        this.$store.dispatch('signUserIn', {email: this.email, password: this.password})
+      },
+      socialLogin(){
+        const provider = new firebase.auth.GoogleAuthProvider();
 
+        firebase.auth().signInWithPopup(provider).then((result) => {
+          this.$router.replace('./dashboard');
+          console.log(result);   
+        }).catch((err) => {
+          alert('Oops. ' +  err.message)
+        });
+      }
+      
+      
+
+    },
     data: () => ({
+      dialog : false,
       articles: [
           {
             src: 'https://images.unsplash.com/photo-1423784346385-c1d4dac9893a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
@@ -387,5 +483,9 @@
   }
 </script>
 
-
+<style scoped>
+.loginform{
+  padding-left: 20px;
+}
+</style>
 
