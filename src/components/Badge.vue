@@ -8,7 +8,7 @@
                ]">
         <slot>
             <i v-if="icon" :class="icon"></i>
-        </slot>
+        </slot>  
     </component>
 </template>
 <script>
