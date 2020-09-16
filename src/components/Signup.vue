@@ -4,6 +4,9 @@
     <v-layout row>
       <v-flex xs12 sm6 offset-sm3>
         <v-card>
+          <v-card-title>
+            <span class="headline">Sign up Here!</span>
+          </v-card-title>
           <v-card-text>
             <v-container>
               <form @submit.prevent="onSignup">  
