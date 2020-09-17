@@ -11,8 +11,8 @@
         >
           <v-img
             contain
-            max-height="70%"
-            src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+            max-height="100%"
+            src="../assets/logo (1).png"
           ></v-img>
         </v-avatar>
         <v-toolbar-title class="font-weight-black headline">
