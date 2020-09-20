@@ -4,9 +4,9 @@
    <router-view/>
       <section id="hero">
         <v-row no-gutters>
-          <v-img
-            :min-height="'calc(100vh - ' + $vuetify.application.top + 'px)'"
-            src="https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80"
+          <v-img height="1450px"
+            :min-height="'calc(50vh - ' + $vuetify.application.top + 'px)'"
+            src="../assets/top-img-eng.png"
           >
             <v-theme-provider dark>
               <v-container fill-height>
@@ -207,7 +207,7 @@
 
           <div></div>
 
-          <v-btn
+          <v-btn   
             color="grey"
             href="https://vuetifyjs.com"
             outlined
@@ -405,7 +405,7 @@ import * as firebase from 'firebase'
       return {
         name: '',
         email: '',
-        password: ''  
+        password: ''
       }
     },
     computed: {
