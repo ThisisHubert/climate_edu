@@ -20,9 +20,9 @@
                     cols="12"
                     tag="h1"
                   >
-                    <span
+                    <span 
                     :class="[$vuetify.breakpoint.smAndDown ? 'display-1' : 'display-2']"
-                      class="font-weight-light"
+                      class="font-weight-light" 
                     >
                       WELCOME TO
                     </span>
@@ -31,7 +31,7 @@
 
                     <span
                       :class="[$vuetify.breakpoint.smAndDown ? 'display-3': 'display-4']"
-                      class="font-weight-black"
+                      class="font-weight-black" 
                     >
                       CLIMATE Talk
                     </span>
