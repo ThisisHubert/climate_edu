@@ -45,7 +45,7 @@ new Vue({
     ),
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.$router.push('/dashboard');
+        this.$router.push('/dashboard/overview');
         
         // user.sendEmailVerification().then(function() {
         //   console.log('send Verification');

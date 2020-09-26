@@ -416,7 +416,7 @@ import * as firebase from 'firebase'
     watch: {     
       user (value) {
         if (value !== null && value !== undefined) {
-          this.$router.push('/dashboard/overview')
+          this.$router.push('./dashboard/overview')
         }
       }
     },
