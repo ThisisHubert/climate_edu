@@ -10,7 +10,11 @@
             <div class="sidebar-content">
                 <!-- sidebar-brand  -->
                 <div class="sidebar-item sidebar-brand">
-                    <a href="#">CLIMATE Talk</a>
+                    <v-img
+                        contain
+                        max-height="200%"
+                        src="../assets/logo (1).png"
+                    ></v-img>
                     <div id="close-sidebar" @click="closeSidebar = true" >
                         <i class="fas fa-times text-secondary"></i>  
                     </div>    
@@ -18,7 +22,7 @@
                 <!-- sidebar-header  -->
                 <div class="sidebar-item sidebar-header d-flex flex-nowrap">
                     <div class="user-pic">
-                        <img class="img-responsive img-rounded" src="img/user.jpg" alt="User picture">
+                        <img class="img-responsive img-rounded" src="../assets/user1.png" alt="User picture">
                     </div>
                     <div class="user-info">
                         <span class="user-name">
@@ -51,9 +55,15 @@
                             <span>General</span>
                         </li>
                         <li>
+                            <router-link to="/dashboard/overview">
+                                <i class="fa fa-globe"></i>
+                                <span class="menu-text" >Overview</span>
+                            </router-link>
+                        </li>
+                        <li>
                             <a href="#">
                                 <i class="fa fa-handshake"></i>
-                                <span class="menu-text">Meet up</span>
+                                <span class="menu-text">Meet ups</span>
                             </a>
                         </li>
                         
@@ -94,22 +104,7 @@
         </nav>
         <!-- page-content  -->
         <main class="page-content pt-2">
-            <div id="overlay" class="overlay"></div>
-            <div class="container-fluid p-5">
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <h2>Welcome {{email}} !</h2>  
-                        <p>This is your Profile Page </p>
-
-                    </div>
-                    
-                       
-
-
-                    
-                
-                </div>
-            </div>
+            <router-view/>
         </main>
         <!-- page-content" -->
     </div>
