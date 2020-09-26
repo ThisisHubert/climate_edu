@@ -416,7 +416,7 @@ import * as firebase from 'firebase'
     watch: {     
       user (value) {
         if (value !== null && value !== undefined) {
-          this.$router.push('/dashboard')
+          this.$router.push('/dashboard/overview')
         }
       }
     },
@@ -428,7 +428,7 @@ import * as firebase from 'firebase'
         const provider = new firebase.auth.GoogleAuthProvider();
 
         firebase.auth().signInWithPopup(provider).then((result) => {
-          this.$router.replace('./dashboard');
+          this.$router.replace('./dashboard/overview');   
           console.log(result);   
         }).catch((err) => {
           alert('Oops. ' +  err.message)
