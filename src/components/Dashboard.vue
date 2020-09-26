@@ -1,10 +1,10 @@
 <template>
 
 <div>
-     <div class="dashboard">
-        <button @click="closeSidebar = false" class="btn btn-outline-primary m-4">
+    <button @click="closeSidebar = false" class="btn btn-outline-primary m-4">
             <i class="fas fa-bars"></i>
-        </button>
+    </button>
+     <div class="dashboard">
         <div class="page-wrapper default-theme sidebar-bg bg1" :class="{'toggled':!closeSidebar}">
         <nav id="sidebar" class="sidebar-wrapper">
             <div class="sidebar-content">
@@ -13,7 +13,7 @@
                     <a href="#">CLIMATE Talk</a>
                     <div id="close-sidebar" @click="closeSidebar = true" >
                         <i class="fas fa-times text-secondary"></i>  
-                    </div>
+                    </div>    
                 </div>
                 <!-- sidebar-header  -->
                 <div class="sidebar-item sidebar-header d-flex flex-nowrap">
@@ -21,8 +21,8 @@
                         <img class="img-responsive img-rounded" src="img/user.jpg" alt="User picture">
                     </div>
                     <div class="user-info">
-                        <span class="user-name">Jhon
-                            <strong>Smith</strong>
+                        <span class="user-name">
+                            {{email}}
                         </span>
                         <span class="user-role">Administrator</span>
                         <span class="user-status">
@@ -50,63 +50,26 @@
                         <li class="header-menu">
                             <span>General</span>
                         </li>
-                        <li class="sidebar-dropdown">
+                        <li>
                             <a href="#">
-                                <i class="fa fa-tachometer-alt"></i>
-                                <span class="menu-text">Dashboard</span>
-                                <span class="badge badge-pill badge-warning">New</span>
+                                <i class="fa fa-handshake"></i>
+                                <span class="menu-text">Meet up</span>
                             </a>
-                            <div class="sidebar-submenu">
-                                <ul>
-                                    <li>
-                                        <a href="#">Dashboard 1
-                                            <span class="badge badge-pill badge-success">Pro</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Dashboard 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Dashboard 3</a>
-                                    </li>
-                                </ul>
-                            </div>
                         </li>
-                        <li class="sidebar-dropdown">
-                            <a href="#">
-                                <i class="fa fa-shopping-cart"></i>
-                                <span class="menu-text">E-commerce</span>
-                                <span class="badge badge-pill badge-danger">3</span>
-                            </a>
-                            <div class="sidebar-submenu">
-                                <ul>
-                                    <li>
-                                        <a href="#">Products
-
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Orders</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Credit cart</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="sidebar-dropdown">
-                            <a href="#">
-                                <i class="far fa-gem"></i>
-                                <span class="menu-text">Components</span>
-                            </a>
-                           
-                        </li>
+                        
                         <li>
                             <a href="#">
                                 <i class="fa fa-forumbee"></i>
                                 <span class="menu-text">Forum</span>
                             </a>
                             
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-cogs"></i>
+                                <span class="menu-text">Settings</span>
+                            </a>
+                           
                         </li>
                         <li>
                             <a href="#">
@@ -136,7 +99,7 @@
                 <div class="row">
                     <div class="form-group col-md-12">
                         <h2>Welcome {{email}} !</h2>  
-                        <p>This is a responsive sidebar template with dropdown menu based on bootstrap framework.</p>
+                        <p>This is your Profile Page </p>
 
                     </div>
                     
