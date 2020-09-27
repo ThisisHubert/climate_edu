@@ -38,6 +38,7 @@ export default new Router({
                     name: 'overview',
                     component: Overview
                 },
+                
             ]
         },
         {

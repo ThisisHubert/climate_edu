@@ -63,7 +63,7 @@
                         <li>
                             <a href="#">
                                 <i class="fa fa-handshake"></i>
-                                <span class="menu-text">Meet ups</span>
+                                <span class="menu-text">Meetups</span>
                             </a>
                         </li>
                         
