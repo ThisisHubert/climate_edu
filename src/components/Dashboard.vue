@@ -75,7 +75,7 @@
                             
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/#/settings">
                                 <i class="fa fa-cogs"></i>
                                 <span class="menu-text">Settings</span>
                             </a>
@@ -124,7 +124,6 @@
 
 <script>     
 import firebase from 'firebase'   
-import * as chartConfigs from './Charts/config';
 // import LineChart from './Charts/LineChart';
 // import BarChart from './Charts/BarChart';
 // import SocialTrafficTable from './Dashboard/SocialTrafficTable';
@@ -139,36 +138,7 @@ export default {
         // PageVisitsTable
     },
    
-    data() {
-        return {
-            
-            name:{},
-            email:{},
-            user: {},
-            closeSidebar: false,
-            bigLineChart: {
-          allData: [
-            [0, 20, 10, 30, 15, 40, 20, 60, 60],
-            [0, 20, 5, 25, 10, 30, 15, 40, 40]
-          ],
-          activeIndex: 0,
-          chartData: {
-            datasets: [],
-            labels: [],
-          },
-          extraOptions: chartConfigs.blueChartOptions,
-        },
-        redBarChart: {
-          chartData: {
-            labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-            datasets: [{
-              label: 'Sales',
-              data: [25, 20, 30, 22, 17, 29]
-            }]
-          }
-        }
-        };
-    },
+   
     created(){
         this.user = firebase.auth().currentUser;
         if(this.user != null){

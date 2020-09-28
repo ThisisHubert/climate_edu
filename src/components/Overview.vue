@@ -1,6 +1,6 @@
 <template>
   <div class="overview">
-      <h3>This is Overview</h3>
+      <h3>This is Overview. Welcome {{email}}</h3>
   </div>
 </template>
 

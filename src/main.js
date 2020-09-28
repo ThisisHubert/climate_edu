@@ -20,7 +20,6 @@ Vue.use(VueRouter);
 Vue.use(Vuetify);
 
 Vue.component('Navbar', require('./components/Navbar.vue').default)
-Vue.component('dashboard-navbar', require('./layout/DashboardNavbar.vue').default)
 
 
 

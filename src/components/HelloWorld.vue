@@ -428,7 +428,7 @@ import * as firebase from 'firebase'
         const provider = new firebase.auth.GoogleAuthProvider();
 
         firebase.auth().signInWithPopup(provider).then((result) => {
-          this.$router.replace('./dashboard/overview');   
+          this.$router.replace('./dashboard');   
           console.log(result);   
         }).catch((err) => {
           alert('Oops. ' +  err.message)
