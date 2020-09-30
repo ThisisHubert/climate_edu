@@ -488,5 +488,11 @@ import * as firebase from 'firebase'
 .loginform{
   padding-left: 20px;
 }
+
+template, div, section, span{
+  
+  font-family: 'Nunito', sans-serif;
+
+}
 </style>
 

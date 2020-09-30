@@ -1,10 +1,8 @@
 <template>
-
 <div>
-    <button @click="closeSidebar = false" class="btn btn-outline-primary m-4">
-            <i class="fas fa-bars"></i>
-    </button>
+
      <div class="dashboard">
+
         <div class="page-wrapper default-theme sidebar-bg bg1" :class="{'toggled':!closeSidebar}">
         <nav id="sidebar" class="sidebar-wrapper">
             <div class="sidebar-content">
@@ -15,9 +13,7 @@
                         max-height="200%"
                         src="../assets/logo (1).png"
                     ></v-img>
-                    <div id="close-sidebar" @click="closeSidebar = true" >
-                        <i class="fas fa-times text-secondary"></i>  
-                    </div>    
+                      
                 </div>
                 <!-- sidebar-header  -->
                 <div class="sidebar-item sidebar-header d-flex flex-nowrap">
@@ -69,7 +65,7 @@
                         
                         <li>
                             <a href="#">
-                                <i class="fa fa-forumbee"></i>
+                                <i class="fa fa-comments"></i>
                                 <span class="menu-text">Forum</span>
                             </a>
                             
@@ -107,7 +103,7 @@
             <router-view/>
         </main>
         <!-- page-content" -->
-    </div>
+    </div> -->
     <!-- page-wrapper -->
         
 
@@ -115,6 +111,7 @@
 
     
     <!-- <img :src="photo"> -->
+
 </div>
 
 </template>
@@ -169,3 +166,16 @@ export default {
 }
 };
 </script>
+
+<style scoped>
+
+div, template {
+  font-family: 'Nunito', sans-serif;
+}
+
+#app {
+  font-family: 'Nunito', sans-serif;
+}
+
+
+</style>
