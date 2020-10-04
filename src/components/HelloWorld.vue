@@ -425,14 +425,15 @@ import * as firebase from 'firebase'
         this.$store.dispatch('signUserIn', {email: this.email, password: this.password})
       },
       socialLogin(){
-        const provider = new firebase.auth.GoogleAuthProvider();
 
+        const provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(
         firebase.auth().signInWithPopup(provider).then((result) => {
           this.$router.replace('./dashboard');   
           console.log(result);   
         }).catch((err) => {
           alert('Oops. ' +  err.message)
-        });
+        }));
       }
       
       

@@ -3,7 +3,7 @@
       <h3>This is Settings</h3>  
       <h4>this is my email: {{email}}</h4>
 
-
+        
         <v-btn class="ma-2" color="green" dark type="submit" @click="logOut()">Sign out</v-btn>
  
   </div>
