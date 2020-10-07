@@ -53,7 +53,13 @@
                         <li>
                             <router-link to="/dashboard/overview">
                                 <i class="fa fa-globe"></i>
-                                <span class="menu-text" >Overview</span>
+                                <span class="menu-text" >Activities</span>
+                            </router-link>
+                        </li>
+                        <li>
+                            <router-link to="/dashboard/climateapi">
+                                <i class="fa fa-cloud"></i>
+                                <span class="menu-text">Climate APIs</span>
                             </router-link>
                         </li>
                         <li>
@@ -64,7 +70,7 @@
                         </li>
                         
                         <li>
-                            <a href="#">
+                            <a href="/#/forum">
                                 <i class="fa fa-comments"></i>
                                 <span class="menu-text">Forum</span>
                             </a>

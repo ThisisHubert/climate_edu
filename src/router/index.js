@@ -7,6 +7,8 @@ import Dashboard from '@/components/Dashboard'
 import Signup from '@/components/Signup'
 import Overview from '@/components/Overview.vue'
 import Settings from '@/components/Settings.vue'
+import ClimateApi from '@/components/ClimateApi.vue'
+
 
 
 Vue.use(Router)
@@ -39,6 +41,11 @@ export default new Router({
                     name: 'overview',
                     component: Overview
                 },
+                {
+                    path:  'climateapi',
+                    name: 'climateapi',
+                    component: ClimateApi
+                },
                 
                 
             ]
@@ -53,6 +60,7 @@ export default new Router({
             name: 'settings',
             component: Settings
         },
+       
         
 
 
