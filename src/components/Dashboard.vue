@@ -53,7 +53,7 @@
                         <li>
                             <router-link to="/dashboard/overview">
                                 <i class="fa fa-globe"></i>
-                                <span class="menu-text" >Activities</span>
+                                <span class="menu-text" >Information</span>
                             </router-link>
                         </li>
                         <li>
