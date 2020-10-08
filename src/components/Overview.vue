@@ -1,14 +1,25 @@
 <template>
   <div class="overview">
-      <h2><b> Welcome {{name}} to Climate Talk!</b></h2>
-      <hr>
-      <h2> Recent Activities </h2>
-
-      <h2> Information </h2>
-
-      
+      <div class="container h-100">
+          <div class="intro h-100">
+            <div class="row h-100 justify-content-center align-items-center">
+              <div class="col-md-6">
+                 <h2><b>Welcome to Climate TALK! </b></h2>
+                 <p>
+                   Your compass for searching the right information about Climate Change
+                 </p>
+                 <hr>
+                 <h4>Here are your recent activities</h4>
+              </div>
+              <div class="col-md-6">
+                  <img src="../assets/overview1.svg" alt="" class="img-fluid" width="500">
+              </div>
+            </div>
+          </div>
+     
+      </div>
+    
   </div>
-  
 </template>
 
 <script>
@@ -34,16 +45,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-h2{
-    margin-top: 20px;
-    margin-left: 100px;
-}
 
-hr{
-    margin-top: 20px;
-    width: 1400px;
-    margin-left: 100px;
-}
+
 
 
 .search-box {
