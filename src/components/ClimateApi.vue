@@ -1,5 +1,7 @@
 <template>
     <div>
+      <!-- insert here for test API  -->
+      {{quality.data}}
     <div class="search-box">
         <input 
           type="text" 
@@ -32,7 +34,9 @@ export default {
       api_key: '60745ed25b2a6851f7d29725e82cabd9',
       url_base: 'https://api.openweathermap.org/data/2.5/',
       query: '',
-      weather: {}
+      weather: {},
+
+      quality: {},
     }
   },
     props: {
@@ -45,6 +49,9 @@ export default {
             this.email = this.user.email;
             this.photo = this.user.photoURL;
         }
+    },
+    mounted(){
+      this.getAirQuality();
     },
      methods: {
     fetchWeather (e) {
@@ -67,7 +74,22 @@ export default {
       let month = months[d.getMonth()];
       let year = d.getFullYear();
       return `${day} ${date} ${month} ${year}`;
+    },
+    // function to get air quality 
+    getAirQuality(){
+       fetch("https://air-quality.p.rapidapi.com/current/airquality?lon=-73.00597&lat=40.71427", {
+      method: "GET",
+      headers: {
+        "x-rapidapi-host":  "air-quality.phhjfgh.rapidapi.com",
+        "x-rapidapi-key": "f38a51a3d1msh85015cdac3fcb94p1e4ad0jsnaf0867eafea5"
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.quality = data;
+      });
     }
+
   }
     
 }
