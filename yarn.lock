@@ -840,7 +840,7 @@
     "@babel/types" "^7.4.4"
     esutils "^2.0.2"
 
-"@babel/runtime@^7.11.0", "@babel/runtime@^7.8.4":
+"@babel/runtime@^7.11.0", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
   version "7.11.2"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.11.2.tgz#f549c13c754cc40b87644b9fa9f09a6a95fe0736"
   integrity sha512-TeWkU52so0mPtDcaCTxNBI/IHiz0pZgr8VEFqXFtZWpYD08ZB6FaSwVAS8MKRQAP3bYKiVjwysOJgMFY28o6Tw==
@@ -1103,6 +1103,104 @@
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@firebase/webchannel-wrapper/-/webchannel-wrapper-0.3.0.tgz#d1689566b94c25423d1fb2cb031c5c2ea4c9f939"
   integrity sha512-VniCGPIgSGNEgOkh5phb3iKmSGIzcwrccy3IomMFRWPCMiCk2y98UQNJEoDs1yIHtZMstVjYWKYxnunIGzC5UQ==
+
+"@fusioncharts/charts@^3.15.3":
+  version "3.15.3"
+  resolved "https://registry.yarnpkg.com/@fusioncharts/charts/-/charts-3.15.3.tgz#46b42048760b1929d13afe6a298423226ea6d5d5"
+  integrity sha512-X4TGbBZMq9tF19kV9nt271EJsxVKV2XSU7lzUNcfq7cvGM033sf6grCfKD/p52urpOKaUVYW5pzQDQ7tmtYwjQ==
+  dependencies:
+    "@babel/runtime" "^7.9.2"
+    "@fusioncharts/core" "^1.1.0"
+    "@fusioncharts/features" "^1.1.0"
+    "@fusioncharts/utils" "^1.1.0"
+
+"@fusioncharts/constructor@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@fusioncharts/constructor/-/constructor-1.1.0.tgz#e6e86f0a136785bf1a7a0b274eb50f8c5a87dfa7"
+  integrity sha512-8e9abCdwTf/LRpLYq68cIpw7sYdeuh19nANGdVMFtFfatT5Kw5k89O8mEJBccVl+iaCxxAdm80Yj+uL0zBmesg==
+  dependencies:
+    "@babel/runtime" "^7.9.2"
+    "@fusioncharts/core" "^1.1.0"
+    "@fusioncharts/maps" "^3.15.3"
+
+"@fusioncharts/core@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@fusioncharts/core/-/core-1.1.0.tgz#32826afaf97a48bb80a7e68a39abd5a11dae664f"
+  integrity sha512-j5GjccpKhy1g5yy6NY+s6rempx7+gseB64PCJwD0OVVZYX5JClPymv1C4KjlZhQUf+lNSwmgwgZHTimQxo+Tig==
+  dependencies:
+    "@babel/runtime" "^7.9.2"
+    "@fusioncharts/utils" "^1.1.0"
+    core-js "^3.0.1"
+    ramda "^0.25.0"
+
+"@fusioncharts/datatable@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@fusioncharts/datatable/-/datatable-1.1.0.tgz#bd6a499d512a5b3cf7dabdfa0ba81c30c158b1ec"
+  integrity sha512-McUhSpr0kbvr0UH8gaS5u0foH04IfgZmZ0nbMOjDTxYgFzRMDup4ID5fypjrJvx7Awj9HhuxNI4ctVcUFKX1nQ==
+  dependencies:
+    "@babel/runtime" "^7.9.2"
+    "@fusioncharts/utils" "^1.1.0"
+
+"@fusioncharts/features@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@fusioncharts/features/-/features-1.1.0.tgz#acc23073389c18f547e1328052ae07a0802dfc1a"
+  integrity sha512-5fhFlZ6c9ifJxOjPrBRdKHN0UCml6wTopCkpPo3oNksabmZnFp6kDU+HKdpn/GtzpYGpkGdkwwYly0fP9e2ziA==
+  dependencies:
+    "@babel/runtime" "^7.9.2"
+    "@fusioncharts/core" "^1.1.0"
+    "@fusioncharts/utils" "^1.1.0"
+
+"@fusioncharts/fusiontime@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@fusioncharts/fusiontime/-/fusiontime-2.3.0.tgz#152597a2f15c73c63b7d4216892aa4e2d70f4ea7"
+  integrity sha512-nW3aOfmQyqWncaF/Oka6o6pvrtPsOjiFMNGOFSD1Nlp9hCfsnr27hRUIpw+gx9UOkSdnR/z2WUKTcGkhxQHMRw==
+  dependencies:
+    "@babel/runtime" "^7.9.2"
+    "@fusioncharts/charts" "^3.15.3"
+    "@fusioncharts/core" "^1.1.0"
+    "@fusioncharts/datatable" "^1.1.0"
+    "@fusioncharts/utils" "^1.1.0"
+    ramda "^0.25.0"
+
+"@fusioncharts/maps@^3.15.3":
+  version "3.15.3"
+  resolved "https://registry.yarnpkg.com/@fusioncharts/maps/-/maps-3.15.3.tgz#fccaafb84e9d3b44abcc26603adb696c3c0487a8"
+  integrity sha512-tQAWiuXxE8CakWaLIBzredxdAmjIy9w0Pl+kA0LIF9x5fRIh/cqoEXoT7XhlJnA3uSbMmKo6kTo7ObFRo/pPEg==
+  dependencies:
+    "@babel/runtime" "^7.9.2"
+    "@fusioncharts/charts" "^3.15.3"
+    "@fusioncharts/core" "^1.1.0"
+    "@fusioncharts/features" "^1.1.0"
+
+"@fusioncharts/powercharts@^3.15.3":
+  version "3.15.3"
+  resolved "https://registry.yarnpkg.com/@fusioncharts/powercharts/-/powercharts-3.15.3.tgz#4f86d8a8af69e05051c9797b5125c4a68119b07a"
+  integrity sha512-VhWdhwSXFN3iBs7IbqHt8jEPgMpJX+rNqH5scAMcEMzhJDBbFRAGIp/qF7ZU0Jq6t2Sju+rvRxCZtg6hkGkClg==
+  dependencies:
+    "@babel/runtime" "^7.9.2"
+    "@fusioncharts/charts" "^3.15.3"
+    "@fusioncharts/core" "^1.1.0"
+    "@fusioncharts/utils" "^1.1.0"
+
+"@fusioncharts/utils@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@fusioncharts/utils/-/utils-1.1.0.tgz#16508be594cc9d5a111a1d7cebefec92acffd896"
+  integrity sha512-Kndbbb/BAivcLZZF03GjfJifMs/lOQBXDuce7FHrkypkUH+IB8mouZYCVrmA4cjLjY3rDQ/eJQt4STCQihG6Bw==
+  dependencies:
+    "@babel/runtime" "^7.9.2"
+    ramda "^0.25.0"
+
+"@fusioncharts/widgets@^3.15.3":
+  version "3.15.3"
+  resolved "https://registry.yarnpkg.com/@fusioncharts/widgets/-/widgets-3.15.3.tgz#920b454f808f30e23aff2b54b0903d594a5d5a98"
+  integrity sha512-Pw7yclCrX8ssoYgC5TNnP4p5OB9IP3RbCJ1nTjuTzlqgUbwLz9r8wSfRA+QKQXWXqeGLo0glU/G78w0010T99g==
+  dependencies:
+    "@babel/runtime" "^7.9.2"
+    "@fusioncharts/charts" "^3.15.3"
+    "@fusioncharts/constructor" "^1.1.0"
+    "@fusioncharts/core" "^1.1.0"
+    "@fusioncharts/features" "^1.1.0"
+    "@fusioncharts/utils" "^1.1.0"
 
 "@grpc/grpc-js@^1.0.0":
   version "1.1.5"
@@ -3395,7 +3493,7 @@ core-js-compat@^3.6.2, core-js-compat@^3.6.5:
     browserslist "^4.8.5"
     semver "7.0.0"
 
-core-js@3.6.5, core-js@^3.6.5:
+core-js@3.6.5, core-js@^3.0.1, core-js@^3.6.5:
   version "3.6.5"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.6.5.tgz#7395dc273af37fb2e50e9bd3d9fe841285231d1a"
   integrity sha512-vZVEEwZoIsI+vPEuoF9Iqf5H7/M3eeQqWlQnYa8FSKKePuYTf5MWnxb5SDAzCa60b3JBRS5g9b+Dq7b1y/RCrA==
@@ -4644,7 +4742,7 @@ file-entry-cache@^5.0.1:
   dependencies:
     flat-cache "^2.0.1"
 
-file-loader@^4.0.0, file-loader@^4.2.0:
+file-loader@^4.2.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-4.3.0.tgz#780f040f729b3d18019f20605f723e844b8a58af"
   integrity sha512-aKrYPYjF1yG3oX0kWRrqrSMfgftm7oJW5M+m4owoldH5C51C0RkIwB++JbRvEW3IU6/ZG5n8UvEcdgwOt2UOWA==
@@ -4952,6 +5050,25 @@ functional-red-black-tree@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/functional-red-black-tree/-/functional-red-black-tree-1.0.1.tgz#1b0ab3bd553b2a0d6399d29c0e3ea0b252078327"
   integrity sha1-GwqzvVU7Kg1jmdKcDj6gslIHgyc=
+
+fusioncharts@^3.15.3:
+  version "3.15.3"
+  resolved "https://registry.yarnpkg.com/fusioncharts/-/fusioncharts-3.15.3.tgz#8211deed540a3a0629b667344008b8c9a713ab60"
+  integrity sha512-2B94xRGf9VMa1A+phptgL02qtCLyqZjQnpQB1IwyBsF+VoH31rSFMeaeJey+dRv3IKPtrk1VTtWBa0h3+t3l0g==
+  dependencies:
+    "@babel/runtime" "^7.9.2"
+    "@fusioncharts/charts" "^3.15.3"
+    "@fusioncharts/constructor" "^1.1.0"
+    "@fusioncharts/core" "^1.1.0"
+    "@fusioncharts/datatable" "^1.1.0"
+    "@fusioncharts/features" "^1.1.0"
+    "@fusioncharts/fusiontime" "^2.3.0"
+    "@fusioncharts/maps" "^3.15.3"
+    "@fusioncharts/powercharts" "^3.15.3"
+    "@fusioncharts/utils" "^1.1.0"
+    "@fusioncharts/widgets" "^3.15.3"
+    mutationobserver-shim "^0.3.5"
+    promise-polyfill "^8.1.3"
 
 gauge@~2.7.3:
   version "2.7.4"
@@ -6599,7 +6716,7 @@ loader-utils@^0.2.16:
     json5 "^0.5.0"
     object-assign "^4.0.1"
 
-loader-utils@^1.0.2, loader-utils@^1.1.0, loader-utils@^1.2.0, loader-utils@^1.2.3, loader-utils@^1.4.0:
+loader-utils@^1.0.2, loader-utils@^1.1.0, loader-utils@^1.2.3, loader-utils@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-1.4.0.tgz#c579b5e34cb34b1a74edc6c1fb36bfa371d5a613"
   integrity sha512-qH0WSMBtn/oHuwjy/NucEgbx5dbxxnxup9s4PVXJUDHZBQY+s0NWA9rJf53RBnQZxfch7euUui7hpoAPvALZdA==
@@ -7328,6 +7445,11 @@ multipipe@^0.1.0, multipipe@^0.1.2:
   integrity sha1-Ko8t33Du1WTf8tV/HhoTfZ8FB4s=
   dependencies:
     duplexer2 "0.0.2"
+
+mutationobserver-shim@^0.3.5:
+  version "0.3.7"
+  resolved "https://registry.yarnpkg.com/mutationobserver-shim/-/mutationobserver-shim-0.3.7.tgz#8bf633b0c0b0291a1107255ed32c13088a8c5bf3"
+  integrity sha512-oRIDTyZQU96nAiz2AQyngwx1e89iApl2hN5AOYwyxLUB47UYsU3Wv9lJWqH5y/QdiYkc5HQLi23ZNB3fELdHcQ==
 
 mute-stream@0.0.8:
   version "0.0.8"
@@ -8623,7 +8745,7 @@ promise-inflight@^1.0.1:
   resolved "https://registry.yarnpkg.com/promise-inflight/-/promise-inflight-1.0.1.tgz#98472870bf228132fcbdd868129bad12c3c029e3"
   integrity sha1-mEcocL8igTL8vdhoEputEsPAKeM=
 
-promise-polyfill@8.1.3:
+promise-polyfill@8.1.3, promise-polyfill@^8.1.3:
   version "8.1.3"
   resolved "https://registry.yarnpkg.com/promise-polyfill/-/promise-polyfill-8.1.3.tgz#8c99b3cf53f3a91c68226ffde7bde81d7f904116"
   integrity sha512-MG5r82wBzh7pSKDRa9y+vllNHz3e3d4CNj1PQE4BQYxLme0gKYYBm9YENq+UkEikyZ0XbiGWxYlVw3Rl9O/U8g==
@@ -8759,6 +8881,11 @@ querystringify@^2.1.1:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.2.0.tgz#3345941b4153cb9d082d8eee4cda2016a9aef7f6"
   integrity sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==
+
+ramda@^0.25.0:
+  version "0.25.0"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.25.0.tgz#8fdf68231cffa90bc2f9460390a0cb74a29b29a9"
+  integrity sha512-GXpfrYVPwx3K7RQ6aYT8KPS8XViSXUVJT1ONhoKPE9VAleW42YE+U+8VEyGWt41EnEQW7gwecYJriTI0pKoecQ==
 
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5, randombytes@^2.1.0:
   version "2.1.0"
@@ -10361,6 +10488,11 @@ unc-path-regex@^0.1.2:
   resolved "https://registry.npm.taobao.org/unc-path-regex/download/unc-path-regex-0.1.2.tgz#e73dd3d7b0d7c5ed86fbac6b0ae7d8c6a69d50fa"
   integrity sha1-5z3T17DXxe2G+6xrCufYxqadUPo=
 
+underscore@^1.9.1:
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.11.0.tgz#dd7c23a195db34267186044649870ff1bab5929e"
+  integrity sha512-xY96SsN3NA461qIRKZ/+qox37YXPtSBswMGfiNptr+wrt6ds4HaMw23TP612fEyGekRE6LNRiLYr/aqbHXNedw==
+
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/unicode-canonical-property-names-ecmascript/-/unicode-canonical-property-names-ecmascript-1.0.4.tgz#2619800c4c825800efdd8343af7dd9933cbe2818"
@@ -10677,6 +10809,13 @@ vue-eslint-parser@^7.0.0:
     esquery "^1.0.1"
     lodash "^4.17.15"
 
+vue-fusioncharts@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/vue-fusioncharts/-/vue-fusioncharts-3.0.4.tgz#30a4316cf9300d8042d7623ffdc85e0f2e27992f"
+  integrity sha512-UX+nIKPIH7mvGF7UscN5e5Skk+MwOXJFO7fdacHLmZ1xBkK32baDNlqmAhjOsHH8Kuw1/9WsEmU6Ga7W1OeqzA==
+  dependencies:
+    underscore "^1.9.1"
+
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
@@ -10740,14 +10879,6 @@ vue@^2.6.11:
   version "2.6.12"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.12.tgz#f5ebd4fa6bd2869403e29a896aed4904456c9123"
   integrity sha512-uhmLFETqPPNyuLLbsKz6ioJ4q7AZHzD8ZVFNATNyICSZouqP2Sz0rotWQC8UNBF6VGSCs5abnKJoStA6JbCbfg==
-
-vuetify-loader@^1.3.0:
-  version "1.6.0"
-  resolved "https://registry.npm.taobao.org/vuetify-loader/download/vuetify-loader-1.6.0.tgz#05df0805b3ab2ff0de198109d34f9da3f69da667"
-  integrity sha1-Bd8IBbOrL/DeGYEJ00+do/adpmc=
-  dependencies:
-    file-loader "^4.0.0"
-    loader-utils "^1.2.0"
 
 vuetify@^2.2.11:
   version "2.3.9"

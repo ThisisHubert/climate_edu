@@ -8,6 +8,7 @@ import Signup from '@/components/Signup'
 import Overview from '@/components/Overview.vue'
 import Settings from '@/components/Settings.vue'
 import ClimateApi from '@/components/ClimateApi.vue'
+import ClimateDash from '@/components/ClimateDash.vue'
 
 
 
@@ -59,6 +60,11 @@ export default new Router({
             path:  '/settings',
             name: 'settings',
             component: Settings
+        },
+        {
+            path:  '/climatedash',
+            name: 'climatedash',
+            component: ClimateDash
         },
        
         
