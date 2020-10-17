@@ -2,6 +2,7 @@
     <div>
       <!-- insert here for test API  -->
       {{quality.data}}
+      {{location}}
     <div class="search-box">
         <input 
           type="text" 
@@ -37,6 +38,7 @@ export default {
       weather: {},
 
       quality: {},
+      location: {},
     }
   },
     props: {
@@ -52,6 +54,7 @@ export default {
     },
     mounted(){
       this.getAirQuality();
+      // this.locate();
     },
      methods: {
     fetchWeather (e) {
@@ -88,9 +91,21 @@ export default {
       .then(data => {
         this.quality = data;
       });
-    }
+    },
+    // locate(){     
+    //    fetch("https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyC0XgnwyiHEFKRYp3QBh2asq76pq0b-5Vw", {
+      
+    // })
+    //    .then(res => 
+    //          res.json())
+    //     .then(data => {
+    //       this.location = data;
+    //     });
+         
+    // }
+    // storm glass API:bb611236-1075-11eb-b19c-0242ac130002-bb6112ea-1075-11eb-b19c-0242ac130002
 
-  }
+  },
     
 }
 </script>

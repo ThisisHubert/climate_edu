@@ -5407,6 +5407,11 @@ google-auth-library@^6.0.0:
     jws "^4.0.0"
     lru-cache "^6.0.0"
 
+google-map@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/google-map/-/google-map-1.1.0.tgz#83913507633f2cfb760163aa35097a0c3abf8bc3"
+  integrity sha1-g5E1B2M/LPt2AWOqNQl6DDq/i8M=
+
 google-p12-pem@^3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/google-p12-pem/-/google-p12-pem-3.0.2.tgz#12d443994b6f4cd8c9e4ac479f2f18d4694cbdb8"

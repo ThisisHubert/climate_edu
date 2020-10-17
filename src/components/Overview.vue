@@ -9,7 +9,7 @@
                    Your compass for searching the right information about Climate Change
                  </p>
                  <hr>
-                 <h4>Here are your recent activities</h4>
+                 <h4>Search the recent news about climate change</h4>
               </div>
               <div class="col-md-6">
                   <img src="../assets/overview1.svg" alt="" class="img-fluid" width="500">
