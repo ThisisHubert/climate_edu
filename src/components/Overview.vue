@@ -12,7 +12,7 @@
                  <h4>Search the recent news about climate change</h4>
               </div>
               <div class="col-md-6">
-                  <img src="../assets/overview1.svg" alt="" class="img-fluid" width="500">
+                  <img src="../assets/overview.svg" alt="" class="img-fluid" width="500">
               </div>
             </div>
           </div>

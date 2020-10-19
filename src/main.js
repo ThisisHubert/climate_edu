@@ -4,7 +4,6 @@ import App from './App.vue';
 import vuetify from './plugins/vuetify';
 import Vuetify from 'vuetify';
 import {store} from './store';
-
 import FusionCharts from 'fusioncharts';
 import Charts from 'fusioncharts/fusioncharts.charts';
 import Widgets from 'fusioncharts/fusioncharts.widgets';
@@ -25,7 +24,7 @@ import jQuery from 'jquery';
 window.$ = window.jQuery = jQuery;
 import 'popper.js';
 // import firebaseui from 'firebaseui'
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
 import 'bootstrap';
 
 import './assets/app.scss';
@@ -57,8 +56,11 @@ new Vue({
         databaseURL: "https://climate-edu.firebaseio.com",
         projectId: "climate-edu",
         storageBucket: "climate-edu.appspot.com",
+        messagingSenderId: '',
+        appId: '',
       }
     ),
+    
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.$router.push('/dashboard/overview');
@@ -76,4 +78,7 @@ new Vue({
   );
     
   }
+
+
+
 });

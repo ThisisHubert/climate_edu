@@ -2,13 +2,13 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Forum from '@/components/Forum' 
-import Learn from '@/components/Learn'     
 import Dashboard from '@/components/Dashboard'
 import Signup from '@/components/Signup'
 import Overview from '@/components/Overview.vue'
 import Settings from '@/components/Settings.vue'
 import ClimateApi from '@/components/ClimateApi.vue'
 import ClimateDash from '@/components/ClimateDash.vue'
+// import { auth } from '../firebase'
 
 
 
@@ -25,13 +25,12 @@ export default new Router({
         {
             path: '/forum',
             name: 'forum',
-            component: Forum
+            component: Forum,
+            meta:{
+               requiresAuth: true
+            }
         },
-        {
-            path: '/learn',
-            name: 'learn',
-            component: Learn
-        },
+        
         {
             path: '/dashboard',
             name: 'dashboard',
@@ -54,7 +53,10 @@ export default new Router({
                 },
                 
                 
-            ]
+            ],
+            meta:{
+                requiresAuth:true
+            }
         },
         {
             path: '/signup',
@@ -65,7 +67,10 @@ export default new Router({
         {
             path:  '/climatedash',
             name: 'climatedash',
-            component: ClimateDash
+            component: ClimateDash,
+            meta:{
+                requiresAuth:true
+            }
         },
        
         
