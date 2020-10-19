@@ -47,6 +47,11 @@ export default new Router({
                     name: 'climateapi',
                     component: ClimateApi
                 },
+                {
+                    path:  'settings',
+                    name: 'settings',
+                    component: Settings
+                },
                 
                 
             ]
@@ -56,11 +61,7 @@ export default new Router({
             name: 'signup',
             component: Signup     
         },
-        {
-            path:  '/settings',
-            name: 'settings',
-            component: Settings
-        },
+        
         {
             path:  '/climatedash',
             name: 'climatedash',

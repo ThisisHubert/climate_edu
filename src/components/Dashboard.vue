@@ -59,7 +59,7 @@
                         <li>
                             <router-link to="/dashboard/climateapi">
                                 <i class="fa fa-cloud"></i>
-                                <span class="menu-text">Climate APIs</span>
+                                <span class="menu-text">Climate Open Data</span>
                             </router-link>
                         </li>
                         <li>
@@ -77,10 +77,10 @@
                             
                         </li>
                         <li>
-                            <a href="/#/settings">
+                            <router-link to="/dashboard/settings">
                                 <i class="fa fa-cogs"></i>
                                 <span class="menu-text">Settings</span>
-                            </a>
+                            </router-link>
                            
                         </li>
                         <li>
