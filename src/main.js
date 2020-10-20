@@ -10,7 +10,12 @@ import Widgets from 'fusioncharts/fusioncharts.widgets';
 import PowerCharts from 'fusioncharts/fusioncharts.powercharts';
 import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
 import VueFusionCharts from 'vue-fusioncharts';
+import { KinesisContainer, KinesisElement } from 'vue-kinesis'
 
+// import VueKinesis from 'vue-kinesis'
+// Vue.use(VueKinesis)
+Vue.component('kinesis-container', KinesisContainer)
+Vue.component('kinesis-element', KinesisElement)
 
 Vue.use(VueFusionCharts, FusionCharts);
 
@@ -36,6 +41,7 @@ Vue.use(VueRouter);
 Vue.use(Vuetify);
 
 Vue.component('Navbar', require('./components/Navbar.vue').default)
+Vue.component('ForumNav', require('./components/ForumNav.vue').default)
 
 
 
@@ -69,10 +75,13 @@ new Vue({
         //   console.log('send Verification');
         //   document.getElementById("verifMessage").innerHTML = "Check your inbox for verification email!";
       
-      } else {
+      }
+      else {
         this.$router.push('/home')
 
       }
+      
+
     }
 
   );

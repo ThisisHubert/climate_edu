@@ -28,7 +28,8 @@ export default new Router({
             component: Forum,
             meta:{
                requiresAuth: true
-            }
+            },
+            
         },
         
         {

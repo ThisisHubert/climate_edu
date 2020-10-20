@@ -20,21 +20,30 @@
                     cols="12"
                     tag="h1"
                   >
+                    <kinesis-container>
+                      <kinesis-element :strength="20">
+                      
                     <span 
                     :class="[$vuetify.breakpoint.smAndDown ? 'display-1' : 'display-2']"
                       class="font-weight-light" 
                     >
                       WELCOME TO
                     </span>
+                      </kinesis-element>
+                    </kinesis-container>
+
 
                     <br>
-
+                    <kinesis-container>
+                      <kinesis-element :strength="20">
                     <span
                       :class="[$vuetify.breakpoint.smAndDown ? 'display-3': 'display-4']"
                       class="font-weight-black" 
                     >
                       CLIMATE Talk
                     </span>
+                      </kinesis-element>
+                    </kinesis-container>
 
                   </v-col>
                   <v-dialog v-model="dialog" persistent max-width="600px">
