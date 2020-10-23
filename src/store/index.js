@@ -30,6 +30,16 @@ export const store = new Vuex.Store({
       // Reach out to firebase and store it
       commit('createMeetup', meetup)
     },
+    async createPost({ state}, post) {    // sth wrong with this
+      await firebase.postsCollection.add({
+        createdOn: new Date(),
+        content: post.content,
+        userId: firebase.auth.currentUser.uid,
+        userName: state.userProfile.name,
+        comments: 0,
+        likes: 0
+      })
+    },
     signUserUp ({commit}, payload) {
       firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
         .then(

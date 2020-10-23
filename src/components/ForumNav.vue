@@ -14,6 +14,9 @@
       <v-btn text>
         Collaborate
       </v-btn>
+       <v-btn text>
+        Donation
+      </v-btn>
       <v-btn dark color="green" @click="logOut()">
         Log out
       </v-btn>

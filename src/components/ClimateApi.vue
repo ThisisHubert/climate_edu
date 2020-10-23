@@ -1,8 +1,13 @@
 <template>
     <div>
       <!-- insert here for test API  -->
-      {{quality.data}}
-      {{location}}
+      {{quality}}
+      <hr>
+      {{location.results[0].locations[0].latLng}}
+      {{long}}
+      {{lat}}
+      <hr>
+      {{quality2.hours}}
     <div class="search-box">
         <input 
           type="text" 
@@ -11,19 +16,25 @@
           v-model="query"
           @keypress="fetchWeather"
         />
-      </div>
-      <div class="weather-wrap" v-if="typeof weather.main != 'undefined'">
+    </div>
+      <!-- <v-card
+    class="mx-auto"
+    max-width="400"
+  > -->
+      <!-- <div class="weather-wrap" v-if="typeof weather.main != 'undefined'"> -->
         <div class="location-box">
-          <div class="location">{{ weather.name }}, {{ weather.sys.country }}</div>
+          <div class="location">{{ weather}}</div>
           <div class="date">{{ dateBuilder() }}</div>
         </div>
-
-        <div class="weather-box">
+      <!-- </div> -->
+        <!-- <div class="weather-box">
           <div class="temp">{{ Math.round(weather.main.temp) }}°c</div>
           <div class="weather">{{ weather.weather[0].main }}</div>
         </div>
-      </div>    
-      </div>
+      </div>     -->
+      <!-- </v-card>  -->
+      <!-- </div> -->
+    </div>
 </template>
 
 <script>
@@ -36,9 +47,12 @@ export default {
       url_base: 'https://api.openweathermap.org/data/2.5/',
       query: '',
       weather: {},
-
+      lat:'',
+      long:'', 
+      completeWeatherApi:'',
       quality: {},
       location: {},
+      quality2: {},
     }
   },
     props: {
@@ -54,12 +68,13 @@ export default {
     },
     mounted(){
       this.getAirQuality();
-      // this.locate();
+      this.locate();
+      this.getAirQuality2();
     },
      methods: {
     fetchWeather (e) {
       if (e.key == "Enter") {
-        fetch(`${this.url_base}weather?q=${this.query}&units=metric&APPID=${this.api_key}`)
+        fetch(`${this.url_base}forecast?q=${this.query}&units=metric&APPID=${this.api_key}`)
           .then(res => {
             return res.json();
           }).then(this.setResults);
@@ -78,9 +93,24 @@ export default {
       let year = d.getFullYear();
       return `${day} ${date} ${month} ${year}`;
     },
+  locate(){     
+       fetch(`http://open.mapquestapi.com/geocoding/v1/address?key= QsmoqgunYeWqAL3jfpjZgweMO3ryMbLy&location=Tokyo` , {
+      method: "GET",
+    })
+       .then(res => 
+             res.json())
+        .then(data => {
+          this.location = data; 
+          this.lat = this.location.results[0].locations[0].latLng.lat;
+          this.long = this.location.results[0].locations[0].latLng.lng;
+        });
+         
+    },
+
+
     // function to get air quality 
     getAirQuality(){
-       fetch("https://air-quality.p.rapidapi.com/current/airquality?lon=-73.00597&lat=40.71427", {
+       fetch(`https://air-quality.p.rapidapi.com/current/airquality?lon=139&lat=34`, {
       method: "GET",
       headers: {
         "x-rapidapi-host":  "air-quality.phhjfgh.rapidapi.com",
@@ -92,17 +122,21 @@ export default {
         this.quality = data;
       });
     },
-    // locate(){     
-    //    fetch("https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyC0XgnwyiHEFKRYp3QBh2asq76pq0b-5Vw", {
-      
-    // })
-    //    .then(res => 
-    //          res.json())
-    //     .then(data => {
-    //       this.location = data;
-    //     });
-         
-    // }
+
+   getAirQuality2(){
+       fetch('https://api.stormglass.io/v2/weather/point?lat=34&lng=139&params=wavePeriod', {
+      headers: {
+        'Authorization': 'bb611236-1075-11eb-b19c-0242ac130002-bb6112ea-1075-11eb-b19c-0242ac130002'
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.quality2 = data;
+      });
+    },
+
+
+    
     // storm glass API:bb611236-1075-11eb-b19c-0242ac130002-bb6112ea-1075-11eb-b19c-0242ac130002
 
   },
@@ -123,10 +157,11 @@ hr{
 }
 
 
+
 .search-box {
   width: 80%;
   margin-bottom: 30px;
-  margin-left: 100px;
+  margin-left: 70px;
 }
 body {
   font-family: 'montserrat', sans-serif;
@@ -134,7 +169,7 @@ body {
 main {
   min-height: 100vh;
   padding: 25px;
-//   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.75));
+  // background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.75));
 }
 
 
@@ -176,6 +211,10 @@ main {
 }
 .weather-box {
   text-align: center;
+}
+
+.weather-wrap{
+  padding-left: 500px;
 }
 .weather-box .temp {
   display: inline-block;

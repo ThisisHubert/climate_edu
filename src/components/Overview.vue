@@ -6,10 +6,10 @@
               <div class="col-md-6">
                  <h2><b>Welcome to Climate TALK! </b></h2>
                  <p>
-                   Your compass for searching the right information about Climate Change
+                   Your primary resource for searching the right information about Climate Change
                  </p>
                  <hr>
-                 <h4>Search the recent news about climate change</h4>
+                 <h4>Search the recent activities about climate change</h4>
 
               </div>
               <div class="col-md-6">
