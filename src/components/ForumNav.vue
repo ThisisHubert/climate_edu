@@ -17,7 +17,10 @@
        <v-btn text>
         Donation
       </v-btn>
-      <v-btn dark color="green" @click="logOut()">
+       
+      <v-btn class="ma-2"
+      outlined
+      color="green" @click="logOut()">
         Log out
       </v-btn>
     </v-row>

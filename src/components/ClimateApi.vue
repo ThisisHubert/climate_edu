@@ -1,35 +1,19 @@
 <template>
     <div>
       <!-- insert here for test API  -->
-      {{quality}}
-      <hr>
-      {{quality2}}
     <div class="search-box">
         <input 
           type="text" 
           class="search-bar" 
-          placeholder="Check Current Weather..."
+          placeholder="Input any City..."
           v-model="query"
           @keypress="fetchWeather"
         />
     </div>
-      <!-- <v-card
-    class="mx-auto"
-    max-width="400"
-  > -->
-  <!-- <div>{{weather}}</div> -->
+      
   
     <div class="weather-wrap" v-if="typeof weather.list != 'undefined'">
-        <!-- <div class="location-box">
-          <div class="date">{{ dateBuilder() }}</div>
-          <div class="location">{{weather.city.name}}, {{weather.city.country}}</div>
-        </div>
-      
-        <div class="weather-box">
-          <div class="temp">{{ Math.round(weather.list[0].main.temp) }}°c</div>
-          <div class="weather">{{ weather.list[0].weather[0].main }}</div>
-          <div>{{weather.list[0].dt_txt.slice(-8,-3)}}</div>
-        </div> -->
+        
     
     <!-- Current day card -->
     <v-row align="center">
@@ -86,16 +70,17 @@
     <div class="card_pop">
        <v-list-item>
       <v-list-item-content>
-        <i class="fas fa-users"></i>
-        <v-list-item-title>Population: </v-list-item-title>
-        <v-list-item-subtitle>{{weather.city.population.toLocaleString()}}</v-list-item-subtitle>
+        <i class="fas fa-users fa-2x"></i>
+        <v-list-item-title>Population</v-list-item-title>
+       <v-list-item-subtitle>{{weather.city.population.toLocaleString()}}</v-list-item-subtitle>
       </v-list-item-content>
     </v-list-item>
     
     <v-divider inset></v-divider>
 
     <v-list-item two-line>
-      <v-list-item-content>      
+      <v-list-item-content>  
+        <i class="fas fa-eye fa-2x"></i>    
         <v-list-item-title>Air Visibility</v-list-item-title>
         <v-list-item-subtitle>{{weather.list[1].visibility}}</v-list-item-subtitle>
       </v-list-item-content>
@@ -105,6 +90,7 @@
 
     <v-list-item three-line>
       <v-list-item-content>
+        <i class="fas fa-water fa-2x"></i>
         <v-list-item-title>Atmospheric Pressure at sea level</v-list-item-title>
         <v-list-item-subtitle>
           {{weather.list[1].main.sea_level}} hPa
@@ -116,12 +102,38 @@
 
     <v-list-item three-line>
       <v-list-item-content>
+        <i class="fas fa-leaf fa-2x"></i>
         <v-list-item-title>Atmospheric Pressure at ground level</v-list-item-title>
         <v-list-item-subtitle>
           {{weather.list[1].main.grnd_level}} hPa
         </v-list-item-subtitle>
       </v-list-item-content>
     </v-list-item>
+
+    <v-divider inset></v-divider>
+
+    <v-list-item three-line>
+      <v-list-item-content>
+        <i class="fas fa-cloud fa-2x"></i>
+        <v-list-item-title>Cloudiness</v-list-item-title>
+        <v-list-item-subtitle>
+          {{weather.list[1].clouds.all}} %
+        </v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+
+    <v-divider inset></v-divider>
+
+    <v-list-item three-line>
+      <v-list-item-content>
+        <i class="fas fa-cloud-moon fa-2x"></i>
+        <v-list-item-title>Part of the day (n - night, d - day)</v-list-item-title>
+        <v-list-item-subtitle>
+          {{weather.list[1].sys.pod}}
+        </v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+
 
     </div>
   </v-col>
@@ -411,6 +423,8 @@ h3.minmax{
     position: relative;
     -webkit-animation: up 2s cubic-bezier(.39, 0, .38, 1) .2s;
 }
+
+
 
 h1 {
     float: right;

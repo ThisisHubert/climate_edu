@@ -8,6 +8,8 @@
             :min-height="'calc(50vh - ' + $vuetify.application.top + 'px)'"
             src="../assets/top-img-eng.png"
           >
+            <!-- <v-vanta effect="globe" :options=options></v-vanta> -->
+
             <v-theme-provider dark>
               <v-container fill-height>
                 <v-row
@@ -118,6 +120,7 @@
               </v-container>
             </v-theme-provider>
           </v-img>
+          <!-- </div> -->
         </v-row>
       </section>
 
@@ -406,15 +409,33 @@
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@0.5.21/dist/vanta.globe.min.js"></script>
+
 <script>
+import VVanta from 'vue-vanta'
 import * as firebase from 'firebase'
+import GLOBES from 'vanta/src/vanta.globe'
+// import globe from 'vue-vanta';
   export default {
     name: 'HelloWorld',
+    components: { VVanta },
     data () {
       return {
         name: '',
         email: '',
-        password: ''
+        password: '',
+        vantaEffect:'',
+        options: {
+            mouseControls: true,
+            touchControls: true,
+            Height: 1000.00,
+            Width: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            backgroundColor: 0x0,
+        }
+        
       }
     },
     computed: {
@@ -448,6 +469,12 @@ import * as firebase from 'firebase'
       
 
     },
+   
+     beforeDestroy() {
+    if (this.vantaEffect) {
+      this.vantaEffect.destroy()
+    }
+  },
     data: () => ({
       dialog : false,
       articles: [
@@ -495,14 +522,22 @@ import * as firebase from 'firebase'
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+
 .loginform{
   padding-left: 20px;
 }
 
-template, div, section, span{
+template, div, section{
   
   font-family: 'Nunito', sans-serif;
 
 }
+
+span.font-weight-black{
+  font-family: Comfortaa;
+}
+
+
 </style>
 

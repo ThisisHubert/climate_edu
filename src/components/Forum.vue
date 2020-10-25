@@ -7,10 +7,10 @@
         <div class="profile">
           <h5>{{name}}</h5>
           <div class="create-post">
-            <p>create a post</p>
+            <p>Create a Post</p>
             <form @submit.prevent>
-              <textarea v-model.trim="post.content"></textarea>
-              <button @click="createPost()" :disabled="post.content === ''" class="button">post</button>
+              <textarea v-model.trim="post.content" placeholder="Write Something..."></textarea>
+              <button @click="createPost()" :disabled="post.content === ''" class="button">Post</button>
             </form>
           </div>
         </div>
