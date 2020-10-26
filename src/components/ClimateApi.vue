@@ -284,6 +284,7 @@ main {
   padding: 15px;
   
   color: #313131;
+  margin-left: 8px;
   font-size: 20px;
   appearance: none;
   border:none;
@@ -356,7 +357,7 @@ body {
 .card {
     margin: 0 auto;
     margin-top: 5%;
-    margin-left: 4%;
+    margin-left: 10%;
     margin-bottom: 10%;
     padding: 5px 30px 20px;
     width: 690px;

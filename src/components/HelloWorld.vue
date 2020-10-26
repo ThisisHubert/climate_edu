@@ -2,63 +2,33 @@
   <section>
    <Navbar></Navbar>
    <router-view/>
-      <section id="hero">
-        <v-row no-gutters>
-          <v-img height="1450px"
-            :min-height="'calc(50vh - ' + $vuetify.application.top + 'px)'"
-            src="../assets/top-img-eng.png"
-          >
-            <!-- <v-vanta effect="globe" :options=options></v-vanta> -->
+      
 
-            <v-theme-provider dark>
-              <v-container fill-height>
-                <v-row
-                  align="center"
-                  class="white--text mx-auto"
-                  justify="center"
-                >
-                  <v-col
-                    class="white--text text-center"
-                    cols="12"
-                    tag="h1"
-                  >
-                    <kinesis-container>
-                      <kinesis-element :strength="20">
-                      
-                    <span 
-                    :class="[$vuetify.breakpoint.smAndDown ? 'display-1' : 'display-2']"
-                      class="font-weight-light" 
-                    >
-                      WELCOME TO
-                    </span>
-                      </kinesis-element>
-                    </kinesis-container>
-
-
-                    <br>
-                    <kinesis-container>
-                      <kinesis-element :strength="20">
-                    <span
-                      :class="[$vuetify.breakpoint.smAndDown ? 'display-3': 'display-4']"
-                      class="font-weight-black" 
-                    >
-                      CLIMATE Talk
-                    </span>
-                      </kinesis-element>
-                    </kinesis-container>
-
-                  </v-col>
-                  <v-dialog v-model="dialog" persistent max-width="600px">
+       <div class="hero">
+        <div class="container h-100">
+          <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-md-5">
+              <div class="hero-content">
+                <h1 class="hero-title">
+                  Fight Climate Change, Together.
+                </h1>
+                
+                <div class="hero-btn mt-5">
+                    <v-dialog v-model="dialog" persistent max-width="600px">
                    <template v-slot:activator="{ on, attrs }">
                       <v-btn
                         x-large
                         class="ma-2"
-                        color="white"
+                        color="green"
                         outlined
                         v-bind="attrs"
                         v-on="on"
-                      >
-                        Let's Get Started!
+                      ><v-img
+            contain
+            height="1%" style="height:30px; width:30px;"
+            src="../assets/logo (1).png"
+          ></v-img>
+                        Let's Talk!
                       </v-btn>
                   </template>
                     <!-- login -->
@@ -116,13 +86,17 @@
                         </v-card>
                       <!-- login -->
                   </v-dialog>  
-                </v-row>
-              </v-container>
-            </v-theme-provider>
-          </v-img>
-          <!-- </div> -->
-        </v-row>
-      </section>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-7">
+                <div class="graphic">
+                    <img src="../assets/climate_home.jpg" style="width:600px; height:600px; padding-right:3px; margin-left:50px;" alt="">
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
 
       
 
@@ -527,6 +501,12 @@ import GLOBES from 'vanta/src/vanta.globe'
 .loginform{
   padding-left: 20px;
 }
+
+/* .hero{
+  background-color: #efefed;
+} */
+
+
 
 template, div, section{
   
