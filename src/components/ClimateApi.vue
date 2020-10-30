@@ -30,7 +30,6 @@
         <h3><i class="fas fa-temperature-high"></i> {{ Math.round(weather.list[1].main.temp_max) }}°c</h3>
         <h3><i class="fas fa-temperature-low"></i> {{ Math.round(weather.list[1].main.temp_min) }}°c</h3>
         <h3><b>Precipitation:</b> {{weather.list[1].pop*100}}%</h3>
-        <h3><b>Rain Volume:</b> {{weather.list[1].rain['3h']}} mm</h3>
         <h3><b>Last Update:</b> {{weather.list[1].dt_txt.slice(-8,-3)}}</h3>
         <h3><b>Feels like:</b> {{Math.round(weather.list[1].main.feels_like)}}°</h3>
         <div class="sky">
@@ -55,13 +54,6 @@
                 <td>{{ Math.round(weather.list[20].main.temp_max) }}°</td>
                 <td>{{ Math.round(weather.list[28].main.temp_max) }}°</td>
                 <td>{{ Math.round(weather.list[36].main.temp_max) }}°</td>
-            </tr>
-            <tr>
-                <td>{{ Math.round(weather.list[5].main.temp_min) }}°</td>
-                <td>{{ Math.round(weather.list[12].main.temp_min) }}°</td>
-                <td>{{ Math.round(weather.list[20].main.temp_min) }}°</td>
-                <td>{{ Math.round(weather.list[28].main.temp_min) }}°</td>
-                <td>{{ Math.round(weather.list[36].main.temp_min) }}°</td>
             </tr>
         </table>
     </div>

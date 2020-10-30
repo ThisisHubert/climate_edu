@@ -56,7 +56,20 @@ export default {
      createPost() {
       this.$store.dispatch('createPost', { content: this.post.content })
       this.post.content = ''
-    }
+    },
+    toggleCommentModal(post) {
+      this.showCommentModal = !this.showCommentModal
+      // if opening modal set selectedPost, else clear
+      if (this.showCommentModal) {
+        this.selectedPost = post
+      } else {
+        this.selectedPost = {}
+      }
+    },
+    likePost(id, likesCount) {
+      this.$store.dispatch('likePost', { id, likesCount })
+    },
+    
     },
 
 }

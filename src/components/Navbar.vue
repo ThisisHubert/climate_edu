@@ -44,6 +44,7 @@ export default {
   font-family: Comfortaa, cursive;
   color:#28cd3d;
   padding-top: 18px;
+  font-size: 1.8em;
 }
 
 
