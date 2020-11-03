@@ -1,22 +1,26 @@
 <template>
   <div class="Forum">
     <ForumNav></ForumNav>
-    
-     <section>
-    
+
+    <section>
       <div class="col1">
-      <transition name="fade">
-      <CommentModal v-if="showCommentModal" :post="selectedPost" @close="toggleCommentModal()"></CommentModal>
-    </transition>
         <div class="profile">
-          <!-- <h5>{{email}}</h5> -->
           <h5>{{ userProfile.name }}</h5>
 
           <div class="create-post">
-            <p>Create a Post</p>  
+            <p>Create a Post</p>
             <form @submit.prevent>
-              <textarea v-model.trim="post.content" placeholder="Write Something..."></textarea>
-              <button @click="createPost()" :disabled="post.content === ''" class="button">Post</button>
+              <textarea
+                v-model.trim="post.content"
+                placeholder="Write Something..."
+              ></textarea>
+              <button
+                @click="createPost()"
+                :disabled="post.content === ''"
+                class="button"
+              >
+                Post
+              </button>
             </form>
           </div>
         </div>
@@ -29,10 +33,25 @@
             <span>{{ post.createdOn | formatDate }}</span>
             <p>{{ post.content | trimLength }}</p>
             <ul>
-              <li><a @click="toggleCommentModal(post)">comments {{ post.comments }}</a></li>
-              <li><a>likes {{ post.likes }}</a></li>
-              <li><a>view full post</a></li>
+              <li>
+                <a @click="toggleCommentModal(post)"
+                  >comments {{ post.comments }}</a
+                >
+              </li>
+              <li>
+                <a @click="likePost(post.id, post.likes)"
+                  >likes {{ post.likes }}</a
+                >
+              </li>
+              <li><a @click="viewPost(post)">view full post</a></li>
             </ul>
+            <transition name="fade">
+              <CommentModal
+                v-if="showCommentModal"
+                :post="selectedPost"
+                @close="toggleCommentModal()"
+              ></CommentModal>
+            </transition>
           </div>
         </div>
         <div v-else>
@@ -41,103 +60,155 @@
       </div>
     </section>
 
-
+    <!-- full post modal -->
+    <transition name="fade">
+      <div v-if="showPostModal" class="p-modal">
+        <div class="p-container">
+          <a @click="closePostModal()" class="close">close</a>
+          <div class="post">
+            <h5>{{ fullPost.userName }}</h5>
+            <span>{{ fullPost.createdOn | formatDate }}</span>
+            <p>{{ fullPost.content }}</p>
+            <ul>
+              <li>
+                <a>comments {{ fullPost.comments }}</a>
+              </li>
+              <li>
+                <a>likes {{ fullPost.likes }}</a>
+              </li>
+            </ul>
+          </div>
+          <div v-show="postComments.length" class="comments">
+            <div
+              v-for="comment in postComments"
+              :key="comment.id"
+              class="comment"
+            >
+              <p>{{ comment.userName }}</p>
+              <span>{{ comment.createdOn | formatDate }}</span>
+              <p>{{ comment.content }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
-import CommentModal from './CommentModal'
-import { mapState } from 'vuex'
-import moment from 'moment'
+import CommentModal from "./CommentModal";
+import { commentsCollection } from '@/firebase';
+import { mapState } from "vuex";
+import moment from "moment";
 export default {
-    name: "Forum",
-    components: {
-    CommentModal
-    },
-    data() {
+  name: "Forum",
+  components: {
+    CommentModal,
+  },
+  data() {
     return {
       post: {
-        content: ''
+        content: "",
       },
-       showCommentModal: false,
-       selectedPost: {}
-    }
+      showCommentModal: false,
+      selectedPost: {},
+      showPostModal: false,
+      fullPost: {},
+      postComments: []
+    };
   },
   computed: {
-    ...mapState(['userProfile','posts'])
+    ...mapState(["userProfile", "posts"]),
   },
-  
-    
-    methods:{
-      logOut(){
-            this.$store.dispatch('logout')           
+
+  methods: {
+    logOut() {
+      this.$store.dispatch("logout");
     },
     createPost() {
-      this.$store.dispatch('createPost', { content: this.post.content })
-      this.post.content = ''
+      this.$store.dispatch("createPost", { content: this.post.content });
+      this.post.content = "";
     },
     toggleCommentModal(post) {
-      this.showCommentModal = !this.showCommentModal
+      this.showCommentModal = !this.showCommentModal;
       // if opening modal set selectedPost, else clear
       if (this.showCommentModal) {
-        this.selectedPost = post
+        this.selectedPost = post;
       } else {
-        this.selectedPost = {}
+        this.selectedPost = {};
       }
     },
     likePost(id, likesCount) {
-      this.$store.dispatch('likePost', { id, likesCount })
-    },
-    
+      this.$store.dispatch("likePost", { id, likesCount });
     },
 
-    filters: {
+    async viewPost(post) {
+  const docs = await commentsCollection.where('postId', '==', post.id).get()
+
+  docs.forEach(doc => {
+    let comment = doc.data()
+    comment.id = doc.id
+    this.postComments.push(comment)
+  })
+
+  this.fullPost = post
+  this.showPostModal = true
+},
+closePostModal() {
+  this.postComments = []
+  this.showPostModal = false
+}
+  },
+
+  filters: {
     formatDate(val) {
-      if (!val) { return '-' }
-      let date = val.toDate()
-      return moment(date).fromNow()
+      if (!val) {
+        return "-";
+      }
+      let date = val.toDate();
+      return moment(date).fromNow();
     },
     trimLength(val) {
-      if (val.length < 200) { return val }
-      return `${val.substring(0, 200)}...`
-    }
-  }
-
-}
+      if (val.length < 200) {
+        return val;
+      }
+      return `${val.substring(0, 200)}...`;
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-
-  @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
 // colors
-$primary: #30A0EE;
+$primary: #30a0ee;
 $error: #ef5777;
 $success: #1abc9c;
-$light: #F5F8FA;
+$light: #f5f8fa;
 $medium: #657786;
-$dark: #34495E;
+$dark: #34495e;
 $white: #fff;
 
 // resets
 body {
-	margin: 0;
-	color: $dark;
-	background: #E6ECF0;
+  margin: 0;
+  color: $dark;
+  background: #e6ecf0;
 }
 
 html {
-	line-height: 1.15;
-	-webkit-text-size-adjust: 100%;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
 }
 
 * {
-	font-family: 'Open Sans', sans-serif;
-	box-sizing: border-box;
-	transition: 0.15s;
+  font-family: "Open Sans", sans-serif;
+  box-sizing: border-box;
+  transition: 0.15s;
 
-	&:focus {
-		outline: none;
-	}
+  &:focus {
+    outline: none;
+  }
 }
 
 // fonts
@@ -147,184 +218,185 @@ h3,
 h4,
 h5,
 p {
-	margin: 0 0 0.5rem;
+  margin: 0 0 0.5rem;
 }
 
 h1 {
-	font-size: 2rem;
+  font-size: 2rem;
 }
 
 h2 {
-	font-size: 1.8rem;
+  font-size: 1.8rem;
 }
 
 h3 {
-	font-size: 1.6rem;
+  font-size: 1.6rem;
 }
 
 h4 {
-	font-size: 1.4rem;
+  font-size: 1.4rem;
 }
 
 h5 {
-	font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 p {
-	line-height: 1.5;
+  line-height: 1.5;
 }
 
 a {
-	font-family: 'Open Sans', sans-serif;
-	text-decoration: none;
-	color: $primary;
-	margin: 0;
-	cursor: pointer;
+  font-family: "Open Sans", sans-serif;
+  text-decoration: none;
+  color: $primary;
+  margin: 0;
+  cursor: pointer;
 
-	&:hover {
-		color: lighten($primary, 5%);
-	}
+  &:hover {
+    color: lighten($primary, 5%);
+  }
 }
 
 // globals
 section {
-	display: flex;
-	max-width: 1200px;
-	margin: 0 auto;
-	@media screen and (max-width: 742px) {
-		display: block;
-	}
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  @media screen and (max-width: 742px) {
+    display: block;
+  }
 }
 
 .col1,
 .col2 {
-	flex-grow: 1;
-	flex-basis: 0;
-	padding: 1rem;
-	@media screen and (max-width: 742px) {}
+  flex-grow: 1;
+  flex-basis: 0;
+  padding: 1rem;
+  @media screen and (max-width: 742px) {
+  }
 }
 
 [v-cloak] {
-	display: none;
+  display: none;
 }
 
 .loading {
-	position: fixed;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	background: rgba($dark, 0.4);
-	z-index: 9999;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba($dark, 0.4);
+  z-index: 9999;
 
-	p {
-		background: $white;
-		width: 150px;
-		text-align: center;
-		margin: 40vh auto 0;
-		padding: 40px 0;
-		border-radius: 3px;
-		box-shadow: 0 0 20px 0 rgba($dark, 0.5);
-	}
+  p {
+    background: $white;
+    width: 150px;
+    text-align: center;
+    margin: 40vh auto 0;
+    padding: 40px 0;
+    border-radius: 3px;
+    box-shadow: 0 0 20px 0 rgba($dark, 0.5);
+  }
 }
 
 .error-msg {
-	margin-top: 1rem;
-	text-align: center;
+  margin-top: 1rem;
+  text-align: center;
 
-	p {
-		color: $error;
-		margin: 0;
-	}
+  p {
+    color: $error;
+    margin: 0;
+  }
 }
 
 .button {
-	background: $primary;
-	border: 0;
-	outline: 0;
-	color: $white;
-	padding: 0.8rem 1rem;
-	min-width: 150px;
-	font-size: 16px;
-	border-radius: 3px;
-	cursor: pointer;
+  background: $primary;
+  border: 0;
+  outline: 0;
+  color: $white;
+  padding: 0.8rem 1rem;
+  min-width: 150px;
+  font-size: 16px;
+  border-radius: 3px;
+  cursor: pointer;
 
-	&:hover {
-		background: lighten($primary, 5%);
-	}
+  &:hover {
+    background: lighten($primary, 5%);
+  }
 
-	&:disabled {
-		opacity: 0.5;
+  &:disabled {
+    opacity: 0.5;
 
-		&:hover {
-			background: $primary;
-		}
-	}
+    &:hover {
+      background: $primary;
+    }
+  }
 }
 
 .text-center {
-	text-align: center;
+  text-align: center;
 }
 
 .inline {
-	margin: 0;
-	padding: 0;
-	list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 
-	li {
-		display: inline-block;
-	}
+  li {
+    display: inline-block;
+  }
 }
 
 .clear {
-	clear: both;
+  clear: both;
 }
 
 form {
-	label {
-		display: block;
-		font-size: 16px;
-		margin-bottom: 0.5rem;
-	}
+  label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 0.5rem;
+  }
 
-	input {
-		display: block;
-		width: 100%;
-		margin-bottom: 1rem;
-		font-size: 16px;
-		padding: 10px;
-		outline: 0;
-		border: 1px solid #e6ecf0;
-		border-radius: 3px;
+  input {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 16px;
+    padding: 10px;
+    outline: 0;
+    border: 1px solid #e6ecf0;
+    border-radius: 3px;
 
-		&:focus {
-			box-shadow: 0 0 5px 0 rgba($dark, 0.2);
-		}
-	}
+    &:focus {
+      box-shadow: 0 0 5px 0 rgba($dark, 0.2);
+    }
+  }
 
-	textarea {
-		resize: none;
-		border: 1px solid #e6ecf0;
-		outline: 0;
-		height: 100px;
-		width: 100%;
-		padding: 10px;
-		font-size: 16px;
-	}
+  textarea {
+    resize: none;
+    border: 1px solid #e6ecf0;
+    outline: 0;
+    height: 100px;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
 }
 // transitions
 
 .fade-enter-active {
-	transition: opacity 0.5s;
+  transition: opacity 0.5s;
 }
 
 .fade-leave-active {
-	transition: opacity 0s;
+  transition: opacity 0s;
 }
 
 .fade-enter,
 .fade-leave-to {
-	opacity: 0;
+  opacity: 0;
 }
 
 header {
@@ -366,80 +438,7 @@ header {
 }
 
 // login
-#login {
-  background: linear-gradient(to right, $primary 0%, $primary 50%, $white 50%, $white 100%);
 
-  @media screen and (max-width: 742px) {
-    height: 100vh;
-    background: $white;
-  }
-
-  .col1,
-  .col2 {
-    height: 100vh;
-    padding-top: 30vh;
-    @media screen and (max-width: 742px) {
-      height: auto;
-      padding-top: 20vh;
-    }
-  }
-
-  .col1 {
-    color: $white;
-    @media screen and (max-width: 742px) {
-      display: none;
-    }
-
-    p {
-      max-width: 490px;
-      margin-top: 2rem;
-      line-height: 1.8;
-    }
-
-    a {
-      color: $white;
-      text-decoration: underline;
-    }
-  }
-
-  .signup-form {
-    padding-top: 20vh;
-    @media screen and (max-width: 742px) {
-      padding-top: 10vh;
-    }
-  }
-
-  .col2 {
-    h1 {
-      margin-bottom: 2rem;
-    }
-
-    form {
-      max-width: 450px;
-      margin: 0 auto;
-    }
-
-    .extras {
-      float: right;
-      text-align: right;
-
-      a {
-        display: block;
-        margin-bottom: 0.5rem;
-      }
-    }
-
-    .password-reset {
-      h1 {
-        margin-bottom: 1rem;
-      }
-
-      p {
-        margin-bottom: 2rem;
-      }
-    }
-  }
-}
 
 // password reset
 .modal {
@@ -512,7 +511,7 @@ header {
     background: $white;
     padding: 2rem;
 
-    h5 {}
+   
 
     p {
       color: $medium;
@@ -735,5 +734,4 @@ header {
     margin-top: 2rem;
   }
 }
-
 </style>

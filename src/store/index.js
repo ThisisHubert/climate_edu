@@ -60,6 +60,26 @@ export const store = new Vuex.Store({
       })
     },
 
+    async likePost (_,post) {
+      const userId = firebase.auth.currentUser.uid
+      const docId = `${userId}_${post.id}`
+    
+      // check if user has liked post
+      const doc = await firebase.likesCollection.doc(docId).get()
+      if (doc.exists) { return }
+    
+      // create post
+      await firebase.likesCollection.doc(docId).set({
+        postId: post.id,
+        userId: userId
+      })
+    
+      // update post likes count
+      firebase.postsCollection.doc(post.id).update({
+        likes: post.likesCount + 1
+      })
+    },
+
     async signup ({dispatch}, payload) {  // sign up function 
       const { user } = await firebase.auth.createUserWithEmailAndPassword(payload.email, payload.password)
       await firebase.usersCollection.doc(user.uid).set({
