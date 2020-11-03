@@ -1,56 +1,57 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import Forum from '@/components/Forum' 
-import Dashboard from '@/components/Dashboard'
-import Signup from '@/components/Signup'
-import Overview from '@/components/Overview.vue'
-import Settings from '@/components/Settings.vue'
-import ClimateApi from '@/components/ClimateApi.vue'
-import ClimateDash from '@/components/ClimateDash.vue'
-// import { auth } from '../firebase'
+// import HelloWorld from '@/components/HelloWorld'
+// import Forum from '@/components/Forum' 
+// import Dashboard from '@/components/Dashboard'
+// import Signup from '@/components/Signup'
+// import Overview from '@/components/Overview.vue'
+// import Settings from '@/components/Settings.vue'
+// import ClimateApi from '@/components/ClimateApi.vue'
+// import ClimateDash from '@/components/ClimateDash.vue'
+import { auth } from '../firebase'
 
 
 
 Vue.use(Router)
 
-export default new Router({
-    
+const router = new Router({
+    mode: 'history',
+    base: process.env.BASE_URL,
     routes : [
         {
             path: '/home',
             name: 'home',
-            component: HelloWorld
+            component: ()=> import('../components/HelloWorld'),
         },
         {
             path: '/forum',
             name: 'forum',
-            component: Forum,
+            component:  ()=> import('../components/Forum'),
             meta:{
                requiresAuth: true
-            },
+            }
             
         },
         
         {
             path: '/dashboard',
             name: 'dashboard',
-            component: Dashboard,
+            component:  ()=> import('../components/Dashboard'),
             children: [
                 {
                     path:  'overview',
                     name: 'overview',
-                    component: Overview
+                    component: ()=> import('../components/Overview'),
                 },
                 {
                     path:  'climateapi',
                     name: 'climateapi',
-                    component: ClimateApi
+                    component: ()=> import('../components/ClimateApi'),
                 },
                 {
                     path:  'settings',
                     name: 'settings',
-                    component: Settings
+                    component: ()=> import('../components/Settings'),
                 },
                 
                 
@@ -62,13 +63,13 @@ export default new Router({
         {
             path: '/signup',
             name: 'signup',
-            component: Signup     
+            component: ()=> import('../components/Signup'),   
         },
         
         {
             path:  '/climatedash',
             name: 'climatedash',
-            component: ClimateDash,
+            component: ()=> import('../components/ClimateDash'),
             meta:{
                 requiresAuth:true
             }
@@ -77,12 +78,22 @@ export default new Router({
         
 
 
-    ]
+    ],
 
 
 
 })
 
+router.beforeEach((to, from, next) => {
+    const requiresAuth = to.matched.some(x => x.meta.requiresAuth)
+  
+    if (requiresAuth && !auth.currentUser) {
+      next('/home')
+    } else {
+      next()
+    }
+  })
 
 
+export default router
   

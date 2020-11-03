@@ -9,11 +9,15 @@
 </template>
 
 <script>
-
+import { mapState } from 'vuex'
 export default {
   name: 'App',
+  computed: {
+    ...mapState(['userProfile']),
+    
 
   
 
-};
+}
+}
 </script>

@@ -9,11 +9,13 @@
           </v-card-title>
           <v-card-text>
             <v-container>
-              <form @submit.prevent="onSignup">  
+
+              <form @submit.prevent>  
                 <v-layout row>
                   <v-flex xs12>
                     <v-text-field
                       name="name" 
+                      v-model.trim="name"
                       label="name"
                       id="name"
                       v-model="name"
@@ -25,6 +27,7 @@
                   <v-flex xs12>
                     <v-text-field
                       name="email" 
+                      v-model.trim="email"
                       label="Mail"
                       id="email"
                       v-model="email"
@@ -36,6 +39,7 @@
                   <v-flex xs12>
                     <v-text-field
                       name="password"
+                      v-model.trim="password"
                       label="Password"
                       id="password"
                       v-model="password"
@@ -47,6 +51,7 @@
                   <v-flex xs12>
                     <v-text-field
                       name="confirmPassword"
+                      v-model.trim="confirmPassword"
                       label="Confirm Password"
                       id="confirmPassword"
                       v-model="confirmPassword"
@@ -56,11 +61,11 @@
                 </v-layout>
                 <v-layout row>
                   <v-flex xs12>
-                    <v-btn @click="SignUp()" type="submit">Sign up</v-btn>
+                    <v-btn @click="signup()" type="submit">Sign up</v-btn>
                   </v-flex>
-                 
                 </v-layout>
               </form>
+
             </v-container>
           </v-card-text>
         </v-card>
@@ -90,13 +95,13 @@
     watch: {
       user (value) {
         if (value !== null && value !== undefined) {
-          this.$router.push('/')
+          this.$router.push('/dashboard')
         }
       }
     },
     methods: {
-      onSignup () {
-        this.$store.dispatch('signUserUp', {email: this.email, password: this.password})
+      signup () {
+        this.$store.dispatch('signup', {name: this.name, email: this.email, password: this.password})
       },
       
     }

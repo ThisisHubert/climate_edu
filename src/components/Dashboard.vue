@@ -22,9 +22,9 @@
                     </div>
                     <div class="user-info">
                         <span class="user-name">
-                            {{email}}
+                            {{userProfile.name}}
                         </span>
-                        <span class="user-role">Administrator</span>
+                        <span class="user-role">{{userProfile.email}}</span>
                         <span class="user-status">
                             <i class="fa fa-circle"></i>
                             <span>Online</span>
@@ -70,7 +70,7 @@
                         </li>
                         
                         <li>
-                            <a href="/#/forum">
+                            <a href="/forum">
                                 <i class="fa fa-comments"></i>
                                 <span class="menu-text">Forum</span>
                             </a>
@@ -126,7 +126,8 @@
 
 
 <script>     
-import firebase from 'firebase'   
+// import firebase from 'firebase'   
+import { mapState } from 'vuex'
 // import LineChart from './Charts/LineChart';
 // import BarChart from './Charts/BarChart';
 // import SocialTrafficTable from './Dashboard/SocialTrafficTable';
@@ -140,20 +141,23 @@ export default {
         // SocialTrafficTable,
         // PageVisitsTable
     },
+
+     computed: {
+    ...mapState(['userProfile'])
+  },
    
    
-    created(){
-        this.user = firebase.auth().currentUser;
-        if(this.user != null){
-            this.name = this.user.name;  
-            this.email = this.user.email;
-            this.photo = this.user.photoURL;
-        }
-    },
+    // created(){
+    //     this.user = firebase.auth().currentUser;
+    //     if(this.user != null){
+    //         this.name = this.user.name;  
+    //         this.email = this.user.email;
+    //         this.photo = this.user.photoURL;
+    //     }
+    // },
     methods:{
         logOut(){
-            firebase.auth().signOut();
-           
+            this.$store.dispatch('logout')           
     },
     initBigChart(index) {
         let chartData = {

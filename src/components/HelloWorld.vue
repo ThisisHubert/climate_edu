@@ -40,11 +40,13 @@
                           <v-card-text>
                             <v-container>
                               <v-row>
-                                <form @submit.prevent="onSignin">  
+
+                                <form @submit.prevent>  
                                 <div class="loginform"> 
                                   <v-layout row>
                                     <v-flex xs12>
                                       <v-text-field
+                                        v-model.trim="email"
                                         name="email"
                                         label="Mail"
                                         id="email"     
@@ -56,6 +58,7 @@
                                   <v-layout row>
                                     <v-flex xs12>
                                       <v-text-field
+                                        v-model.trim="password"
                                         name="password"
                                         label="Password"
                                         id="password"
@@ -69,7 +72,7 @@
                                   <v-layout row>
                                     <v-card-actions>
                                       <v-spacer></v-spacer>
-                                      <v-btn class="ma-2" color="green" dark type="submit">Sign in</v-btn>
+                                      <v-btn @click="onSignin()" class="ma-2" color="green" dark type="submit">Sign in</v-btn>
                                       <v-btn class="ma-2" color="green" dark @click="socialLogin()" type="submit"><v-icon left>mdi-email</v-icon>Sign in with Google</v-btn>
                                     </v-card-actions>
                                   </v-layout>
@@ -80,7 +83,7 @@
                           </v-card-text>
                           <v-card-actions>
                             <v-spacer></v-spacer>
-                            <v-btn href="/#/signup" color="green darken-1" text dark>Sign up</v-btn>
+                            <v-btn href="/signup" color="green darken-1" text dark>Sign up</v-btn>
                             <v-btn color="green darken-1" text @click="dialog = false">Close</v-btn>
                           </v-card-actions>
                         </v-card>
@@ -387,28 +390,16 @@
 <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.21/dist/vanta.globe.min.js"></script>
 
 <script>
-import VVanta from 'vue-vanta'
 import * as firebase from 'firebase'
 import GLOBES from 'vanta/src/vanta.globe'
-// import globe from 'vue-vanta';
   export default {
     name: 'HelloWorld',
-    components: { VVanta },
     data () {
       return {
-        name: '',
+        // name: '',
         email: '',
         password: '',
-        vantaEffect:'',
-        options: {
-            mouseControls: true,
-            touchControls: true,
-            Height: 1000.00,
-            Width: 200.00,
-            scale: 1.00,
-            scaleMobile: 1.00,
-            backgroundColor: 0x0,
-        }
+        
         
       }
     },
@@ -425,11 +416,10 @@ import GLOBES from 'vanta/src/vanta.globe'
       }
     },
     methods: {
-      onSignin () {
-        this.$store.dispatch('signUserIn', {email: this.email, password: this.password})
+      onSignin () {  // function for sign in
+        this.$store.dispatch('onSignin', {email: this.email, password: this.password})
       },
-      socialLogin(){
-
+      socialLogin(){     
         const provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(
         firebase.auth().signInWithPopup(provider).then((result) => {

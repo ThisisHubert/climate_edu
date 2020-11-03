@@ -41,8 +41,8 @@ export default {
     }
   },
   methods: {
-    logOut() {
-      firebase.auth().signOut();
+     logOut(){
+            this.$store.dispatch('logout')           
     },
   },
 };
