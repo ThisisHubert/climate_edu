@@ -28,23 +28,25 @@
 
       <div class="col2">
         <div v-if="posts.length">
-          <div v-for="post in posts" :key="post.id" class="post">
-            <h5>{{ post.userName }}</h5>
-            <span>{{ post.createdOn | formatDate }}</span>
-            <p>{{ post.content | trimLength }}</p>
-            <ul>
-              <li>
+          <v-card outlined v-for="post in posts" :key="post.id" class="post">
+            <v-card-title>{{ post.userName }}</v-card-title>
+            <v-card-subtitle>{{ post.createdOn | formatDate }}</v-card-subtitle>
+            <v-card-text>{{ post.content | trimLength }}</v-card-text>
+            <v-card-text>
+            <v-chip-group>
+              <v-chip>
                 <a @click="toggleCommentModal(post)"
-                  >comments {{ post.comments }}</a
+                  ><i class="fas fa-comment"></i> {{ post.comments }}</a
                 >
-              </li>
-              <li>
+              </v-chip>
+              <v-chip>
                 <a @click="likePost(post.id, post.likes)"
-                  >likes {{ post.likes }}</a
+                  ><i class="fas fa-thumbs-up"></i> {{ post.likes }}</a
                 >
-              </li>
-              <li><a @click="viewPost(post)">view full post</a></li>
-            </ul>
+              </v-chip>
+              <v-chip><a @click="viewPost(post)">view full post</a></v-chip>
+            </v-chip-group>
+            </v-card-text>
             <transition name="fade">
               <CommentModal
                 v-if="showCommentModal"
@@ -52,7 +54,7 @@
                 @close="toggleCommentModal()"
               ></CommentModal>
             </transition>
-          </div>
+          </v-card>
         </div>
         <div v-else>
           <p class="no-results">There are currently no posts</p>
@@ -71,7 +73,7 @@
             <p>{{ fullPost.content }}</p>
             <ul>
               <li>
-                <a>comments {{ fullPost.comments }}</a>
+                <a> {{ fullPost.comments }}</a>
               </li>
               <li>
                 <a>likes {{ fullPost.likes }}</a>

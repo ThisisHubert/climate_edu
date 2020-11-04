@@ -11,6 +11,9 @@
       <v-btn text to="/dashboard/overview">
         Dashboard
       </v-btn>
+      <v-btn text to="/forum">   
+        Forum
+      </v-btn>
       <v-btn text>   
         Collaborate
       </v-btn>
