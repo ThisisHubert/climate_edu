@@ -2,6 +2,9 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import * as firebase from '../firebase';
 import router from '../router/index';
+// import Trend from "vuetrend";
+
+// Vue.use(Trend)
 
 Vue.use(Vuex)
 

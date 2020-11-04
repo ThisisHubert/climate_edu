@@ -12,6 +12,9 @@ import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
 import VueFusionCharts from 'vue-fusioncharts';
 import { KinesisContainer, KinesisElement } from 'vue-kinesis'
 import { auth } from './firebase'
+import Trend from 'vuetrend'
+
+Vue.use(Trend)
 // import VueKinesis from 'vue-kinesis'
 // Vue.use(VueKinesis)
 Vue.component('kinesis-container', KinesisContainer)

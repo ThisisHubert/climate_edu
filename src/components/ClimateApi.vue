@@ -56,6 +56,13 @@
                 <td>{{ Math.round(weather.list[36].main.temp_max) }}°</td>
             </tr>
         </table>
+        <trend
+        :data="[ Math.round(weather.list[5].main.temp_max) , Math.round(weather.list[12].main.temp_max), Math.round(weather.list[20].main.temp_max), Math.round(weather.list[28].main.temp_max), Math.round(weather.list[36].main.temp_max)]"
+        :gradient="['#6fa8dc', '#42b983', '#2c3e50']"
+        auto-draw
+        smooth
+              >
+      </trend>
     </div>
   </v-col>
   <v-col>

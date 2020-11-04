@@ -423,7 +423,7 @@ import GLOBES from 'vanta/src/vanta.globe'
         const provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(
         firebase.auth().signInWithPopup(provider).then((result) => {
-          this.$router.replace('./dashboard');   
+          this.$router.replace('./dashboard/overview');   
           console.log(result);   
         }).catch((err) => {
           alert('Oops. ' +  err.message)
