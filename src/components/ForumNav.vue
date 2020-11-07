@@ -4,7 +4,7 @@
       <v-img contain max-height="100%" src="../assets/logo (1).png"></v-img>
     </v-avatar>
     <v-toolbar-title class="font-weight-black headline">
-      CLIMATE Forum
+      CLIMATE Talk
     </v-toolbar-title>
     <v-spacer></v-spacer>
     <v-row align="right" justify="space-around">
@@ -14,7 +14,7 @@
       <v-btn text to="/forum">   
         Forum
       </v-btn>
-      <v-btn text>   
+      <v-btn text to="/collabhome">   
         ClimateCollab
       </v-btn>
        <v-btn text>

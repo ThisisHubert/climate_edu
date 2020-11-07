@@ -41,8 +41,18 @@ const router = new Router({
             }
             
         },
+        
         {
-            path: '/collab',
+            path: '/collabs',
+            name: 'collabs',
+            component:  ()=> import('../components/Collabs'),
+            meta:{
+               requiresAuth: true
+            }
+            
+        },
+        {
+            path: '/collabs/:id',
             name: 'collab',
             component:  ()=> import('../components/Collab'),
             meta:{
