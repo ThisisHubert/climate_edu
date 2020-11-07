@@ -32,6 +32,35 @@ const router = new Router({
             }
             
         },
+        {
+            path: '/collabhome',
+            name: 'collabhome',
+            component:  ()=> import('../components/CollabHome'),
+            meta:{
+               requiresAuth: true
+            }
+            
+        },
+        {
+            path: '/collab',
+            name: 'collab',
+            component:  ()=> import('../components/Collab'),
+            meta:{
+               requiresAuth: true
+            }
+            
+        },
+        {
+            path: '/createcollab',
+            name: 'createcollab',
+            component:  ()=> import('../components/CreateCollab'),
+            meta:{
+               requiresAuth: true
+            }
+            
+        },
+       
+        
         
         {
             path: '/dashboard',
@@ -66,14 +95,7 @@ const router = new Router({
             component: ()=> import('../components/Signup'),   
         },
         
-        {
-            path:  '/climatedash',
-            name: 'climatedash',
-            component: ()=> import('../components/ClimateDash'),
-            meta:{
-                requiresAuth:true
-            }
-        },
+        
        
         
 

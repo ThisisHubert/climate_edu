@@ -63,9 +63,9 @@
                             </router-link>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/collabhome">
                                 <i class="fa fa-handshake"></i>
-                                <span class="menu-text">Meetups</span>
+                                <span class="menu-text">ClimateCollab</span>
                             </a>
                         </li>
                         

@@ -15,7 +15,7 @@
         Forum
       </v-btn>
       <v-btn text>   
-        Collaborate
+        ClimateCollab
       </v-btn>
        <v-btn text>
         Donation
