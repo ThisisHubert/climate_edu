@@ -5,11 +5,11 @@
     <section>
       <div class="col1">
         <div class="profile">
-          <h5>{{ userProfile.name }}</h5>
 
           <div class="create-post">
-            <p>Create a Post</p>
-            <form @submit.prevent>
+            <form @submit.prevent style="position:fixed">
+          <!-- <h5 style="position:fixed">{{ userProfile.name }}</h5> -->
+            <!-- <p style="position:fixed">Create a Post</p> -->
               <textarea
                 v-model.trim="post.content"
                 placeholder="Write Something..."
@@ -269,6 +269,8 @@ section {
   }
 }
 
+
+
 .col1,
 .col2 {
   flex-grow: 1;
@@ -503,6 +505,7 @@ header {
 
   .col1 {
     flex: 0 0 30%;
+    position: fixed;
 
     @media screen and (max-width: 1000px) {
       flex: 0 0 40%;

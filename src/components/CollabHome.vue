@@ -51,6 +51,8 @@
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+
   .title {
     position: absolute;
     bottom: 50px;
@@ -59,4 +61,11 @@
     font-size: 2em;
     padding: 20px;
   }
+  * {
+  font-family: "Open Sans", sans-serif;
+  box-sizing: border-box;
+  transition: 0.15s;
+
+  
+}
 </style>

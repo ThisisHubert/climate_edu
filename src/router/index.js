@@ -54,6 +54,7 @@ const router = new Router({
         {
             path: '/collabs/:id',
             name: 'collab',
+            props:true,
             component:  ()=> import('../components/Collab'),
             meta:{
                requiresAuth: true
