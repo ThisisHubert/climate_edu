@@ -13,7 +13,10 @@ import VueFusionCharts from 'vue-fusioncharts';
 import { KinesisContainer, KinesisElement } from 'vue-kinesis'
 import { auth } from './firebase'
 import Trend from 'vuetrend'
+import DateFilter from '@/filter/date'
 
+
+Vue.filter('date', DateFilter)
 Vue.use(Trend)
 // import VueKinesis from 'vue-kinesis'
 // Vue.use(VueKinesis)
@@ -69,38 +72,4 @@ auth.onAuthStateChanged((user) => {
 
 
 })
-  // created() {
-  //   firebase.initializeApp(
-  //     {
-  //       apiKey: "AIzaSyBr1fR936Jb0RfY0vy4G8eAyX3pYKFPspU",
-  //       authDomain: "climate-edu.firebaseapp.com",
-  //       databaseURL: "https://climate-edu.firebaseio.com",
-  //       projectId: "climate-edu",
-  //       storageBucket: "climate-edu.appspot.com",
-  //       messagingSenderId: '',
-  //       appId: '',
-  //     }
-  //   ),
-    
-  //   firebase.auth().onAuthStateChanged((user) => {
-  //     if (user) {
-  //       this.$router.push('/dashboard/overview');
-        
-  //       // user.sendEmailVerification().then(function() {
-  //       //   console.log('send Verification');
-  //       //   document.getElementById("verifMessage").innerHTML = "Check your inbox for verification email!";
-      
-  //     }
-  //     else {
-  //       this.$router.push('/home')
-
-  //     }
-      
-
-  //   }
-
-  // );
-    
-  // }
-
-
+  

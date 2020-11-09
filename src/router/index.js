@@ -62,7 +62,7 @@ const router = new Router({
             
         },
         {
-            path: '/createcollab',
+            path: '/collab/new',
             name: 'createcollab',
             component:  ()=> import('../components/CreateCollab'),
             meta:{
