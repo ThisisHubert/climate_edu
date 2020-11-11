@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import * as firebase from '../firebase';
 import router from '../router/index';
+import * as fb from 'firebase'
 // import Trend from "vuetrend";
 
 // Vue.use(Trend)
@@ -69,14 +70,21 @@ export const store = new Vuex.Store({
         imageUrl: payload.imageUrl,
         description: payload.description,
         date: payload.date,
-        id: 'kfdlsfjslakl12'
+        // id: 'kfdlsfjslakl12'
       }
       // Reach out to firebase and store it
-      commit('createMeetup', meetup)
+      fb.database().ref('meetups').push(meetup)
+      .then((data) => {
+        console.log(data)
+        commit('createMeetup', meetup)
+
+      }).catch((error)=>{    
+        console.log(error)
+      })
     },
     async createPost({ state}, post) {    // sth wrong with this
       await firebase.postsCollection.add({
-        createdOn: new Date(),
+        createdOn: new Date(),     
         content: post.content,
         userId: firebase.auth.currentUser.uid,
         userName: state.userProfile.name,
@@ -141,7 +149,6 @@ export const store = new Vuex.Store({
         // )
     },
     async onSignin ({dispatch}, payload) {   // sign in function  
-      // firebase.auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(
 
       const { user } = await firebase.auth.signInWithEmailAndPassword(payload.email, payload.password)
 
