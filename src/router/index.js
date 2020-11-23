@@ -41,6 +41,15 @@ const router = new Router({
             }
             
         },
+        {
+            path: '/donation',
+            name: 'donation',
+            component:  ()=> import('../components/Donation'),
+            meta:{
+               requiresAuth: true
+            }
+            
+        },
         
         {
             path: '/collabs',

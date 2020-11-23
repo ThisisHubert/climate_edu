@@ -60,12 +60,16 @@ auth.onAuthStateChanged((user) => {
       vuetify,
       router,
       store,
-      render: h => h(App)
+      render: h => h(App),
+      created (){
+        this.$store.dispatch('loadMeetups')
+        if (user) {
+          store.dispatch('fetchUserProfile', user)
+        }
+      }
     }).$mount('#app')
   }
-  if (user) {
-    store.dispatch('fetchUserProfile', user)
-  }
+ 
 
   
 

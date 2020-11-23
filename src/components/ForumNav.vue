@@ -17,7 +17,7 @@
       <v-btn text to="/collabhome">   
         ClimateCollab
       </v-btn>
-       <v-btn text>
+       <v-btn text to="/donation">
         Donation
       </v-btn>
        
