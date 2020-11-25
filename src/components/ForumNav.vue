@@ -3,8 +3,8 @@
     <v-avatar class="mr-3" color="grey lighten-5" size="70">
       <v-img contain max-height="100%" src="../assets/logo (1).png"></v-img>
     </v-avatar>
-    <v-toolbar-title class="font-weight-black headline">
-      CLIMATE Talk
+    <v-toolbar-title class="font-weight-black">
+      ClimateTalk
     </v-toolbar-title>
     <v-spacer></v-spacer>
     <v-row align="right" justify="space-around">
@@ -15,7 +15,7 @@
         Forum
       </v-btn>
       <v-btn text to="/collabhome">   
-        ClimateCollab
+        Meetups
       </v-btn>
        <v-btn text to="/donation">
         Donation
@@ -51,4 +51,26 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped lang="css">
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+
+.font-weight-black{
+  font-family: Comfortaa, cursive;
+  color:#28cd3d;
+  padding-top: 18px;
+  font-size: 1.8em;
+}
+
+
+* {
+  font-family: "Open Sans", sans-serif;
+  box-sizing: border-box;
+  transition: 0.15s;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+
+</style>
