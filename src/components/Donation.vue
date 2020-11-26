@@ -1,9 +1,16 @@
 <template>
   <div>
     <ForumNav></ForumNav>
+    <v-row>
+        <div class="testbed">
+        </div>
     <div class="Donation">
-      Donation
+      Donation 
     </div>
+        <div class="testbed">
+        </div>
+      
+    </v-row>
     <div class="Recommendation">
       Recommendation
     </div>
@@ -304,7 +311,39 @@
       </v-row>
     </v-container>
   <!-- New arrival -->
+      <v-footer
+    dark
+    padless
+  >
+    <v-card
+      flat
+      tile
+      class="green lighten-1 white--text text-center"
+    >
+      <v-card-text>
+        <v-btn
+          v-for="icon in icons"
+          :key="icon"
+          class="mx-4 white--text"
+          icon
+        >
+          <v-icon size="24px">
+            {{ icon }}
+          </v-icon>
+        </v-btn>
+      </v-card-text>
 
+      <v-card-text class="white--text pt-0">
+        Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet. Mauris cursus commodo interdum. Praesent ut risus eget metus luctus accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor vel ut orci. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+      </v-card-text>
+
+      <v-divider></v-divider>
+
+      <v-card-text class="white--text">
+        {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
+      </v-card-text>
+    </v-card>
+  </v-footer>
 
   </div>
 </template>
@@ -315,6 +354,10 @@ export default {
     show: false,
     alignments: ["center", "center"],
     alignments_second: ["center", "center"],
+     icons: [
+        'mdi-facebook',
+        'mdi-twitter',
+      ],
   }),
 };
 </script>
@@ -332,20 +375,26 @@ export default {
   }
 }
 
+.testbed{
+  width: 495px;
+  height: 10px;
+  padding-left: 250px;
+  margin: 117px 112px 91px 192px;
+  background-color: #28cd3d;
+}
+
 .Donation {
-  width: 314.5px;
-  height: 117px;
+  width: 214.5px;
+  height: 17px;
   margin: 0 7.5px 3.5px 0;
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   font-family: "Open Sans", sans-serif;
-  font-size: 100px;
+  font-size: 70px;
+  padding-top: 60px;
   text-align: center;
-  padding-left: 750px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.2;
-  letter-spacing: normal;
   text-align: left;
   color: #28cd3d;
 }
@@ -387,6 +436,11 @@ export default {
 
 .subline {
   white-space: nowrap;
+}
+
+.nobreak{
+  white-space: nowrap;
+
 }
 
 .price {
