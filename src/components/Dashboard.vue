@@ -65,7 +65,7 @@
                         <li>
                             <a href="/collabhome">
                                 <i class="fa fa-handshake"></i>
-                                <span class="menu-text">ClimateCollab</span>
+                                <span class="menu-text">Meetups</span>
                             </a>
                         </li>
                         
