@@ -7,8 +7,168 @@
         Donation
       </div>
       <div class="testbed"></div>
-      <v-container :key="center" class="grey lighten-5 mb-6">
-      <v-row :align="center" no-gutters style="height: 350px;">
+      <v-container :key="right" class="grey lighten-5 mb-6">
+      <v-row :align="left" no-gutters style="height: 1050px">
+
+         <v-col :cols="6" class="mx-auto1" align-self="left">
+          <v-card style="height: 550px" max-width="550">
+            <v-img
+              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+              height="413px"
+            ></v-img>
+
+            <v-card-title>
+              【 EMERGENCY! 】 To protect our planet!
+            </v-card-title>
+
+            <v-card-subtitle style="font-size:15px">
+              <div class="goal">Goal</div>
+              <div class="subs">
+                <div style="font-size: 25px"><b>¥4000</b></div>
+                /¥50,000
+                </div>
+            </v-card-subtitle>
+             <v-progress-linear v-model="skill" color="blue-grey" height="25">
+              <template v-slot="{ value }">
+                <strong>{{ Math.ceil(value) }}%</strong>
+              </template>
+            </v-progress-linear>
+            
+          </v-card>
+        </v-col>
+
+         <v-col :cols="6" class="mx-auto1" align-self="left">
+          <v-card style="height: 550px" max-width="550">
+            <v-img
+              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+              height="413px"
+            ></v-img>
+
+            <v-card-title>
+              【 EMERGENCY! 】 To protect our planet!
+            </v-card-title>
+
+            <v-card-subtitle style="font-size:15px">
+              <div class="goal">Goal</div>
+              <div class="subs">
+                <div style="font-size: 25px"><b>¥4000</b></div>
+                /¥50,000
+                </div>
+            </v-card-subtitle>
+             <v-progress-linear v-model="skill" color="blue-grey" height="25">
+              <template v-slot="{ value }">
+                <strong>{{ Math.ceil(value) }}%</strong>
+              </template>
+            </v-progress-linear>
+            
+          </v-card>
+        </v-col>
+
+         <v-col :cols="3">
+          <v-card class="mx-auto" style="height: 320px" max-width="250">
+            <v-img
+              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+              height="150px"
+            ></v-img>
+
+            <v-card-title>
+              【 EMERGENCY! 】 To protect our planet!
+            </v-card-title>
+
+            <v-card-subtitle style="font-size:15px">
+              <div class="goal">Goal</div>
+              <div class="subs">
+                <div style="font-size: 25px"><b>¥4000</b></div>
+                /¥50,000
+              </div>
+            </v-card-subtitle>
+            <v-progress-linear v-model="skill" color="blue-grey" height="25">
+              <template v-slot="{ value }">
+                <strong>{{ Math.ceil(value) }}%</strong>
+              </template>
+            </v-progress-linear>
+          </v-card>
+        </v-col>
+
+
+         <v-col cols="3">
+          <v-card class="mx-auto" style="height: 320px" max-width="250">
+            <v-img
+              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+              height="150px"
+            ></v-img>
+
+            <v-card-title>
+              【 EMERGENCY! 】 To protect our planet!
+            </v-card-title>
+
+            <v-card-subtitle style="font-size:15px">
+              <div class="goal">Goal</div>
+              <div class="subs">
+                <div style="font-size: 25px"><b>¥4000</b></div>
+                /¥50,000
+              </div>
+            </v-card-subtitle>
+            <v-progress-linear v-model="skill" color="blue-grey" height="25">
+              <template v-slot="{ value }">
+                <strong>{{ Math.ceil(value) }}%</strong>
+              </template>
+            </v-progress-linear>
+          </v-card>
+        </v-col>
+
+         <v-col :cols="3">
+          <v-card class="mx-auto" style="height: 320px" max-width="250">
+            <v-img
+              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+              height="150px"
+            ></v-img>
+
+            <v-card-title>
+              【 EMERGENCY! 】 To protect our planet!
+            </v-card-title>
+
+            <v-card-subtitle style="font-size:15px">
+              <div class="goal">Goal</div>
+              <div class="subs">
+                <div style="font-size: 25px"><b>¥4000</b></div>
+                /¥50,000
+              </div>
+            </v-card-subtitle>
+            <v-progress-linear v-model="skill" color="blue-grey" height="25">
+              <template v-slot="{ value }">
+                <strong>{{ Math.ceil(value) }}%</strong>
+              </template>
+            </v-progress-linear>
+          </v-card>
+        </v-col>
+
+        <v-col :cols="3">
+          <v-card class="mx-auto" style="height: 320px" max-width="250">
+            <v-img
+              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+              height="150px"
+            ></v-img>
+
+            <v-card-title>
+              【 EMERGENCY! 】 To protect our planet!
+            </v-card-title>
+
+            <v-card-subtitle style="font-size:15px">
+              <div class="goal">Goal</div>
+              <div class="subs">
+                <div style="font-size: 25px"><b>¥4000</b></div>
+                /¥50,000
+              </div>
+            </v-card-subtitle>
+            <v-progress-linear v-model="skill" color="blue-grey" height="25">
+              <template v-slot="{ value }">
+                <strong>{{ Math.ceil(value) }}%</strong>
+              </template>
+            </v-progress-linear>
+          </v-card>
+        </v-col>
+
       </v-row>
       </v-container>
     </v-row>
@@ -542,6 +702,11 @@ export default {
   font-size: 1.3em;
 }
 
+.special-card{
+  padding-left: 260px ;
+  padding-top: -140px;
+}
+
 .Recommendation {
   width: 582px;
   height: 98px;
@@ -574,6 +739,10 @@ export default {
 
 .mx-auto {
   height: 600px;
+}
+
+.mx-auto1 {
+  padding-top:20px;
 }
 
 .subline {
