@@ -13,9 +13,8 @@
       <v-flex xs12 class="text-xs-center">
         <v-progress-circular
           indeterminate
-          class="primary--text"
-          :width="7"
-          :size="70"
+          color="green"
+          :size="50"
           v-if="loading"></v-progress-circular>
       </v-flex>
     </v-layout>
@@ -77,5 +76,9 @@
   transition: 0.15s;
 
   
+}
+
+.v-progress-circular {
+  margin: 1rem;
 }
 </style>

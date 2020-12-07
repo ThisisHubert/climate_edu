@@ -6,12 +6,6 @@
         <v-card class="info">
           <v-container fluid>
             <v-layout row>
-              <v-flex xs5 sm4 md3>
-                <v-card-media
-                  :src="meetup.imageUrl"
-                  height="130px"
-                ></v-card-media>
-              </v-flex>
               <v-flex xs7 sm8 md9>
                 <v-card-title primary-title>
                   <div>
@@ -19,12 +13,19 @@
                     <div>{{ meetup.date }}</div>
                   </div>
                 </v-card-title>
-                <v-card-actions>
-                  <v-btn flat :to="'/collabs/' + meetup.id">
+                <v-card-actions class="view-button">
+                  <v-btn  flat :to="'/collabs/' + meetup.id">
                   <i class="fas fa-eye"></i>
                     View Meetup
                   </v-btn>
                 </v-card-actions>
+              </v-flex>
+               <v-flex xs5 sm4 md3>
+                <v-img
+                class="meetuppic"
+                  :src="meetup.imageUrl"
+                  height="130px"
+                ></v-img>
               </v-flex>
             </v-layout>
           </v-container>
@@ -43,3 +44,17 @@
     }
   }
 </script>
+
+<style scoped>
+
+.meetuppic{
+  padding-left: 60px;
+  width: 180px;
+  border-radius: 5%;
+}
+
+.view-button{
+  padding-left: 20px;
+}
+
+</style>

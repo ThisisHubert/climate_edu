@@ -14,7 +14,7 @@
         hide-overlay
         transition="dialog-bottom-transition"
       >
-        <template v-slot:activator="{ on, attrs }">
+        <template v-slot:activator="{ on, attrs }">x
           <v-btn
             style="width: 250px; height: 50px;"
             color="primary"

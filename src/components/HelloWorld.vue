@@ -2,7 +2,7 @@
   <section>
    <Navbar></Navbar>
    <router-view/>
-      
+
 
        <div class="hero">
         <div class="container h-100">

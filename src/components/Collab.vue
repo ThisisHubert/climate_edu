@@ -1,15 +1,16 @@
 <template>
   <v-container>
+    <ForumNav></ForumNav>
     <v-layout row wrap>
       <v-flex xs12>
         <v-card>
           <v-card-title>
             <h6 class="primary--text">{{ meetup.title }}</h6>
           </v-card-title>
-          <v-card-media
+          <v-img
             :src="meetup.imageUrl"
             height="400px"
-          ></v-card-media>
+          ></v-img>
           <v-card-text>
             <div class="info--text">{{ meetup.date }} - {{ meetup.location }}</div>
             <div>{{ meetup.description }}</div>
@@ -25,7 +26,9 @@
 </template>
 
 <script>
+import ForumNav from './ForumNav.vue'
   export default {
+  components: { ForumNav },
     props: ['id'],
     computed: {
       meetup () {
