@@ -86,8 +86,8 @@ export const store = new Vuex.Store({
             title: obj[key].title,
             description: obj[key].description,
             imageUrl: obj[key].imageUrl,
-            date: obj[key].date
-            // creatorId: obj[key].creatorId    
+            date: obj[key].date,
+            creatorId: obj[key].creatorId    
           })
         }
         commit('setLoadedMeetups', meetups)
@@ -100,14 +100,14 @@ export const store = new Vuex.Store({
         }
       )
     },
-    createMeetup ({commit}, payload) {
+    createMeetup ({commit, getters}, payload) {
       const meetup = {
         title: payload.title,
         location: payload.location,
         imageUrl: payload.imageUrl,
         description: payload.description,
         date: payload.date.toISOString(),
-        // creatorId: getters.user.id
+        creatorId: getters.user.id
         // id: 'kfdlsfjslakl12'
       }
       // Reach out to firebase and store it
@@ -125,7 +125,7 @@ export const store = new Vuex.Store({
     },
     async createPost({ state}, post) {    // sth wrong with this
       await firebase.postsCollection.add({
-        createdOn: new Date(),     
+        createdOn: new Date(),       
         content: post.content,
         userId: firebase.auth.currentUser.uid,
         userName: state.userProfile.name,
@@ -218,12 +218,12 @@ export const store = new Vuex.Store({
       router.push('/home')
     },
 
-    async fetchUserProfile({ commit }, user) {
+    async fetchUserProfile({ commit }, user) {  // fetch the current profile data 
       // fetch user profile
       const userProfile = await firebase.usersCollection.doc(user.uid).get()
   
       // set user profile in state    
-      commit('setUser', userProfile.data())
+      commit('setUser', userProfile.data())  
       
       // change route to dashboard
       if (router.currentRoute.path === '/home') {  
