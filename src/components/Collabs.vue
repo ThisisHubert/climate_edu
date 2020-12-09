@@ -1,7 +1,8 @@
 <template>
   <v-container>
     <ForumNav></ForumNav>
-    <v-layout row wrap v-for="meetup in meetups" :key="meetup.id" class="mb-2">
+    <v-text-field filled type="text" v-model="search" placeholder="search meetups"></v-text-field>
+    <v-layout row wrap v-for="meetup in filteredMeetUps" :key="meetup.id" class="mb-2">
       <v-flex xs12 sm10 md8 offset-sm1 offset-md2>
         <v-card class="info">
           <v-container fluid>
@@ -37,9 +38,20 @@
 
 <script>
   export default {
+    data(){
+      return{
+        search:""
+      }
+    },
     computed: {
       meetups () {
         return this.$store.getters.loadedMeetups
+      },
+      filteredMeetUps: function(){
+        return this.meetups.filter((meetups) =>{
+            return meetups.title.match(this.search);
+            
+        })
       }
     }
   }
