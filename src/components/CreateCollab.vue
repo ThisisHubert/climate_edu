@@ -19,16 +19,20 @@
                 required></v-text-field>
             </v-flex>
           </v-layout>
-          <v-layout row>
+          <!-- <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
               <v-text-field
+              class="location"
                 name="location"
-                label="Location"
                 id="location"
                 v-model="location"
                 required></v-text-field>
+                
             </v-flex>
+            
           </v-layout>
+          -->
+          
           <v-layout row>    
             <v-flex xs12 sm6 offset-sm3>
         <h5>Upload Image</h5>
@@ -67,6 +71,24 @@
                 required></v-text-field>
             </v-flex>
           </v-layout>
+
+
+          <v-layout row>
+            <v-flex xs12 sm6 offset-sm3>
+             <vue-google-autocomplete
+              id="location"
+              ref="toAddress"
+               name="location"
+               v-model="location"
+              classname="form-control"
+              v-on:placechanged="getAddressData"
+              placeholder="Address">
+            </vue-google-autocomplete>
+            </v-flex>
+          </v-layout>
+
+
+
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
               <h4>Choose a Data & Time</h4>
@@ -100,7 +122,10 @@
 </template>
 
 <script>
+import VueGoogleAutocomplete from 'vue-google-autocomplete'
+
   export default {  
+    components: { VueGoogleAutocomplete },
     data () {
       return {
         title: '',
@@ -111,12 +136,15 @@
         date: new Date(),
         time: new Date(),
         picker: new Date().toISOString().substr(0, 10),
+        searchResults: [],
+        service: null, 
       }
     },
+    
+    
     computed: {
       formIsValid () {
         return this.title !== '' &&
-          this.location !== '' &&
           this.imageUrl !== '' &&
           this.description !== ''
       },
@@ -134,7 +162,16 @@
         return date
       }
     },
+    
+    
     methods: {
+       /**
+            * When the location found
+            
+            */
+            getAddressData: function (addressData) {
+                this.location = addressData;
+            },
       onCreateMeetup () {
         if (!this.formIsValid) {
           return
@@ -169,6 +206,7 @@
         this.image = files[0]
       }
 
-    }
+    },
+    
   }
 </script>

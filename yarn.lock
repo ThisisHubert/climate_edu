@@ -1457,6 +1457,11 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
+"@types/googlemaps@^3.39.1":
+  version "3.40.4"
+  resolved "https://registry.yarnpkg.com/@types/googlemaps/-/googlemaps-3.40.4.tgz#3fe3d9d8eeb2b318679fabf0f540cab963c27dda"
+  integrity sha512-8dtcijQrU1vkvBHAfmtJZKfut2WXwLJH5EBRJfSISlv4xWptnCsiE9cVbw4FZWMRbweMMPxE6PzDV55NWiNlQQ==
+
 "@types/http-proxy-middleware@*":
   version "0.19.3"
   resolved "https://registry.yarnpkg.com/@types/http-proxy-middleware/-/http-proxy-middleware-0.19.3.tgz#b2eb96fbc0f9ac7250b5d9c4c53aade049497d03"
@@ -5426,6 +5431,13 @@ google-map@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/google-map/-/google-map-1.1.0.tgz#83913507633f2cfb760163aa35097a0c3abf8bc3"
   integrity sha1-g5E1B2M/LPt2AWOqNQl6DDq/i8M=
+
+google-maps@^4.3.3:
+  version "4.3.3"
+  resolved "https://registry.yarnpkg.com/google-maps/-/google-maps-4.3.3.tgz#b8026723534e04713303f80853c32a1f1f6ed3cd"
+  integrity sha512-MQbEgBNQbGyV7mfS2tlFgW4EoGKLia24BvAl4a+kgsYWt4283kyPpaay/yKIsScQLr7nSUONaLNfOdMsCuJDEw==
+  dependencies:
+    "@types/googlemaps" "^3.39.1"
 
 google-p12-pem@^3.0.0:
   version "3.0.2"
@@ -10939,6 +10951,11 @@ vue-fusioncharts@^3.0.4:
   integrity sha512-UX+nIKPIH7mvGF7UscN5e5Skk+MwOXJFO7fdacHLmZ1xBkK32baDNlqmAhjOsHH8Kuw1/9WsEmU6Ga7W1OeqzA==
   dependencies:
     underscore "^1.9.1"
+
+vue-google-autocomplete@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/vue-google-autocomplete/-/vue-google-autocomplete-1.1.0.tgz#74b700da8d905e2c3dd0bc219b3d740e99277b2e"
+  integrity sha1-dLcA2o2QXiw90Lwhmz10Dpkney4=
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"

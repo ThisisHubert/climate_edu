@@ -1,6 +1,8 @@
 <template>
   <div>
+    
     <ForumNav></ForumNav>
+    
     <v-row>
       <div class="testbed"></div>
       <div class="Donation">
@@ -14,7 +16,8 @@
         hide-overlay
         transition="dialog-bottom-transition"
       >
-        <template v-slot:activator="{ on, attrs }">x
+       
+        <template v-slot:activator="{ on, attrs }">
           <v-btn
             style="width: 250px; height: 50px;"
             color="primary"

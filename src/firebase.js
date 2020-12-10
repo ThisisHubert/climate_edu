@@ -4,7 +4,7 @@ import * as firebase from 'firebase/app'
 
 
 const firebaseConfig = {
-      apiKey: "AIzaSyBr1fR936Jb0RfY0vy4G8eAyX3pYKFPspU",
+      apiKey: "AIzaSyAs2-Y8hzL2FEb8VQ79o2cEw2cYXAc2IxY",
       authDomain: "climate-edu.firebaseapp.com",
       databaseURL: "https://climate-edu.firebaseio.com",
       projectId: "climate-edu",

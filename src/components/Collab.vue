@@ -13,6 +13,11 @@
           ></v-img>
           <v-card-text>
             <div class="info--text">{{ meetup.date }} - {{ meetup.location }}</div>
+           
+            <div v-for="(index,details) in meetup.location" :key="index">
+               {{details.locality}}
+            </div>
+           
             <div>{{ meetup.description }}</div>
           </v-card-text>
           <v-card-actions>
@@ -33,7 +38,9 @@ import ForumNav from './ForumNav.vue'
     computed: {
       meetup () {
         return this.$store.getters.loadedMeetup(this.id)
-      }
+      },
+    
+       
     }
   }
 </script>
