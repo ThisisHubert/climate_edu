@@ -1,6 +1,6 @@
 <template>
 
-  <v-app-bar app color="white" height="100">
+  <v-app-bar app elevate-on-scroll color="white" height="80">
     <v-avatar class="mr-3" color="grey lighten-5" size="70">
       <v-img contain max-height="100%" src="../assets/logo (1).png"></v-img>
     </v-avatar>

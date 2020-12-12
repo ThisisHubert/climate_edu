@@ -122,6 +122,9 @@ export default {
   computed: {
     ...mapState(["userProfile", "posts"]),
   },
+  created() {
+    document.title = "Forum"; // to set title
+  },
 
   methods: {
     logOut() {

@@ -6,17 +6,14 @@
         <v-card>
           <v-card-title>
             <h6 class="primary--text">{{ meetup.title }}</h6>
+            <app-edit-meetup-details-dialog :meetup="meetup"></app-edit-meetup-details-dialog>
           </v-card-title>
           <v-img
             :src="meetup.imageUrl"
             height="400px"
-          ></v-img>
+          ></v-img>      
           <v-card-text>
             <div class="info--text">{{ meetup.date }} - {{ meetup.location }}</div>
-           
-            <div v-for="(index,details) in meetup.location" :key="index">
-               {{details.locality}}
-            </div>
            
             <div>{{ meetup.description }}</div>
           </v-card-text>

@@ -1,8 +1,9 @@
  <template>
  <v-app-bar
         app
+        elevate-on-scroll
         color="white"
-        height="100"
+        height="90"
       >
         <v-avatar
           class="mr-3"

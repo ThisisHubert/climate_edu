@@ -145,6 +145,10 @@ export default {
      computed: {
     ...mapState(['userProfile'])
   },
+  created(){
+        document.title = "Dashboard"; // to set title 
+
+    },
    
    
     // created(){

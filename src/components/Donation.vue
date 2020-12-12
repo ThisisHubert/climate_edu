@@ -20,7 +20,7 @@
         <template v-slot:activator="{ on, attrs }">
           <v-btn
             style="width: 250px; height: 50px;"
-            color="primary"
+            color="green"
             dark
             fixed
             bottom
