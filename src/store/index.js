@@ -46,7 +46,7 @@ export const store = new Vuex.Store({
       //   description: 'It\'s Paris!'
       // }
     ],
-    user: null,
+    user: {},
     loading: false,
     error: null
   },
@@ -107,7 +107,7 @@ export const store = new Vuex.Store({
         location: payload.location,
         description: payload.description,
         date: payload.date.toISOString(), 
-        // creatorId: getters.user.id
+        // creatorId:
       }
       // Reach out to firebase and store it
       let imageUrl 
@@ -171,12 +171,27 @@ export const store = new Vuex.Store({
     },
 
     async signup ({dispatch}, payload) {  // sign up function 
+      dispatch('setLoading',true)
+      dispatch('clearError')
       const { user } = await firebase.auth.createUserWithEmailAndPassword(payload.email, payload.password)
       await firebase.usersCollection.doc(user.uid).set({
         name: payload.name,
         email: payload.email
       })
+      dispatch('setLoading',false)
+      const newUser = {
+        id: user.uid,
+        registeredMeetups: []
+      }
       dispatch('fetchUserProfile', user)
+      dispatch('setUser', newUser)
+      // user.catch(
+      //   error => {
+      //     dispatch('setLoading', false)
+      //     dispatch('setError', error)
+      //     console.log(error) 
+      //   }
+      // )
       // .then(
         //   user => {
         //     const newUser = {
@@ -206,10 +221,23 @@ export const store = new Vuex.Store({
         // )
     },
     async onSignin ({dispatch}, payload) {   // sign in function  
-
+      dispatch('setLoading',true)
+      dispatch('clearError')
       const { user } = await firebase.auth.signInWithEmailAndPassword(payload.email, payload.password)
-
-      dispatch('fetchUserProfile', user)
+      dispatch('setLoading',false)
+      const newUser = {
+        id: user.uid,
+        registeredMeetups: []  // for registered meetups empty array 
+      }
+      dispatch('fetchUserProfile', user)    
+      dispatch('setUser', newUser) 
+      // user.catch(
+      //   error => {
+      //     dispatch('setLoading', false)
+      //     dispatch('setError', error)
+      //     console.log(error) 
+      //   }
+      // )
         // .then(
         //   user => {
         //     const newUser = {
@@ -267,7 +295,13 @@ export const store = new Vuex.Store({
       }
     },
     user (state) {
-      return state.user
+      return state.userProfile
+    },
+    loading (state) {
+      return state.loading
+    },
+    error (state) {
+      return state.error
     }
   }
 })

@@ -4,7 +4,7 @@
       <div class="intro h-100">
         <div class="row h-100 justify-content-center align-items-center">
           <div class="col-md-6">
-            <h2><b>Welcome to Climate TALK! </b></h2>
+            <h2><b>Welcome to Climate Talk! </b></h2>
             <p>
               Your primary resource for searching the right information about
               Climate Change

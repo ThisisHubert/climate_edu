@@ -77,6 +77,13 @@
                             
                         </li>
                         <li>
+                            <a href="/donation">
+                                <i class="fa fa-money"></i>
+                                <span class="menu-text">Donation</span>
+                            </a>
+                            
+                        </li>
+                        <li>
                             <router-link to="/dashboard/settings">
                                 <i class="fa fa-cogs"></i>
                                 <span class="menu-text">Settings</span>

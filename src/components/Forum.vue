@@ -1,15 +1,19 @@
 <template>
   <div class="Forum">
     <ForumNav></ForumNav>
-
+    <v-text-field class="filter" rounded filled type="text" v-model="search" placeholder="Search Forum"></v-text-field>
     <section>
+      
       <div class="col1">
+        
         <div class="profile">
-
+          
           <div class="create-post">
+            
             <form @submit.prevent style="position:fixed">
           <!-- <h5 style="position:fixed">{{ userProfile.name }}</h5> -->
             <!-- <p style="position:fixed">Create a Post</p> -->
+             
               <textarea
                 v-model.trim="post.content"
                 placeholder="Write Something..."
@@ -28,7 +32,7 @@
 
       <div class="col2">
         <div v-if="posts.length">
-          <v-card outlined v-for="post in posts" :key="post.id" class="post">
+          <v-card outlined v-for="post in filteredPosts" :key="post.id" class="post">
             <v-card-title>{{ post.userName }}</v-card-title>
             <v-card-subtitle>{{ post.createdOn | formatDate }}</v-card-subtitle>
             <v-card-text>{{ post.content | trimLength }}</v-card-text>
@@ -112,6 +116,7 @@ export default {
       post: {
         content: "",
       },
+      search: "",
       showCommentModal: false,
       selectedPost: {},
       showPostModal: false,
@@ -121,6 +126,15 @@ export default {
   },
   computed: {
     ...mapState(["userProfile", "posts"]),
+
+    
+    filteredPosts: function(){
+      return this.posts.filter((posts)=>{
+        return posts.content.match(this.search);
+      })
+    }
+    
+
   },
   created() {
     document.title = "Forum"; // to set title
@@ -271,7 +285,6 @@ section {
     display: block;
   }
 }
-
 
 
 .col1,

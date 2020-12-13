@@ -1,13 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import HelloWorld from '@/components/HelloWorld'
-// import Forum from '@/components/Forum' 
-// import Dashboard from '@/components/Dashboard'
-// import Signup from '@/components/Signup'
-// import Overview from '@/components/Overview.vue'
-// import Settings from '@/components/Settings.vue'
-// import ClimateApi from '@/components/ClimateApi.vue'
-// import ClimateDash from '@/components/ClimateDash.vue'
 import { auth } from '../firebase'
 
 
@@ -130,7 +122,7 @@ router.beforeEach((to, from, next) => {
     const requiresAuth = to.matched.some(x => x.meta.requiresAuth)
   
     if (requiresAuth && !auth.currentUser) {
-      next('/home')
+      next('/home')   // will be directed to home if not sign in 
     } else {
       next()
     }
