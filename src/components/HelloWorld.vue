@@ -3,14 +3,13 @@
    <Navbar></Navbar>
    <router-view/>
 
-
        <div class="hero">
         <div class="container h-100">
           <div class="row h-100 justify-content-center align-items-center">
             <div class="col-md-5">
               <div class="hero-content">
                 <h1 class="hero-title">
-                  Fight Climate Change, Together.
+                  Fight <br>Climate Change, <br> Together
                 </h1>
                 
                 <div class="hero-btn mt-5">
@@ -100,17 +99,49 @@
           </div>
         </div>
     </div>
-
+  
       
 
       <section
+        id="whatwedo"
+        style="background-image: linear-gradient(75deg, #d4f0c4 14%, #8de15d 75%);"
+      >
+        <div class="py-12"></div>
+        <!-- <v-responsive
+            class="mx-auto mb-12" 
+            width="1500"
+          > -->
+        <v-container class="text-center">
+          <h2 class="whatwedo display-2 font-weight-bold mb-3">What we do?</h2>
+
+           <v-responsive
+            class="mx-auto mb-12"
+            width="56"
+          >
+            
+          </v-responsive>
+          
+          <v-row class="wedotext">
+            We provide a place for you to join the fight against climate <br>
+            change with other people around the world through the power of <br>
+            discussion, collaboration, and donation! 
+          </v-row>
+           
+        </v-container>
+        <!-- </v-responsive> -->
+
+
+        <div class="py-12"></div>
+      </section>
+
+
+       <section
         id="features"
-        class="grey lighten-3"
       >
         <div class="py-12"></div>
 
         <v-container class="text-center">
-          <h2 class="display-2 font-weight-bold mb-3">What you can do?</h2>
+          <h2 class="display-2 font-weight-bold mb-3" style="  color: #28cd3d; font-weight: bold;">Our Services</h2>
 
           <v-responsive
             class="mx-auto mb-12"
@@ -123,7 +154,7 @@
 
           <v-row>
             <v-col
-              v-for="({ icon, title, text }, i) in features"
+              v-for="({icon,title, text }, i) in features"
               :key="i"
               cols="12"
               md="4"
@@ -136,7 +167,7 @@
                 <v-theme-provider dark>
                   <div>
                     <v-avatar
-                      color="primary"
+                      color="green"
                       size="88"
                     >
                       <v-icon
@@ -153,7 +184,8 @@
                 ></v-card-title>
 
                 <v-card-text
-                  class="subtitle-1"
+                  class="subtitle-1 servicetext"
+                  style="font-color:green"
                   v-text="text"
                 >
                 </v-card-text>
@@ -165,217 +197,138 @@
         <div class="py-12"></div>
       </section>
 
+
+
+
       <section id="about-me">
         <div class="py-12"></div>
 
         <v-container class="text-center">
-          <h2 class="display-2 font-weight-bold mb-3">ABOUT US</h2>
+          <h2 class="display-2 font-weight-bold mb-3" style="  color: #28cd3d;">About us</h2>
 
           <v-responsive
             class="mx-auto mb-8"
             width="56"
           >
-            <v-divider class="mb-1"></v-divider>
-
-            <v-divider></v-divider>
+           
           </v-responsive>
+
+           <v-avatar
+            class="elevation-12 mb-12"
+            size="128"
+          >
+            <v-img src="../assets/bigsan.png"></v-img>
+          </v-avatar>
 
           <v-responsive
             class="mx-auto title font-weight-light mb-8"
             max-width="720"
           >
-            Vuetify is the #1 component library for Vue.js and has been in active development since 2016. The goal of the project is to provide users with everything that is needed to build rich and engaging web applications using the Material Design specification. It accomplishes that with a consistent update cycle, Long-term Support (LTS) for previous versions, responsive community engagement, a vast ecosystem of resources and a dedication to quality components.
+          <h3><b>Kittiphot Piriyathananukul</b></h3>
+          <div style="  color: #28cd3d;">Manager</div>
+          I wish to make the world a better place with everyone, for us and for future generations.
           </v-responsive>
 
-          <v-avatar
-            class="elevation-12 mb-12"
-            size="128"
-          >
-            <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
-          </v-avatar>
+         
 
           <div></div>
 
-          <v-btn   
-            color="grey"
-            href="https://vuetifyjs.com"
-            outlined
-            large
+
+          <v-responsive
+            class="mx-auto mb-8"
+            width="56"
           >
-            <span class="grey--text text--darken-1 font-weight-bold">
-              Want to know more about us?
-            </span>
-          </v-btn>
+            
+          </v-responsive>
+
+           <v-avatar
+            class="elevation-12 mb-12"
+            size="128"
+          >
+            <v-img src="../assets/hubert.png"></v-img>
+          </v-avatar>
+
+          <v-responsive
+            class="mx-auto title font-weight-light mb-8"
+            max-width="720"
+          >
+          <h3><b>Hubertus Setiawan</b></h3>
+          <div style="  color: #28cd3d;">Engineer</div>
+          このウェブサイトでの体験を通して、皆さんの気候変動に対する意識を高めてみてください。
+          </v-responsive>
+
+         
+
+          <div></div>
+
+
+          <v-responsive
+            class="mx-auto mb-8"
+            width="56"
+          >
+           
+          </v-responsive>
+
+           <v-avatar
+            class="elevation-12 mb-12"
+            size="128"
+          >
+            <v-img src="../assets/vivivit.png"></v-img>
+          </v-avatar>
+
+          <v-responsive
+            class="mx-auto title font-weight-light mb-8"
+            max-width="720"
+          >
+          <h3><b>Ryosuke Hayashi</b></h3>
+          <div style="  color: #28cd3d;">Designer</div>
+          ここでの体験を通して、皆さんの気候変動に対する意識を高めてみてください。
+          </v-responsive>
+
+         
+
+          <div></div>
+
+          
+           
         </v-container>
 
         <div class="py-12"></div>
       </section>
 
-      <section id="stats">
-        <v-parallax
-          :height="$vuetify.breakpoint.smAndDown ? 700 : 500"
-          src="https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
+      <v-footer style="height: 150px" id="foot" padless>
+      <v-row id="foot" justify="center" no-gutters>
+        <v-btn
+         text 
+         rounded
+         class="my-2"
         >
-          <v-container fill-height>
-            <v-row class="mx-auto">
-              <v-col
-                v-for="[value, title] of stats"
-                :key="title"
-                cols="12"
-                md="3"
-              >
-                <div class="text-center">
-                  <div
-                    class="display-3 font-weight-black mb-4"
-                    v-text="value"
-                  ></div>
+          <v-icon size="24px">
+            mdi-facebook
+          </v-icon>
+        </v-btn>
+         <v-btn
+         text 
+         rounded
+         class="my-2"
+        >
+          <v-icon size="24px">
+            mdi-twitter
+          </v-icon>
+        </v-btn>
 
-                  <div
-                    class="title font-weight-regular text-uppercase"
-                    v-text="title"
-                  ></div>
-                </div>
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-parallax>
-      </section>
-
-      <section id="blog">
-        <div class="py-12"></div>
-
-        <v-container>
-          <h2 class="display-2 font-weight-bold mb-3 text-uppercase text-center">Blog</h2>
-
-          <v-responsive
-            class="mx-auto mb-12"
-            width="56"
+        <v-col class="py-4 text-center black--text" cols="12">
+          <strong style="font-size:20px" class="font-weight-black">
+            ©{{ new Date().getFullYear() }} ClimateTalk</strong
           >
-            <v-divider class="mb-1"></v-divider>
-
-            <v-divider></v-divider>
-          </v-responsive>
-
-          <v-row>
-            <v-col
-              v-for="({ src, text, title }, i) in articles"
-              :key="i"
-              cols="12"
-              md="4"
-            >
-              <v-img
-                :src="src"
-                class="mb-4"
-                height="275"
-                max-width="100%"
-              ></v-img>
-
-              <h3
-                class="font-weight-black mb-4 text-uppercase"
-                v-text="title"
-              ></h3>
-
-              <div
-                class="title font-weight-light mb-5"
-                v-text="text"
-              ></div>
-
-              <v-btn
-                class="ml-n4 font-weight-black"
-                text
-              >
-                Continue Reading
-              </v-btn>
-            </v-col>
-          </v-row>
-        </v-container>
-
-        <div class="py-12"></div>
-      </section>
-
-      <v-sheet
-        id="contact"
-        color="#333333"
-        dark
-        tag="section"
-        tile
-      >
-        <div class="py-12"></div>
-
-        <v-container>
-          <h2 class="display-2 font-weight-bold mb-3 text-uppercase text-center">Contact Me</h2>
-
-          <v-responsive
-            class="mx-auto mb-12"
-            width="56"
-          >
-            <v-divider class="mb-1"></v-divider>
-
-            <v-divider></v-divider>
-          </v-responsive>
-
-          <v-theme-provider light>
-            <v-row>
-              <v-col cols="12">
-                <v-text-field
-                  flat
-                  label="Name*"
-                  solo
-                ></v-text-field>
-              </v-col>
-
-              <v-col cols="12">
-                <v-text-field
-                  flat
-                  label="Email*"
-                  solo
-                ></v-text-field>
-              </v-col>
-
-              <v-col cols="12">
-                <v-text-field
-                  flat
-                  label="Subject*"
-                  solo
-                ></v-text-field>
-              </v-col>
-
-              <v-col cols="12">
-                <v-textarea
-                  flat
-                  label="Message*"
-                  solo
-                ></v-textarea>
-              </v-col>
-
-              <v-col
-                class="mx-auto"
-                cols="auto"
-              >
-                <v-btn
-                  color="accent"
-                  x-large
-                >
-                  Submit
-                </v-btn>
-              </v-col>
-            </v-row>
-          </v-theme-provider>
-        </v-container>
-
-        <div class="py-12"></div>
-      </v-sheet>
-
-    <v-footer
-      class="justify-center"
-      color="#292929"
-      height="100"
-    >
-      <div class="title font-weight-light grey--text text--lighten-1 text-center">
-        &copy; {{ (new Date()).getFullYear() }} — Made by Climate_edu
-      </div>
+        </v-col>
+      </v-row>
     </v-footer>
-  
+
+      
+      
+
+     
       
 </section>
 
@@ -391,14 +344,20 @@
 
 <script>
 import * as firebase from 'firebase'
-import GLOBES from 'vanta/src/vanta.globe'
   export default {
     name: 'HelloWorld',
+    icons: ["mdi-facebook", "mdi-twitter"],
+
+
     data () {
+      
       return {
         // name: '',
         email: '',
+
         password: '',
+       icons: ["mdi-facebook", "mdi-twitter"],
+
         
         
       }
@@ -443,7 +402,7 @@ import GLOBES from 'vanta/src/vanta.globe'
       dialog : false,
       articles: [
           {
-            src: 'https://images.unsplash.com/photo-1423784346385-c1d4dac9893a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
+            src: "../assets/bigsan.png",
             title: 'Mobile first & Responsive',
             text: 'Phasellus lorem enim, luctus ut velit eget, convallis egestas eros. Sed ornare ligula eget tortor tempor, quis porta tellus dictum.',
           },
@@ -460,19 +419,20 @@ import GLOBES from 'vanta/src/vanta.globe'
         ],
       features: [
           {
-            icon: 'mdi-account-group-outline',
-            title: 'Vibrant Community',
-            text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto cupiditate sint possimus quidem atque harum excepturi nemo velit tempora! Enim inventore fuga, qui ipsum eveniet facilis obcaecati corrupti asperiores nam',
+            icon: 'fa-comment',
+            title: 'Forum',
+            text: 'Join in endless discussions and keep yourself up to date on any climate change topics of your choice!',
           },
           {
-            icon: 'mdi-update',
-            title: 'Frequent Updates',
-            text: 'Sed ut elementum justo. Suspendisse non justo enim. Vestibulum cursus mauris dui, a luctus ex blandit. Lorem ipsum dolor sit amet consectetur adipisicing elit. qui ipsum eveniet facilis obcaecati corrupti consectetur adipisicing elit.',
+            icon: 'fa-lightbulb',
+            title: 'Collaboration',
+            text: 'Join events to fight cliamate change proactively! This is a good oppotunity to meet new people of similar interests and together help fight climate change!',
+
           },
           {
-            icon: 'mdi-shield-outline',
-            title: 'Long-term Support',
-            text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto cupiditate sint possimus quidem atque harum excepturi nemo velit tempora! Enim inventore fuga, qui ipsum eveniet facilis obcaecati corrupti asperiores nam',
+            icon: 'fa-dollar-sign',
+            title: 'Donation',
+            text: 'Join the fight by help funding various events, projects, organizations, etc. This is a good chance to spend your money to make projects to fight climate change possible!',
           },
         ],
       stats: [
@@ -485,7 +445,7 @@ import GLOBES from 'vanta/src/vanta.globe'
   }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
 
 .loginform{
@@ -496,16 +456,72 @@ import GLOBES from 'vanta/src/vanta.globe'
   background-color: #efefed;
 } */
 
+.whatwedo{
+  width: 477px;
+  height: 150px;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  font-family: Comfortaa;
 
+  font-size: 100px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
 
-template, div, section{
+.wedotext{
+  width: 1500px;
+  height: 300px;
+  font-family: YuGothic;
+  font-size: 40px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.6;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+}
+
+h3, template, div, section{
   
   font-family: 'Nunito', sans-serif;
 
 }
+.font-weight-black{
+    color: #28cd3d;
+
+}
+
+v-card-text.servicetext{
+    color: #28cd3d;
+
+}
+
+.subtitle-1{
+  color: #28cd3d;
+}
 
 span.font-weight-black{
   font-family: Comfortaa;
+}
+
+#foot {
+  background-color: #e4e4dd;
+}
+
+.hero-title{
+    color: #28cd3d;
+    font-size: 60px;
+  font-weight: 700;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+
 }
 
 

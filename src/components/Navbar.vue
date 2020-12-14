@@ -20,6 +20,11 @@
           ClimateTalk
         </v-toolbar-title>
         <v-spacer></v-spacer>
+    <v-row align="right" justify="space-around">
+      <v-btn text href="#whatwedo" class="font-weight-child">
+        What we do
+      </v-btn>
+    </v-row>
         <v-col style="padding-top:35px;" cols="12" sm="6" md="3">
           <v-text-field
             label="Search"
@@ -47,6 +52,16 @@ export default {
   padding-top: 18px;
   font-size: 1.8em;
 }
+
+.font-weight-child{
+  font-family: Comfortaa, cursive;
+  color:#28cd3d;
+  padding-top: 18px;
+
+
+}
+
+
 
 
 </style>

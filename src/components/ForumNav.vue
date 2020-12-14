@@ -12,13 +12,13 @@
       <v-btn text to="/dashboard/overview">
         Dashboard
       </v-btn>
-      <v-btn text to="/forum">   
+      <v-btn text href="/forum">   
         Forum
       </v-btn>
-      <v-btn text to="/collabhome">   
+      <v-btn text href="/collabhome">   
         Meetups
       </v-btn>
-       <v-btn text to="/donation">
+       <v-btn text href="/donation">
         Donation
       </v-btn>
        
