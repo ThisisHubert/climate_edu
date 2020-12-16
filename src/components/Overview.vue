@@ -2,6 +2,7 @@
   <div class="overview">
     <div class="container h-100">
       <div class="intro h-100">
+        <!-- heading -->
         <div class="row h-100 justify-content-center align-items-center">
           <div class="col-md-6">
             <h2><b>Welcome to Climate Talk! </b></h2>
@@ -21,21 +22,33 @@
             />
           </div>
         </div>
+        <!-- heading -->
         Section for News API
         <!-- news api  -->
         <div class="container">
           <div class="searchbar">
-            <form @submit.prevent="fetchSearchNews">
+            <!-- <form @submit.prevent="fetchSearchNews">
               <input type="text" placeholder="search..." v-model="searchword" />
-            </form>
+            </form> -->
             <div class="search-icons">
-              <i
-                v-if="!isBusy"
+              <v-chip-group
+        v-model="selection"
+        active-class="green accent-4 white--text"
+        column
+      >
+              <v-chip
+                class="fas fa-search"
+                @click="fetchTopNews"
+              >トップニュース</v-chip>
+              <v-chip
                 class="fas fa-search"
                 @click="fetchSearchNews"
-              ></i>
-              <i v-else class="fas fa-spinner fa-spin"></i>
+                
+              >気候変動を検索</v-chip>    
+              <!-- <i v-else class="fas fa-spinner fa-spin"></i> -->
               <i class="fas fa-times" @click="fetchTopNews"></i>
+              
+              </v-chip-group>
             </div>
           </div>
           <div class="result-list">
@@ -81,10 +94,10 @@ export default {
       showloader: false,
       currentPage: 1,
       totalResults: 0,
-      maxPerPage: 10,
-      searchword: "",
+      maxPerPage: 5,
+      // searchword: "ClimateChange",
       articles: [],
-      country: "us",
+      country: "jp",
     };
   },
   computed: {
@@ -102,18 +115,18 @@ export default {
         this.articles = [];
       },
       fetchSearchNews() {
-        if(this.searchword !== '')
-        {
-          this.apiUrl = 'https://newsapi.org/v2/everything?q=' + this.searchword +
+        // if(this.searchword !== '')
+        // {
+          this.apiUrl = 'https://newsapi.org/v2/everything?q=' + '気候変動' +
                         '&pageSize=' + this.maxPerPage +
                         '&apiKey=' + this.apiKey;
           this.isBusy = true;
           this.resetData();
           this.fetchData();
-        }
-        else {
-          this.fetchTopNews();
-        }
+        // }
+        // else {
+        //   this.fetchTopNews();
+        // }
       },
       fetchTopNews() {
         this.apiUrl = 'https://newsapi.org/v2/top-headlines?country=' + this.country +
@@ -171,6 +184,8 @@ export default {
   margin-bottom: 30px;
   margin-left: 100px;
 }
+
+
 
 body {
   font-family: "montserrat", sans-serif;

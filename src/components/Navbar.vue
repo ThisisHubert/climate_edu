@@ -24,13 +24,14 @@
       <v-btn text href="#whatwedo" class="font-weight-child">
         What we do
       </v-btn>
+      <v-btn text href="#features" class="font-weight-child">
+        Our Services
+      </v-btn>
+      <v-btn text href="#about-me" class="font-weight-child">
+        About me       
+      </v-btn>
     </v-row>
-        <v-col style="padding-top:35px;" cols="12" sm="6" md="3">
-          <v-text-field
-            label="Search"
-            outlined
-          ></v-text-field>
-        </v-col>
+        
       </v-app-bar>
 </template>
 
@@ -56,6 +57,7 @@ export default {
 .font-weight-child{
   font-family: Comfortaa, cursive;
   color:#28cd3d;
+  font-weight: bold;
   padding-top: 18px;
 
 

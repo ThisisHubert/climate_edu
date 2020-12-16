@@ -1,5 +1,29 @@
 <template>
     <div>
+      <div class="row h-100 justify-content-center align-items-center">
+          <div class="col-md-6 groupapi">
+            <h2>Climate Open Data </h2>
+            <p>
+              All necessary data related to climate change can be found here
+            </p>
+            <hr />
+            <h4>Here are your recent activities!</h4>
+          </div>
+          <div class="col-md-6">
+            <img
+              src="../assets/dashboard.svg"
+              alt=""
+              class="img-fluid"
+              width="500"
+            />
+          </div>
+        </div>
+
+
+
+
+      News API
+      
       <!-- insert here for test API  -->
     <div class="search-box">
         <input 
@@ -141,6 +165,8 @@
     </div>
       <!-- </v-card>  -->
       <!-- </div> -->
+
+      
     </div>
 </template>
 
@@ -247,11 +273,7 @@ export default {
 <style scoped lang="scss">
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
 
-h2{
-    // margin-top: 20px;
-    // margin-left: 100px;
-    position: relative;
-}
+
 
 hr{
     margin-top: 20px;
@@ -318,6 +340,13 @@ main {
 }
 
 
+hr{
+  width: 350px;
+  padding-left: 10px;
+}
+.groupapi{
+  padding-left: 40px;
+}
 
 #max-detail,
 #min-detail {
@@ -407,8 +436,8 @@ body {
 }
 
 h2,
-h3,
-h4 {
+h3
+{
     position: relative;
     padding-top: 20px;
 }
@@ -438,9 +467,9 @@ h1 {
 }
 
 h2 {
-    font-weight: 300;
+    font-weight: bold;
     font-size: 2.25em;
-    -webkit-animation: up 2s cubic-bezier(.39, 0, .38, 1);
+    // -webkit-animation: up 2s cubic-bezier(.39, 0, .38, 1);
 }
 
 h3 {

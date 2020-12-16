@@ -4,11 +4,12 @@
     <ForumNav></ForumNav>
     
     <v-row>
-      <div class="testbed"></div>
+      <v-responsive
+            >
       <div class="Donation">
         Donation
       </div>
-      <div class="testbed"></div>
+      </v-responsive>
 
       <v-dialog
         v-model="dialog"
@@ -19,16 +20,17 @@
        
         <template v-slot:activator="{ on, attrs }">
           <v-btn
-            style="width: 250px; height: 50px;"
+            style="width: 90px; height: 90px;"
             color="green"
             dark
-            fixed
+           fixed
+            fab
             bottom
-            right
+            left
             v-bind="attrs"
             v-on="on"
           >
-            Pay
+            <v-icon>fas fa-money-check-alt</v-icon>
           </v-btn>
         </template>
         <v-card>
@@ -1171,10 +1173,11 @@ export default {
 .Donation {
   width: 214.5px;
   height: 17px;
-  margin: 0 7.5px 3.5px 0;
+  padding-left: 250px;
+  margin: 50px 60px 190px 300px;
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   font-family: "Open Sans", sans-serif;
-  font-size: 70px;
+  font-size: 80px;
   padding-top: 60px;
   text-align: center;
   font-weight: bold;

@@ -34,7 +34,7 @@
 
                         <v-card>
                           <v-card-title>
-                            <span class="headline">Login</span>
+                            <span class="headline" style="color:green;">Login</span>
                           </v-card-title>
                           <v-card-text>
                             <v-container>
@@ -162,6 +162,7 @@
               <v-card
                 class="py-12 px-4"
                 color="grey lighten-5"
+  
                 flat
               >
                 <v-theme-provider dark>
@@ -185,7 +186,7 @@
 
                 <v-card-text
                   class="subtitle-1 servicetext"
-                  style="font-color:green"
+                  style="font-color:green; font-size:15px"
                   v-text="text"
                 >
                 </v-card-text>
@@ -254,7 +255,8 @@
           >
           <h3><b>Hubertus Setiawan</b></h3>
           <div style="  color: #28cd3d;">Engineer</div>
-          このウェブサイトでの体験を通して、皆さんの気候変動に対する意識を高めてみてください。
+          A 3rd year INIAD Student Engineering Major, responsible for full stack development of the website
+          Front-end, Back-end, Database, etc. Wishing the world to be a better place to live through the swift growth of deep technology.
           </v-responsive>
 
          
@@ -393,30 +395,10 @@ import * as firebase from 'firebase'
 
     },
    
-     beforeDestroy() {
-    if (this.vantaEffect) {
-      this.vantaEffect.destroy()
-    }
-  },
+    
     data: () => ({
       dialog : false,
-      articles: [
-          {
-            src: "../assets/bigsan.png",
-            title: 'Mobile first & Responsive',
-            text: 'Phasellus lorem enim, luctus ut velit eget, convallis egestas eros. Sed ornare ligula eget tortor tempor, quis porta tellus dictum.',
-          },
-          {
-            src: 'https://images.unsplash.com/photo-1475938476802-32a7e851dad1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
-            title: 'Think outside the box',
-            text: 'Nam ut leo ipsum. Maecenas pretium aliquam feugiat. Aenean vel tempor est, vitae tincidunt risus. Sed sodales vestibulum nibh.',
-          },
-          {
-            src: 'https://images.unsplash.com/photo-1416339442236-8ceb164046f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1892&q=80',
-            title: 'Small changes, big difference',
-            text: 'Vestibulum in dictum velit, in rhoncus nibh. Maecenas neque libero, interdum a dignissim in, aliquet vitae lectus. Phasellus lorem enim, luctus ut velit eget.',
-          },
-        ],
+      
       features: [
           {
             icon: 'fa-comment',
@@ -426,7 +408,7 @@ import * as firebase from 'firebase'
           {
             icon: 'fa-lightbulb',
             title: 'Collaboration',
-            text: 'Join events to fight cliamate change proactively! This is a good oppotunity to meet new people of similar interests and together help fight climate change!',
+            text: 'Join events to fight climate change proactively! This is a good oppotunity to meet new people of similar interests and together help fight climate change!',
 
           },
           {
