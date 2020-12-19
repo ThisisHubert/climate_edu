@@ -29,22 +29,7 @@ export const store = new Vuex.Store({
     userProfile: {},  // for userprofile 
     posts: [],
     loadedMeetups: [
-      // {
-      //   imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/47/New_york_times_square-terabass.jpg',
-      //   id: 'afajfjadfaadfa323',
-      //   title: 'Meetup in New York',
-      //   date: new Date(),
-      //   location: 'New York',
-      //   description: 'New York, New York!'
-      // },
-      // {
-      //   imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Paris_-_Blick_vom_gro%C3%9Fen_Triumphbogen.jpg',
-      //   id: 'aadsfhbkhlk1241',
-      //   title: 'Meetup in Paris',
-      //   date:  new Date(), 
-      //   location: 'Paris',
-      //   description: 'It\'s Paris!'
-      // }
+     
     ],
     user: {},
     loading: false,
@@ -171,6 +156,7 @@ export const store = new Vuex.Store({
     },
 
     async signup ({dispatch}, payload) {  // sign up function 
+    try{
       dispatch('setLoading',true)
       dispatch('clearError')
       const { user } = await firebase.auth.createUserWithEmailAndPassword(payload.email, payload.password)
@@ -185,6 +171,12 @@ export const store = new Vuex.Store({
       }
       dispatch('fetchUserProfile', user)
       dispatch('setUser', newUser)
+    }catch(error){
+      dispatch('setLoading', false)
+      dispatch('setError', error)
+      console.log(error)
+      alert('Oops! Something wrong!')
+    }
       // user.catch(
       //   error => {
       //     dispatch('setLoading', false)
@@ -221,6 +213,7 @@ export const store = new Vuex.Store({
         // )
     },
     async onSignin ({dispatch}, payload) {   // sign in function  
+    try{
       dispatch('setLoading',true)
       dispatch('clearError')
       const { user } = await firebase.auth.signInWithEmailAndPassword(payload.email, payload.password)
@@ -231,6 +224,12 @@ export const store = new Vuex.Store({
       }
       dispatch('fetchUserProfile', user)    
       dispatch('setUser', newUser) 
+    }catch(error){
+      dispatch('setLoading', false)
+      dispatch('setError', error)
+      console.log(error)
+      alert("Wrong Password")
+    }
       // user.catch(
       //   error => {
       //     dispatch('setLoading', false)

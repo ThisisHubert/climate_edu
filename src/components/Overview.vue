@@ -23,59 +23,7 @@
           </div>
         </div>
         <!-- heading -->
-        Section for News API
-        <!-- news api  -->
-        <div class="container">
-          <div class="searchbar">
-            <!-- <form @submit.prevent="fetchSearchNews">
-              <input type="text" placeholder="search..." v-model="searchword" />
-            </form> -->
-            <div class="search-icons">
-              <v-chip-group
-        v-model="selection"
-        active-class="green accent-4 white--text"
-        column
-      >
-              <v-chip
-                class="fas fa-search"
-                @click="fetchTopNews"
-              >トップニュース</v-chip>
-              <v-chip
-                class="fas fa-search"
-                @click="fetchSearchNews"
-                
-              >気候変動を検索</v-chip>    
-              <!-- <i v-else class="fas fa-spinner fa-spin"></i> -->
-              <i class="fas fa-times" @click="fetchTopNews"></i>
-              
-              </v-chip-group>
-            </div>
-          </div>
-          <div class="result-list">
-            <article
-              v-for="(article, index) in articles"
-              :key="index"
-              @click="navTo(article.url)"
-            >
-              <header>
-                <img
-                  v-if="article.urlToImage"
-                  :src="article.urlToImage"
-                  alt=""
-                />
-                <i v-else class="fas fa-image"></i>
-              </header>
-              <section v-html="article.title"></section>
-              <footer>
-                <i class="fas fa-chevron-right"></i>
-              </footer>
-            </article>
-          </div>
-          <div ref="infinitescrolltrigger" id="scroll-trigger">
-            <i v-if="showloader" class="fas fa-spinner fa-spin"></i>
-          </div>
-        </div>
-        <!-- news api -->
+        
       </div>
     </div>
   </div>
@@ -88,91 +36,13 @@ export default {
 
   data: () => {
     return {
-      apiUrl: "",
-      apiKey: "d9045a056465436bb7864f5007d27c22",
-      isBusy: false,
-      showloader: false,
-      currentPage: 1,
-      totalResults: 0,
-      maxPerPage: 5,
-      // searchword: "ClimateChange",
-      articles: [],
-      country: "jp",
+      
     };
   },
-  computed: {
-      pageCount() {
-        return Math.ceil(this.totalResults/this.maxPerPage);
-      }
-    },
+  
 
   methods: {
-      navTo(url) {
-        window.open(url);
-      },
-      resetData() {
-        this.currentPage = 1;
-        this.articles = [];
-      },
-      fetchSearchNews() {
-        // if(this.searchword !== '')
-        // {
-          this.apiUrl = 'https://newsapi.org/v2/everything?q=' + '気候変動' +
-                        '&pageSize=' + this.maxPerPage +
-                        '&apiKey=' + this.apiKey;
-          this.isBusy = true;
-          this.resetData();
-          this.fetchData();
-        // }
-        // else {
-        //   this.fetchTopNews();
-        // }
-      },
-      fetchTopNews() {
-        this.apiUrl = 'https://newsapi.org/v2/top-headlines?country=' + this.country +
-                        '&pageSize=' + this.maxPerPage +
-                        '&apiKey=' + this.apiKey;
-        this.isBusy = true;
-        this.searchword = '';
-        
-        this.resetData();
-        this.fetchData();
-      },
-      fetchData() {
-        let req  = new Request(this.apiUrl + '&page=' + this.currentPage);
-        fetch(req)
-          .then((resp) => resp.json())
-          .then((data) => {
-            this.totalResults = data.totalResults;
-            data.articles.forEach(element => {
-              this.articles.push(element);
-            });
-            this.isBusy = false;
-            this.showloader = false;
-          })
-          .catch((error) => {
-            console.log(error);
-          })
-      },
-      scrollTrigger() {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if(entry.intersectionRatio > 0 && this.currentPage < this.pageCount) {
-              this.showloader = true;
-              this.currentPage += 1;
-              this.fetchData();
-            }
-          });
-        });
-        observer.observe(this.$refs.infinitescrolltrigger);
-      }
-    },
-    created() {
-      this.fetchTopNews();
-    },
-    mounted() {
-      this.scrollTrigger();
-    }
+  }
   
 };
 </script>
@@ -185,26 +55,6 @@ export default {
   margin-left: 100px;
 }
 
-
-
-body {
-  font-family: "montserrat", sans-serif;
-   margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(to bottom, #80A248, #198B4D);
-}
-
-
-main {
-  min-height: 100vh;
-  padding: 25px;
-  //   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.75));
-}
 
 .search-box .search-bar {
   display: block;

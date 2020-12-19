@@ -22,7 +22,56 @@
 
 
 
-      News API
+      <!-- news api  -->
+        <div class="container">
+          <div class="searchbar">
+           
+            <div class="search-icons">
+              <v-chip-group
+        v-model="selection"
+        active-class="green accent-4 white--text"
+        column
+      >
+              <v-chip
+                class="fas fa-search"
+                @click="fetchTopNews"
+              >トップニュース</v-chip>
+              <v-chip
+                class="fas fa-search"
+                @click="fetchSearchNews"
+                
+              >気候変動を検索</v-chip>    
+              <!-- <i v-else class="fas fa-spinner fa-spin"></i> -->
+              <i class="fas fa-times" @click="fetchTopNews"></i>
+              
+              </v-chip-group>
+            </div>
+          </div>
+          <div class="result-list">
+            <article
+              v-for="(article, index) in articles"
+              :key="index"
+              @click="navTo(article.url)"
+            >
+              <header>
+                <img
+                  v-if="article.urlToImage"
+                  :src="article.urlToImage"
+                  alt=""
+                />
+                <i v-else class="fas fa-image"></i>
+              </header>
+              <section v-html="article.title"></section>
+              <footer>
+                <i class="fas fa-chevron-right"></i>
+              </footer>
+            </article>
+          </div>
+          <div ref="infinitescrolltrigger" id="scroll-trigger">
+            <i v-if="showloader" class="fas fa-spinner fa-spin"></i>
+          </div>
+        </div>
+        <!-- news api -->
       
       <!-- insert here for test API  -->
     <div class="search-box">
@@ -176,6 +225,15 @@ export default {
     name: "ClimateApi",
      data() {
     return {
+      apiUrl: "",
+      apiKey: "d9045a056465436bb7864f5007d27c22",
+      isBusy: false,
+      showloader: false,
+      currentPage: 1,
+      totalResults: 0,
+      maxPerPage: 10,
+      articles: [],
+      country: "jp",
       api_key: '60745ed25b2a6851f7d29725e82cabd9',
       url_base: 'https://api.openweathermap.org/data/2.5/',
       query: '',
@@ -195,6 +253,12 @@ export default {
       
     }
   },
+  computed: {
+      pageCount() {
+        return Math.ceil(this.totalResults/this.maxPerPage);
+      }
+    },
+
     props: {
         msg: String
     },
@@ -211,6 +275,72 @@ export default {
       this.stormGlass();
     },
      methods: {
+    navTo(url) {
+        window.open(url);
+      },
+      resetData() {
+        this.currentPage = 1;
+        this.articles = [];
+      },
+      fetchSearchNews() {
+        // if(this.searchword !== '')
+        // {
+          this.apiUrl = 'https://newsapi.org/v2/everything?q=' + '気候変動' +
+                        '&pageSize=' + this.maxPerPage +
+                        '&apiKey=' + this.apiKey;
+          this.isBusy = true;
+          this.resetData();
+          this.fetchData();
+        // }
+        // else {
+        //   this.fetchTopNews();
+        // }
+      },
+      fetchTopNews() {
+        this.apiUrl = 'https://newsapi.org/v2/top-headlines?country=' + this.country +
+                        '&pageSize=' + this.maxPerPage +
+                        '&apiKey=' + this.apiKey;
+        this.isBusy = true;
+        this.searchword = '';
+        
+        this.resetData();
+        this.fetchData();
+      },
+      fetchData() {
+        let req  = new Request(this.apiUrl + '&page=' + this.currentPage);
+        fetch(req)
+          .then((resp) => resp.json())
+          .then((data) => {
+            this.totalResults = data.totalResults;
+            data.articles.forEach(element => {
+              this.articles.push(element);
+            });
+            this.isBusy = false;
+            this.showloader = false;
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+      },
+      scrollTrigger() {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if(entry.intersectionRatio > 0 && this.currentPage < this.pageCount) {
+              this.showloader = true;
+              this.currentPage += 1;
+              this.fetchData();
+            }
+          });
+        });
+        observer.observe(this.$refs.infinitescrolltrigger);
+      },
+    
+    created() {
+      this.fetchTopNews();
+    },
+    mounted() {
+      this.scrollTrigger();
+    },
     fetchWeather (e) {
       if (e.key == "Enter") {
         fetch(`${this.url_base}forecast?q=${this.query}&units=metric&APPID=${this.api_key}`)
@@ -274,6 +404,95 @@ export default {
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
 
 
+// css for news
+
+.container {
+    position: relative;
+
+
+    .searchbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 60px;
+      font-size: 1.6rem;
+      input {
+        padding: 0 100px 0 20px;
+        margin: 0;
+        width: calc(100% - 120px);
+        height: 60px;
+        border: none;
+        font-size: 2rem;
+        color: #fff;
+        background-color: #222;
+        &:focus {
+          outline: none;
+        }
+      }
+      .search-icons {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        color: #fff;
+        i {
+          margin-left: 15px;
+          cursor: pointer;
+        }
+      }
+    }
+    .result-list {
+      padding-top: 60px;
+    }
+    article {
+      display: grid;
+      grid-template-columns: 200px auto 40px;
+      grid-template-rows: 100px;
+      border-bottom: 1px solid #ccc;
+      overflow: hidden;
+      cursor: pointer;
+      header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+        i {
+          font-size: 2rem;
+        }
+      }
+      section {
+        margin: 0;
+        padding: 10px;
+        height: 100px;
+      }
+      footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.6rem;
+        color: #888;
+      }
+    }
+    #scroll-trigger {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100px;
+      font-size: 1.6rem;
+    }
+  }
+
+
+
+
+
+// css for news 
 
 hr{
     margin-top: 20px;
