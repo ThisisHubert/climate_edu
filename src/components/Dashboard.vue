@@ -17,12 +17,12 @@
                 </div>
                 <!-- sidebar-header  -->
                 <div class="sidebar-item sidebar-header d-flex flex-nowrap">
-                    <div class="user-pic">
+                    <!-- <div class="user-pic">
                         <img class="img-responsive img-rounded" src="../assets/user1.png" alt="User picture">
-                    </div>
+                    </div> -->
                     <div class="user-info">
                         <span class="user-name">
-                            {{userProfile.name}}
+                           <b>{{userProfile.name}}</b>
                         </span>
                         <span class="user-role">{{userProfile.email}}</span>
                         <span class="user-status">

@@ -93,7 +93,7 @@
             </div>
             <div class="col-md-7">
                 <div class="graphic">
-                    <img src="../assets/climate_home.jpg" style="width:600px; height:600px; padding-right:3px; margin-left:50px;" alt="">
+                    <img src="../assets/hang_out.svg" style="width:600px; height:600px; padding-right:3px; margin-left:50px;" alt="">
                 </div>
             </div>
           </div>

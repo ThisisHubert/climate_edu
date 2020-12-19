@@ -2,16 +2,16 @@
     <div>
       <div class="row h-100 justify-content-center align-items-center">
           <div class="col-md-6 groupapi">
-            <h2>Climate Open Data </h2>
-            <p>
-              All necessary data related to climate change can be found here
+            <h2 class="datatitle">Climate Open Data </h2>
+            <p class="datatitle">
+              All necessary data related to climate change can be found here<br>
             </p>
             <hr />
-            <h4>Here are your recent activities!</h4>
+            <!-- <h4 class="datatitle">Check it out!</h4> -->
           </div>
           <div class="col-md-6">
             <img
-              src="../assets/dashboard.svg"
+              src="../assets/climatedata.svg"
               alt=""
               class="img-fluid"
               width="500"
@@ -97,9 +97,9 @@
 
         <h2><i class="fas fa-map-marker-alt"></i>  {{weather.city.name}}, {{weather.city.country}}</h2>
         <h3><b>lat: </b>{{weather.city.coord.lat}} <b>lon: </b>{{weather.city.coord.lon}}</h3>
+        <h1>{{ Math.round(weather.list[1].main.temp) }}°</h1>
         <h3><i class="far fa-calendar"></i>  {{ dateBuilder() }}</h3>
         <h3><b>{{ weather.list[1].weather[0].main }}</b><span>Wind {{ Math.round(weather.list[1].wind.speed) }}m/s <span class="dot">•</span> Humidity {{ Math.round(weather.list[1].main.humidity) }}%</span></h3>
-        <h1>{{ Math.round(weather.list[1].main.temp) }}°</h1>
         <h3><i class="fas fa-temperature-high"></i> {{ Math.round(weather.list[1].main.temp_max) }}°c</h3>
         <h3><i class="fas fa-temperature-low"></i> {{ Math.round(weather.list[1].main.temp_min) }}°c</h3>
         <h3><b>Precipitation:</b> {{weather.list[1].pop*100}}%</h3>
@@ -136,18 +136,14 @@
         smooth
               >
       </trend>
-    </div>
-  </v-col>
-  <v-col>
-    <div class="card_pop">
-       <v-list-item>
+      <div>
+      <v-list-item>
       <v-list-item-content>
         <i class="fas fa-users fa-2x"></i>
         <v-list-item-title>Population</v-list-item-title>
        <v-list-item-subtitle>{{weather.city.population.toLocaleString()}}</v-list-item-subtitle>
       </v-list-item-content>
     </v-list-item>
-    
     <v-divider inset></v-divider>
 
     <v-list-item two-line>
@@ -205,10 +201,11 @@
         </v-list-item-subtitle>
       </v-list-item-content>
     </v-list-item>
-
-
+      </div>
     </div>
   </v-col>
+
+  
 </v-row>
 
     </div>
@@ -516,7 +513,9 @@ main {
   // background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.75));
 }
 
-
+.datatitle{
+  padding-left: 100px;
+}
 
 .search-box .search-bar {
   display: block;
@@ -603,31 +602,18 @@ body {
 
 .card {
     margin: 0 auto;
-    margin-top: 5%;
-    margin-left: 10%;
+    margin-top: 1%;
+    margin-left: 20%;
     margin-bottom: 10%;
     padding: 5px 30px 20px;
-    width: 690px;
-    height: 1070px;
+    width: 1000px;
+    height: 1800px;
     border-radius: 3px;
     background-color: #fff;
     box-shadow: 1px 2px 10px rgba(0, 0, 0, .2);
-    -webkit-animation: open 2s cubic-bezier(.39, 0, .38, 1);
+    -webkit-animation: open 1s cubic-bezier(.39, 0, .38, 1);
 }
 
-.card_pop {
-    margin: 0 auto;
-    margin-top: 1%;
-    margin-right: 7%;
-    margin-bottom: 5%;
-    padding: 5px 30px 20px;
-    width: 690px;
-    height: 1070px;
-    border-radius: 3px;
-    background-color: #fff;
-    box-shadow: 1px 2px 10px rgba(0, 0, 0, .2);
-    -webkit-animation: open 2s cubic-bezier(.39, 0, .38, 1);
-}
 
 .card_vis {
     margin: 0 auto;
@@ -650,7 +636,7 @@ body {
         height: 0;
     }
     to {
-        height: 470px;
+        height: 1500px;
     }
 }
 
@@ -678,7 +664,8 @@ h1 {
     float: right;
     color: #666;
     font-weight: 300;
-    padding-left: 450px;
+    padding-top: 1px;
+    padding-left: 700px;
     font-size: 6.59375em;
     line-height: .2em;
     position: relative;
