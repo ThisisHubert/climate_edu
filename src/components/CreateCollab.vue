@@ -29,21 +29,7 @@
           <div style="color:red" v-show="error">{{error}}</div>
             </v-flex>
           </v-layout>
-          <!-- Map start from here -->
-          <!-- <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
-              <v-text-field
-                name="gmap"
-                label="Check with Google Map"
-                v-model="address"
-                id="autocomplete"
-                filled
-                rounded
-                dense
-                required
-              ></v-text-field>
-            </v-flex>
-          </v-layout> -->
+          
           
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>

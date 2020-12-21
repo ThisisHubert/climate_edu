@@ -1,7 +1,7 @@
 <template>
   <div class="Forum">
     <ForumNav></ForumNav>
-    <v-text-field class="filter" rounded filled type="text" v-model="search" placeholder="Search Forum"></v-text-field>
+    <v-text-field class="filter" rounded filled type="text" v-model="search" placeholder="Search Forum Title..."></v-text-field>
     <section>
       
       <div class="col1">
@@ -9,14 +9,29 @@
         <div class="profile">
           
           <div class="create-post">
-            
+
             <form @submit.prevent style="position:fixed">
-          <h5>{{ userProfile.name }}</h5>
+
+          <h3 class="username">{{ userProfile.name }}</h3>
+              <v-text-field
+                name="title"
+                label="Title..."
+                id="title"
+                v-model.trim="post.title"
+                filled
+                rounded
+                dense
+                required  
+              ></v-text-field>
              
-              <textarea
+              <v-textarea
                 v-model.trim="post.content"
-                placeholder="Write Something..."
-              ></textarea>
+                label="Write Something..."
+                multi-line 
+                filled
+                rounded 
+              ></v-textarea>
+
               <button
                 @click="createPost()"
                 :disabled="post.content === ''"
@@ -32,7 +47,7 @@
       <div class="col2">
         <div v-if="posts.length">
           <v-card outlined v-for="post in filteredPosts" :key="post.id" class="post">
-            <v-card-title>{{ post.userName }}</v-card-title>
+            <v-card-title>{{ post.title }}</v-card-title>
             <v-card-subtitle>{{ post.createdOn | formatDate }} by {{ post.userName }}</v-card-subtitle>
             <v-card-text>{{ post.content | trimLength }}</v-card-text>
             <v-card-text>
@@ -130,7 +145,7 @@ export default {
     
     filteredPosts: function(){
       return this.posts.filter((posts)=>{
-        return posts.content.match(this.search);
+        return posts.title.match(this.search);
       })
     }
     
@@ -145,8 +160,9 @@ export default {
       this.$store.dispatch("logout");
     },
     createPost() {
-      this.$store.dispatch("createPost", { content: this.post.content });
+      this.$store.dispatch("createPost", { content: this.post.content, title: this.post.title });
       this.post.content = "";
+      this.post.title = "";      
     },
     toggleCommentModal(post) {
       this.showCommentModal = !this.showCommentModal;
@@ -262,11 +278,12 @@ h5 {
 
 
 .discussion{
+
   position:fixed;
   width: 150.5px;
   height: 17px;
   padding-left: 2px;
-  margin: 1px 1px 100px 1px;
+  margin: 1px 1px 20px 1px;
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   font-family: "Open Sans", sans-serif;
   font-size: 50px;
@@ -276,6 +293,7 @@ h5 {
   font-style: normal;
   text-align: left;
   color: #28cd3d;
+
 }
 
 p {
@@ -285,12 +303,12 @@ p {
 a {
   font-family: "Open Sans", sans-serif;
   text-decoration: none;
-  color: $primary;
+  color: green;
   margin: 0;
   cursor: pointer;
 
   &:hover {
-    color: lighten($primary, 5%);
+    color: lighten(green, 5%);
   }
 }
 
@@ -299,7 +317,7 @@ section {
   display: flex;
   max-width: 1200px;
   margin: 0 auto;
-  @media screen and (max-width: 742px) {
+  @media screen and (max-width: 800px) {
     display: block;
   }
 }
@@ -310,7 +328,7 @@ section {
   flex-grow: 1;
   flex-basis: 0;
   padding: 1rem;
-  @media screen and (max-width: 742px) {
+  @media screen and (max-width: 800px) {
   }
 }
 
@@ -349,25 +367,25 @@ section {
 }
 
 .button {
-  background: $primary;
+  background: #28cd3d;
   border: 0;
   outline: 0;
   color: $white;
   padding: 0.8rem 1rem;
-  min-width: 150px;
-  font-size: 16px;
+  min-width: 480px;
+  font-size: 20px;
   border-radius: 3px;
   cursor: pointer;
 
   &:hover {
-    background: lighten($primary, 5%);
+    background: lighten(green, 5%);
   }
 
   &:disabled {
     opacity: 0.5;
 
     &:hover {
-      background: $primary;
+      background: green;
     }
   }
 }
@@ -389,9 +407,13 @@ section {
 .clear {
   clear: both;
 }
+   
+.username{
+  padding-bottom: 20px;
+}
 
 form {
-  padding-top: 80px;
+  padding-top: 140px;
   label {
     display: block;
     font-size: 16px;
@@ -413,15 +435,15 @@ form {
     }
   }
 
-  textarea {
-    resize: none;
-    border: 1px solid #e6ecf0;
-    outline: 0;
-    height: 100px;
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-  }
+  // v-textarea {
+  //   // resize: none;
+  //   border: 1px solid #e6ecf0;
+  //   outline: 0;
+  //   height: 100px;
+  //   // width: 100%;
+  //   padding: 10px;
+  //   font-size: 16px;
+  // }
 }
 // transitions
 
@@ -542,7 +564,7 @@ header {
     flex: 0 0 30%;
     position: fixed;
 
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 10000px) {
       flex: 0 0 40%;
     }
   }
@@ -564,10 +586,10 @@ header {
       margin-bottom: 0.5rem;
     }
 
-    textarea {
-      height: 200px;
-      margin: 0;
-    }
+    // textarea {
+    //   height: 200px;
+    //   margin: 0;
+    // }
 
     .button {
       margin-top: 1rem;
@@ -590,7 +612,7 @@ header {
     }
 
     .new-posts {
-      color: $primary;
+      color:#28cd3d ;
     }
 
     p {
