@@ -128,6 +128,7 @@ export const store = new Vuex.Store({
       await firebase.postsCollection.add({
         createdOn: new Date(),       
         content: post.content,
+        title: post.title,
         userId: firebase.auth.currentUser.uid,
         userName: state.userProfile.name,
         comments: 0,

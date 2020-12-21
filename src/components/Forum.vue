@@ -5,14 +5,13 @@
     <section>
       
       <div class="col1">
-        
+        <div class="discussion">Discussion</div>
         <div class="profile">
           
           <div class="create-post">
             
             <form @submit.prevent style="position:fixed">
-          <!-- <h5 style="position:fixed">{{ userProfile.name }}</h5> -->
-            <!-- <p style="position:fixed">Create a Post</p> -->
+          <h5>{{ userProfile.name }}</h5>
              
               <textarea
                 v-model.trim="post.content"
@@ -34,18 +33,18 @@
         <div v-if="posts.length">
           <v-card outlined v-for="post in filteredPosts" :key="post.id" class="post">
             <v-card-title>{{ post.userName }}</v-card-title>
-            <v-card-subtitle>{{ post.createdOn | formatDate }}</v-card-subtitle>
+            <v-card-subtitle>{{ post.createdOn | formatDate }} by {{ post.userName }}</v-card-subtitle>
             <v-card-text>{{ post.content | trimLength }}</v-card-text>
             <v-card-text>
             <v-chip-group>
               <v-chip>
                 <a @click="toggleCommentModal(post)"
-                  ><i class="fas fa-comment"></i> {{ post.comments }}</a
+                  ><i style="color:#28cd3d" class="fas fa-comment"></i> {{ post.comments }}</a
                 >
               </v-chip>
               <v-chip>
                 <a @click="likePost(post.id, post.likes)"
-                  ><i class="fas fa-thumbs-up"></i> {{ post.likes }}</a
+                  ><i style="color:#28cd3d" class="fas fa-thumbs-up"></i> {{ post.likes }}</a
                 >
               </v-chip>
               <v-chip><a @click="viewPost(post)">view full post</a></v-chip>
@@ -114,6 +113,7 @@ export default {
   data() {
     return {
       post: {
+        title: "",
         content: "",
       },
       search: "",
@@ -260,6 +260,24 @@ h5 {
   font-size: 1.2rem;
 }
 
+
+.discussion{
+  position:fixed;
+  width: 150.5px;
+  height: 17px;
+  padding-left: 2px;
+  margin: 1px 1px 100px 1px;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  font-family: "Open Sans", sans-serif;
+  font-size: 50px;
+  padding-top: -10px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: left;
+  color: #28cd3d;
+}
+
 p {
   line-height: 1.5;
 }
@@ -373,6 +391,7 @@ section {
 }
 
 form {
+  padding-top: 80px;
   label {
     display: block;
     font-size: 16px;
