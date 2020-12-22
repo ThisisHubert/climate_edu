@@ -10,7 +10,7 @@
               Your primary resource for searching the right information about
               Climate Change
             </p>
-            <hr />
+            <hr />   
             <h4>Here are your recent activities!</h4>
           </div>
           <div class="col-md-6">

@@ -9,16 +9,16 @@
     </v-toolbar-title>
     <v-spacer></v-spacer>
     <v-row align="right" justify="space-around">
-      <v-btn text to="/dashboard/overview">
+      <v-btn text to="/dashboard/overview" class="font-weight-child">
         Dashboard
       </v-btn>
-      <v-btn text href="/forum">   
+      <v-btn text href="/forum" class="font-weight-child">   
         Forum
       </v-btn>
-      <v-btn text href="/collabhome">   
+      <v-btn text href="/collabhome"  class="font-weight-child">   
         Meetups
       </v-btn>
-       <v-btn text href="/donation">
+       <v-btn text href="/donation"  class="font-weight-child">
         Donation
       </v-btn>
        
@@ -63,7 +63,18 @@ export default {
 }
 
 
-* {
+.font-weight-child{
+  font-family: Comfortaa, cursive;
+  color:#28cd3d;
+  font-weight: bold;
+  margin-top: 9px;
+
+
+}
+
+
+
+/* * {
   font-family: "Open Sans", sans-serif;
   box-sizing: border-box;
   transition: 0.15s;
@@ -71,7 +82,7 @@ export default {
   &:focus {
     outline: none;
   }
-}
+} */
 
 
 </style>

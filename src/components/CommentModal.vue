@@ -1,11 +1,10 @@
 <template>
   <div class="c-modal">
     <div class="c-container">
-      <a @click="$emit('close')">close</a>
-      <p>add a comment</p>
+      <!-- <a @click="$emit('close')">close</a> -->
       <form @submit.prevent>
-        <textarea v-model.trim="comment"></textarea>
-        <button @click="addComment()" :disabled="comment == ''" class="button">add comment</button>
+        <v-text-field placeholder="Write comment..." style="margin-left: 20px; margin-right: 20px" rounded filled v-model.trim="comment"></v-text-field>
+        <v-btn rounded color="#28cd3d" style="margin-bottom: 20px; margin-left: 20px; margin-top:-15px; color:white" @click="addComment()" :disabled="comment == ''" class="button">Post</v-btn>
       </form>
     </div>
   </div>
@@ -17,7 +16,7 @@ export default {
   props: ['post'],
   data() {
     return {
-      comment: ''
+      comment: '',
     }
   },
   methods: {
@@ -35,7 +34,7 @@ export default {
         comments: parseInt(this.post.comments) + 1
       })
       // close modal
-      this.$emit('close')
+      // this.$emit('close')
     }
   }
 }

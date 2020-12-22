@@ -71,7 +71,7 @@
                                   <v-layout row>
                                     <v-card-actions>
                                       <v-spacer></v-spacer>
-                                      <v-btn @click="onSignin()" class="ma-2" color="green" dark type="submit">Sign in</v-btn>
+                                      <v-btn  @click="onSignin()" :loading="loading" :disabled="loading" class="ma-2" color="green" dark type="submit">Sign in</v-btn>
                                       <v-btn class="ma-2" color="green" dark @click="socialLogin()" type="submit"><v-icon left>mdi-email</v-icon>Sign in with Google</v-btn>
                                     </v-card-actions>
                                   </v-layout>
@@ -356,7 +356,7 @@ import * as firebase from 'firebase'
       return {
         // name: '',
         email: '',
-
+        loading: false,
         password: '',
        icons: ["mdi-facebook", "mdi-twitter"],
 
@@ -378,7 +378,10 @@ import * as firebase from 'firebase'
     },
     methods: {
       onSignin () {  // function for sign in
+        this.loading = !this.loading
+        setTimeout(() => (this.loading = false), 3000); // end of loading
         this.$store.dispatch('onSignin', {email: this.email, password: this.password})
+
       },
       socialLogin(){     
         const provider = new firebase.auth.GoogleAuthProvider();

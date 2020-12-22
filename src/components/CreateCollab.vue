@@ -33,7 +33,7 @@
           
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-             <vue-google-autocomplete
+            <vue-google-autocomplete
              filled
              rounded
              dense 

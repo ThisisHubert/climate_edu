@@ -1,7 +1,7 @@
 <template>
   <div class="Forum">
     <ForumNav></ForumNav>
-    <v-text-field class="filter" rounded filled type="text" v-model="search" placeholder="Search Forum Title..."></v-text-field>
+    <v-text-field class="filter" rounded filled type="text" v-model="search" placeholder="Search Forum Title.."></v-text-field>
     <section>
       
       <div class="col1">
@@ -10,12 +10,12 @@
           
           <div class="create-post">
 
-            <form @submit.prevent style="position:fixed">
-
-          <h3 class="username">{{ userProfile.name }}</h3>
+          <form @submit.prevent style="position:fixed">
+          <v-card outlined class="form-card">
+          <h3 class="username">Create a Post</h3>
               <v-text-field
                 name="title"
-                label="Title..."
+                placeholder="Title..."
                 id="title"
                 v-model.trim="post.title"
                 filled
@@ -26,7 +26,7 @@
              
               <v-textarea
                 v-model.trim="post.content"
-                label="Write Something..."
+                placeholder="Write Something..."
                 multi-line 
                 filled
                 rounded 
@@ -34,11 +34,12 @@
 
               <button
                 @click="createPost()"
-                :disabled="post.content === ''"
+                :disabled="post.content && post.title === ''"
                 class="button"
               >
                 Post
               </button>
+            </v-card>
             </form>
           </div>
         </div>
@@ -62,7 +63,48 @@
                   ><i style="color:#28cd3d" class="fas fa-thumbs-up"></i> {{ post.likes }}</a
                 >
               </v-chip>
-              <v-chip><a @click="viewPost(post)">view full post</a></v-chip>
+              <v-dialog
+      v-model="dialog"
+      width="700"
+    >
+              <template v-slot:activator="{ on, attrs }">
+              <v-chip v-bind="attrs" v-on="on"><a @click="viewPost(post)">view full post</a></v-chip>
+              </template>
+              
+          <!-- <v-card> -->
+              <v-card v-if="showPostModal" class="p-modal">
+        <div class="p-container">
+          <a @click="dialog = false" class="close">close</a>
+          <div class="post">
+            <h5>{{ fullPost.userName }}</h5>
+            <span>{{ fullPost.createdOn | formatDate }}</span>
+            <h4>{{fullPost.title}}</h4>
+            <p>{{ fullPost.content }}</p>
+            <ul>
+              <li>
+                <a> {{ fullPost.comments }}</a>
+              </li>
+              <li>
+                <a>likes {{ fullPost.likes }}</a>
+              </li>
+            </ul>
+          </div>
+          <div v-show="postComments.length" class="comments">
+            <div
+              v-for="comment in postComments"
+              :key="comment.id"
+              class="comment"
+            >
+              <p>{{ comment.userName }}</p>
+              <span>{{ comment.createdOn | formatDate }}</span>
+              <p>{{ comment.content }}</p>
+            </div>
+          </div>
+        </div>
+              </v-card>
+
+          <!-- </v-card> -->
+              </v-dialog>
             </v-chip-group>
             </v-card-text>
             <transition name="fade">
@@ -81,13 +123,14 @@
     </section>
 
     <!-- full post modal -->
-    <transition name="fade">
+    <!-- <transition name="fade">
       <div v-if="showPostModal" class="p-modal">
         <div class="p-container">
           <a @click="closePostModal()" class="close">close</a>
           <div class="post">
             <h5>{{ fullPost.userName }}</h5>
             <span>{{ fullPost.createdOn | formatDate }}</span>
+            <h4>{{fullPost.title}}</h4>
             <p>{{ fullPost.content }}</p>
             <ul>
               <li>
@@ -111,7 +154,11 @@
           </div>
         </div>
       </div>
-    </transition>
+    </transition> -->
+    <!-- Full post modal -->
+
+     
+
   </div>
 </template>
 
@@ -130,8 +177,11 @@ export default {
       post: {
         title: "",
         content: "",
+
       },
       search: "",
+      dialog: false,
+      icons: ["mdi-facebook", "mdi-twitter"],
       showCommentModal: false,
       selectedPost: {},
       showPostModal: false,
@@ -189,6 +239,7 @@ export default {
   this.fullPost = post
   this.showPostModal = true
 },
+
 closePostModal() {
   this.postComments = []
   this.showPostModal = false
@@ -224,6 +275,11 @@ $medium: #657786;
 $dark: #34495e;
 $white: #fff;
 
+*{
+  font-family: Comfortaa, cursive;
+
+}
+
 // resets
 body {
   margin: 0;
@@ -256,8 +312,16 @@ p {
   margin: 0 0 0.5rem;
 }
 
+#foot {
+  background-color: #e4e4dd;
+}
+
 h1 {
   font-size: 2rem;
+}
+
+.form-card{
+  padding: 30px 30px 30px 30px;
 }
 
 h2 {
@@ -278,7 +342,6 @@ h5 {
 
 
 .discussion{
-
   position:fixed;
   width: 150.5px;
   height: 17px;
@@ -320,6 +383,10 @@ section {
   @media screen and (max-width: 800px) {
     display: block;
   }
+}
+
+.col2{
+  margin-top: 140px;
 }
 
 
@@ -393,6 +460,8 @@ section {
 .text-center {
   text-align: center;
 }
+
+
 
 .inline {
   margin: 0;
