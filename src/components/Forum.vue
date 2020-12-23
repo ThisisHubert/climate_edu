@@ -49,8 +49,13 @@
         <div v-if="posts.length">
           <v-card outlined v-for="post in filteredPosts" :key="post.id" class="post">
             <v-card-title>{{ post.title }}</v-card-title>
+            <!-- <v-card-title>{{ post.id }}</v-card-title> -->
+
             <v-card-subtitle>{{ post.createdOn | formatDate }} by {{ post.userName }}</v-card-subtitle>
             <v-card-text>{{ post.content | trimLength }}</v-card-text>
+            <!-- <v-card-text v-for="comment in viewPost(post)" :key="comment.id">
+            </v-card-text> -->
+            <a @click="viewPost(post)">View comment</a>
             <v-card-text>
             <v-chip-group>
               <v-chip>
@@ -63,48 +68,40 @@
                   ><i style="color:#28cd3d" class="fas fa-thumbs-up"></i> {{ post.likes }}</a
                 >
               </v-chip>
-              <v-dialog
-      v-model="dialog"
-      width="700"
-    >
-              <template v-slot:activator="{ on, attrs }">
-              <v-chip v-bind="attrs" v-on="on"><a @click="viewPost(post)">view full post</a></v-chip>
-              </template>
-              
-          <!-- <v-card> -->
-              <v-card v-if="showPostModal" class="p-modal">
-        <div class="p-container">
-          <a @click="dialog = false" class="close">close</a>
-          <div class="post">
-            <h5>{{ fullPost.userName }}</h5>
-            <span>{{ fullPost.createdOn | formatDate }}</span>
-            <h4>{{fullPost.title}}</h4>
-            <p>{{ fullPost.content }}</p>
-            <ul>
-              <li>
-                <a> {{ fullPost.comments }}</a>
-              </li>
-              <li>
-                <a>likes {{ fullPost.likes }}</a>
-              </li>
-            </ul>
-          </div>
-          <div v-show="postComments.length" class="comments">
+            <div v-show="postComments.length" class="comments">
+
             <div
               v-for="comment in postComments"
               :key="comment.id"
               class="comment"
             >
+            <div v-if="comment.postId == post.id">
               <p>{{ comment.userName }}</p>
+              <!-- <p>{{ comment.postId }}</p> -->
+
               <span>{{ comment.createdOn | formatDate }}</span>
               <p>{{ comment.content }}</p>
             </div>
-          </div>
-        </div>
-              </v-card>
+            </div>
+                    </div>
+
+              <!-- <v-dialog
+                v-model="dialog"
+                width="700"
+              > -->
+              <!-- <template v-slot:activator="{ on, attrs }"> -->
+              <!-- <v-chip @click="viewPost(post)">view full post</v-chip> -->
+              <!-- </template> -->
+              
+          <!-- <v-card> -->
+       
+          <!-- <a @click="dialog = false" class="close">close</a> -->
+          
+          
+        
 
           <!-- </v-card> -->
-              </v-dialog>
+              <!-- </v-dialog> -->
             </v-chip-group>
             </v-card-text>
             <transition name="fade">
@@ -184,11 +181,12 @@ export default {
       icons: ["mdi-facebook", "mdi-twitter"],
       showCommentModal: false,
       selectedPost: {},
-      showPostModal: false,
+      showPostModal: true,
       fullPost: {},
       postComments: []
     };
   },
+  
   computed: {
     ...mapState(["userProfile", "posts"]),
 
@@ -201,6 +199,7 @@ export default {
     
 
   },
+  
   created() {
     document.title = "Forum"; // to set title
   },
@@ -222,22 +221,26 @@ export default {
       } else {
         this.selectedPost = {};
       }
+      
+
+
     },
     likePost(id, likesCount) {
       this.$store.dispatch("likePost", { id, likesCount });
     },
 
     async viewPost(post) {
-  const docs = await commentsCollection.where('postId', '==', post.id).get()
+      const docs = await commentsCollection.where('postId', '==', post.id).get()
+      docs.forEach(doc => {
+        let comment = doc.data()
+        comment.id = doc.id
+        this.postComments.push(comment)
 
-  docs.forEach(doc => {
-    let comment = doc.data()
-    comment.id = doc.id
-    this.postComments.push(comment)
-  })
+    
+      })
 
-  this.fullPost = post
-  this.showPostModal = true
+      // this.fullPost = post
+      // this.showPostModal = true
 },
 
 closePostModal() {
@@ -255,10 +258,10 @@ closePostModal() {
       return moment(date).fromNow();
     },
     trimLength(val) {
-      if (val.length < 200) {
+      if (val.length < 1000000) {
         return val;
       }
-      return `${val.substring(0, 200)}...`;
+      return `${val.substring(0, 1000000)}...`;
     },
   },
 };
@@ -275,10 +278,7 @@ $medium: #657786;
 $dark: #34495e;
 $white: #fff;
 
-*{
-  font-family: Comfortaa, cursive;
 
-}
 
 // resets
 body {
@@ -293,7 +293,7 @@ html {
 }
 
 * {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Nunito", sans-serif;
   box-sizing: border-box;
   transition: 0.15s;
 
@@ -348,7 +348,7 @@ h5 {
   padding-left: 2px;
   margin: 1px 1px 20px 1px;
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-  font-family: "Open Sans", sans-serif;
+  font-family: "Nunito", sans-serif;
   font-size: 50px;
   padding-top: -10px;
   font-weight: bold;

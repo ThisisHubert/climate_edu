@@ -20,6 +20,7 @@
                         class="ma-2"
                         color="green"
                         outlined
+                        rounded
                         v-bind="attrs"
                         v-on="on"
                       ><v-img
@@ -33,8 +34,8 @@
                     <!-- login -->
 
                         <v-card>
-                          <v-card-title>
-                            <span class="headline" style="color:green;">Login</span>
+                          <v-card-title class="headline">
+                            Login
                           </v-card-title>
                           <v-card-text>
                             <v-container>
@@ -71,8 +72,8 @@
                                   <v-layout row>
                                     <v-card-actions>
                                       <v-spacer></v-spacer>
-                                      <v-btn  @click="onSignin()" :loading="loading" :disabled="loading" class="ma-2" color="green" dark type="submit">Sign in</v-btn>
-                                      <v-btn class="ma-2" color="green" dark @click="socialLogin()" type="submit"><v-icon left>mdi-email</v-icon>Sign in with Google</v-btn>
+                                      <v-btn rounded outlined  @click="onSignin()" :loading="loading" :disabled="loading" class="ma-2" color="green" dark type="submit">Sign in</v-btn>
+                                      <v-btn rounded outlined class="ma-2" color="green" dark @click="socialLogin()" type="submit"><v-icon left>mdi-email</v-icon>Sign in with Google</v-btn>
                                     </v-card-actions>
                                   </v-layout>
                                 </form>
@@ -82,8 +83,8 @@
                           </v-card-text>
                           <v-card-actions>
                             <v-spacer></v-spacer>
-                            <v-btn href="/signup" color="green darken-1" text dark>Sign up</v-btn>
-                            <v-btn color="green darken-1" text @click="dialog = false">Close</v-btn>
+                            <v-btn rounded href="/signup" color="green darken-1" text dark>Sign up</v-btn>
+                            <v-btn rounded color="green darken-1" text @click="dialog = false">Close</v-btn>
                           </v-card-actions>
                         </v-card>
                       <!-- login -->
@@ -479,6 +480,13 @@ h3, template, div, section{
 .font-weight-black{
     color: #28cd3d;
 
+}
+
+.headline{
+  font-family: Comfortaa;
+    color:green;
+  
+  
 }
 
 v-card-text.servicetext{
