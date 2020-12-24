@@ -4,12 +4,12 @@
     <ForumNav></ForumNav>
     
     <v-row>
-      <v-responsive
-            >
+      <!-- <v-responsive
+            > -->
       <div class="Donation">
         Donation
       </div>
-      </v-responsive>
+      <!-- </v-responsive> -->
 
       <v-dialog
         v-model="dialog"
@@ -1171,18 +1171,16 @@ export default {
 }
 
 .Donation {
-  width: 214.5px;
-  height: 17px;
-  padding-left: 250px;
-  margin: 50px 60px 190px 300px;
-  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  width: 582px;
+  height: 98px;
+  margin: 116px 87px 64px 140px;
   font-family: "Open Sans", sans-serif;
-  font-size: 80px;
-  padding-top: 60px;
-  text-align: center;
+  font-size: 70px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
+  line-height: 2;
+  letter-spacing: normal;
   text-align: left;
   color: #28cd3d;
 }
