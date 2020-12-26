@@ -23,8 +23,8 @@
       </v-btn>
        
       <v-btn class="ma-2"
-      outlined
-      color="green" @click="logOut()">
+      depressed
+      color="error" @click="logOut()">
         Log out
       </v-btn>
     </v-row>

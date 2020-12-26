@@ -55,35 +55,28 @@
             <v-card-text>{{ post.content | trimLength }}</v-card-text>
             <!-- <v-card-text v-for="comment in viewPost(post)" :key="comment.id">
             </v-card-text> -->
-            <a @click="viewPost(post)">View comment</a>
             <v-card-text>
             <v-chip-group>
               <v-chip>
                 <a @click="toggleCommentModal(post)"
+                ><i style="color:#28cd3d" class="fas fa-plus"></i><i style="color:#28cd3d; margin-left:4px" class="fas fa-comment"></i></a
+                >
+              </v-chip>
+              <v-chip>
+                <a @click="viewPost(post)"
                   ><i style="color:#28cd3d" class="fas fa-comment"></i> {{ post.comments }}</a
                 >
               </v-chip>
+              <!-- <v-chip>
+                <a @click="closeCommentModal()">Close Comment</a>
+              </v-chip> -->
               <v-chip>
                 <a @click="likePost(post.id, post.likes)"
                   ><i style="color:#28cd3d" class="fas fa-thumbs-up"></i> {{ post.likes }}</a
                 >
               </v-chip>
-            <div v-show="postComments.length" class="comments">
-
-            <div
-              v-for="comment in postComments"
-              :key="comment.id"
-              class="comment"
-            >
-            <div v-if="comment.postId == post.id">
-              <p>{{ comment.userName }}</p>
-              <!-- <p>{{ comment.postId }}</p> -->
-
-              <span>{{ comment.createdOn | formatDate }}</span>
-              <p>{{ comment.content }}</p>
-            </div>
-            </div>
-                    </div>
+              
+           
 
               <!-- <v-dialog
                 v-model="dialog"
@@ -104,6 +97,27 @@
               <!-- </v-dialog> -->
             </v-chip-group>
             </v-card-text>
+          <div v-show="postComments.length" class="comments">
+
+            <div
+              v-for="comment in postComments"
+              :key="comment.id"
+              class="comment"
+            >
+            <v-card>
+
+            <div v-if="comment.postId == post.id">
+              <p><b>{{ comment.userName }}</b> {{ comment.createdOn | formatDate }}</p>
+
+
+              <p>"{{ comment.content }}"</p>
+              
+            </div>
+            </v-card>
+
+            </div>
+
+          </div>
             <transition name="fade">
               <CommentModal
                 v-if="showCommentModal"
@@ -118,41 +132,6 @@
         </div>
       </div>
     </section>
-
-    <!-- full post modal -->
-    <!-- <transition name="fade">
-      <div v-if="showPostModal" class="p-modal">
-        <div class="p-container">
-          <a @click="closePostModal()" class="close">close</a>
-          <div class="post">
-            <h5>{{ fullPost.userName }}</h5>
-            <span>{{ fullPost.createdOn | formatDate }}</span>
-            <h4>{{fullPost.title}}</h4>
-            <p>{{ fullPost.content }}</p>
-            <ul>
-              <li>
-                <a> {{ fullPost.comments }}</a>
-              </li>
-              <li>
-                <a>likes {{ fullPost.likes }}</a>
-              </li>
-            </ul>
-          </div>
-          <div v-show="postComments.length" class="comments">
-            <div
-              v-for="comment in postComments"
-              :key="comment.id"
-              class="comment"
-            >
-              <p>{{ comment.userName }}</p>
-              <span>{{ comment.createdOn | formatDate }}</span>
-              <p>{{ comment.content }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </transition> -->
-    <!-- Full post modal -->
 
      
 
@@ -181,7 +160,7 @@ export default {
       icons: ["mdi-facebook", "mdi-twitter"],
       showCommentModal: false,
       selectedPost: {},
-      showPostModal: true,
+      // showPostModal: true,
       fullPost: {},
       postComments: []
     };
@@ -195,7 +174,9 @@ export default {
       return this.posts.filter((posts)=>{
         return posts.title.match(this.search);
       })
-    }
+    },
+    
+  
     
 
   },
@@ -239,13 +220,14 @@ export default {
     
       })
 
-      // this.fullPost = post
-      // this.showPostModal = true
+
+
+
+      
 },
 
-closePostModal() {
+closeCommentModal() {
   this.postComments = []
-  this.showPostModal = false
 }
   },
 
@@ -389,6 +371,9 @@ section {
   margin-top: 140px;
 }
 
+.comments{
+  margin-left: 23px;
+}
 
 .col1,
 .col2 {

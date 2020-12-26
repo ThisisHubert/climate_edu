@@ -24,6 +24,9 @@ firebase.postsCollection.orderBy('createdOn', 'desc').onSnapshot(snapshot => {
 })
 
 
+
+
+
 export const store = new Vuex.Store({
   state: {
     userProfile: {},  // for userprofile 

@@ -228,7 +228,7 @@
           >
           <h3><b>Kittiphot Piriyathananukul</b></h3>
           <div style="  color: #28cd3d;">Manager</div>
-          I wish to make the world a better place with everyone, for us and for future generations.
+          A 3rd year INIAD Student Business Major. I work as the project manager responsible for project planning, distribution of tasks, work scheduling, and decision making. I wish to make the world a better place with everyone, for us and for future generations.
           </v-responsive>
 
          
