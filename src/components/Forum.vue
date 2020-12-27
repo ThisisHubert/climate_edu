@@ -39,10 +39,32 @@
               >
                 Post
               </button>
+              
             </v-card>
             </form>
           </div>
         </div>
+        <!-- snackbar -->
+              <v-snackbar
+              color="green"
+              rounded="pill"
+      v-model="snackbar"
+      :timeout="timeout"
+    >
+      {{ text }}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="blue"
+          text
+          v-bind="attrs"
+          @click="snackbar = false"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
+              <!-- snackbar -->
       </div>
 
       <div class="col2">
@@ -78,17 +100,7 @@
               
            
 
-              <!-- <v-dialog
-                v-model="dialog"
-                width="700"
-              > -->
-              <!-- <template v-slot:activator="{ on, attrs }"> -->
-              <!-- <v-chip @click="viewPost(post)">view full post</v-chip> -->
-              <!-- </template> -->
-              
-          <!-- <v-card> -->
-       
-          <!-- <a @click="dialog = false" class="close">close</a> -->
+            
           
           
         
@@ -104,7 +116,9 @@
               :key="comment.id"
               class="comment"
             >
-            <v-card>
+            <v-card
+            
+            >
 
             <div v-if="comment.postId == post.id">
               <p><b>{{ comment.userName }}</b> {{ comment.createdOn | formatDate }}</p>
@@ -150,6 +164,9 @@ export default {
   },
   data() {
     return {
+      snackbar: false,
+      text: 'New post added in forum',
+      timeout:2000,
       post: {
         title: "",
         content: "",
@@ -190,6 +207,7 @@ export default {
       this.$store.dispatch("logout");
     },
     createPost() {
+      this.snackbar = true;
       this.$store.dispatch("createPost", { content: this.post.content, title: this.post.title });
       this.post.content = "";
       this.post.title = "";      

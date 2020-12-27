@@ -54,6 +54,9 @@ import { mapState } from 'vuex'
         return this.$store.getters.loading
       }
     },
+    created() {
+    document.title = "Meetup"; // to set title
+  },
     methods: {
       onLoadMeetup (id) {
         this.$router.push('/collabs/' + id);
