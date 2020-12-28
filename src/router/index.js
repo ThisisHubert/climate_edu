@@ -11,6 +11,11 @@ const router = new Router({
     base: process.env.BASE_URL,
     routes : [
         {
+            path: '/',
+            name: 'loader',
+            component: ()=> import('../components/PageLoader'),
+        },
+        {
             path: '/home',
             name: 'home',
             component: ()=> import('../components/HelloWorld'),

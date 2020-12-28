@@ -85,7 +85,7 @@
                 >
               </v-chip>
               <v-chip>
-                <a @click="viewPost(post)"
+                <a @click.once="viewPost(post)"
                   ><i style="color:#28cd3d" class="fas fa-comment"></i> {{ post.comments }}</a
                 >
               </v-chip>
@@ -112,12 +112,14 @@
           <div v-show="postComments.length" class="comments">
 
             <div
-              v-for="comment in postComments"
+              v-for="comment in sortedComments"
               :key="comment.id"
-              class="comment"
+              class="comments"
             >
             <v-card
-            
+            class="comment-card"
+            color="grey lighten-4"
+            elevation="0"
             >
 
             <div v-if="comment.postId == post.id">
@@ -192,6 +194,14 @@ export default {
         return posts.title.match(this.search);
       })
     },
+
+  sortedComments: function(){
+    return this.postComments.slice().sort((a,b) => a.createdOn -  b.createdOn)
+    
+  }
+    
+
+    // Add filter to order the comment
     
   
     
@@ -234,6 +244,7 @@ export default {
         let comment = doc.data()
         comment.id = doc.id
         this.postComments.push(comment)
+
 
     
       })
@@ -324,6 +335,12 @@ h1 {
   padding: 30px 30px 30px 30px;
 }
 
+.comment-card{
+  padding-left: 10px;
+  margin: 1px 15px 5px 15px;
+
+}
+
 h2 {
   font-size: 1.8rem;
 }
@@ -389,9 +406,7 @@ section {
   margin-top: 140px;
 }
 
-.comments{
-  margin-left: 23px;
-}
+
 
 .col1,
 .col2 {

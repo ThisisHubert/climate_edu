@@ -10,7 +10,7 @@
                 <div class="sidebar-item sidebar-brand">
                     <v-img
                         contain
-                        max-height="200%"
+                        max-height="150%"
                         src="../assets/logo (1).png"
                     ></v-img>
                       

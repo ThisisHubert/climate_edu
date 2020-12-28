@@ -5,6 +5,8 @@
         color="white"
         height="90"
       >
+        <router-link to="/home">
+
         <v-avatar
           class="mr-3"
           color="grey lighten-5"
@@ -16,6 +18,8 @@
             src="../assets/logo (1).png"
           ></v-img>
         </v-avatar>
+        </router-link>
+
         <v-toolbar-title class="font-weight-black">
           ClimateTalk
         </v-toolbar-title>

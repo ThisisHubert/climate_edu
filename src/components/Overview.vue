@@ -55,6 +55,9 @@ export default {
   margin-left: 100px;
 }
 
+.col-md-6{
+  margin-top: -20px;
+}
 
 .search-box .search-bar {
   display: block;
