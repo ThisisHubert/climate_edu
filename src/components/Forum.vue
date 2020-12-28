@@ -64,19 +64,17 @@
         </v-btn>
       </template>
     </v-snackbar>
-              <!-- snackbar -->
+    <!-- snackbar -->
       </div>
 
       <div class="col2">
         <div v-if="posts.length">
           <v-card outlined v-for="post in filteredPosts" :key="post.id" class="post">
             <v-card-title>{{ post.title }}</v-card-title>
-            <!-- <v-card-title>{{ post.id }}</v-card-title> -->
 
             <v-card-subtitle>{{ post.createdOn | formatDate }} by {{ post.userName }}</v-card-subtitle>
             <v-card-text>{{ post.content | trimLength }}</v-card-text>
-            <!-- <v-card-text v-for="comment in viewPost(post)" :key="comment.id">
-            </v-card-text> -->
+            
             <v-card-text>
             <v-chip-group>
               <v-chip>
@@ -89,21 +87,12 @@
                   ><i style="color:#28cd3d" class="fas fa-comment"></i> {{ post.comments }}</a
                 >
               </v-chip>
-              <!-- <v-chip>
-                <a @click="closeCommentModal()">Close Comment</a>
-              </v-chip> -->
               <v-chip>
                 <a @click="likePost(post.id, post.likes)"
                   ><i style="color:#28cd3d" class="fas fa-thumbs-up"></i> {{ post.likes }}</a
                 >
               </v-chip>
               
-           
-
-            
-          
-          
-        
 
           <!-- </v-card> -->
               <!-- </v-dialog> -->
@@ -195,16 +184,10 @@ export default {
       })
     },
 
-  sortedComments: function(){
+  sortedComments: function(){  // sort the comment based on date
     return this.postComments.slice().sort((a,b) => a.createdOn -  b.createdOn)
     
   }
-    
-
-    // Add filter to order the comment
-    
-  
-    
 
   },
   
@@ -230,8 +213,6 @@ export default {
       } else {
         this.selectedPost = {};
       }
-      
-
 
     },
     likePost(id, likesCount) {

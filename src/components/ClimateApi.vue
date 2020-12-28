@@ -500,9 +500,10 @@ hr{
 
 
 .search-box {
+  justify-content: center;
   width: 80%;
   margin-bottom: 30px;
-  margin-left: 70px;
+  margin-left: 110px;
 }
 body {
   font-family: 'montserrat', sans-serif;
@@ -603,10 +604,10 @@ body {
 .card {
     margin: 0 auto;
     margin-top: 1%;
-    margin-left: 20%;
+    margin-left: 10%;
     margin-bottom: 10%;
     padding: 5px 30px 20px;
-    width: 1000px;
+    width: 950px;
     height: 1800px;
     border-radius: 3px;
     background-color: #fff;
