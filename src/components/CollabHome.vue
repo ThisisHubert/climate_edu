@@ -1,16 +1,17 @@
 <template>
+<div>
   <v-container>
       <ForumNav></ForumNav>
     <v-layout row wrap>
       <v-flex xs12 sm6 class="text-xs-center text-sm-right">
-        <v-btn large router to="/collabs" class="info">Explore Meetups</v-btn>
+        <v-btn rounded color="#28cd3d" large router to="/collabs" class="collab1">Explore Meetups</v-btn>
       </v-flex>
       <v-flex xs12 sm6 class="text-xs-center text-sm-left">
-        <v-btn large router to="/collab/new" class="info">Organize Meetup</v-btn>
+        <v-btn rounded color="#28cd3d" large router to="/collab/new" class="collab2">Organize Meetup</v-btn>
       </v-flex>
     </v-layout>
      <v-layout>
-      <v-flex xs12 class="text-xs-center">
+      <v-flex xs12 class="text-center">
         <v-progress-circular
           indeterminate
           color="green"
@@ -20,7 +21,7 @@
     </v-layout>
     <v-layout row wrap class="mt-2" v-if="!loading">
       <v-flex xs12>
-        <v-carousel style="cursor: pointer;">
+        <v-carousel style="cursor: pointer; margin-bottom: 120px">
           <v-carousel-item
             v-for="meetup in meetups"
             :src="meetup.imageUrl"
@@ -33,18 +34,41 @@
         </v-carousel>
       </v-flex>
     </v-layout>
-    <v-layout row wrap  class="mt-2">
-      <v-flex xs12 class="text-xs-center">
-       <p>Join our awesome meetups!</p>
-      </v-flex>
-    </v-layout>
+    
   </v-container>
+   <v-footer id="foot" padless>
+      <v-row id="foot" justify="center" no-gutters>
+        <v-btn
+          v-for="icon in icons"
+          :key="icon"
+          color="black"
+          text
+          rounded
+          class="my-2"
+        >
+          <v-icon size="24px">
+            {{ icon }}
+          </v-icon>
+        </v-btn>
+
+        <v-col class="py-4 text-center black--text" cols="12">
+          <strong class="font-weight-black">
+            ©{{ new Date().getFullYear() }} ClimateTalk</strong
+          >
+        </v-col>
+      </v-row>
+    </v-footer>
+</div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 
   export default {
+    data: () => ({
+    icons: ["mdi-facebook", "mdi-twitter"],
+
+    }),
    computed: {
      ...mapState(['userProfile']),
       meetups () {
@@ -82,6 +106,26 @@ import { mapState } from 'vuex'
   transition: 0.15s;
 
   
+}
+
+.collab1{
+  color: white;
+  font-size: 20px;
+  margin: 30px 121px 57.4px 0px;
+  text-decoration:none;
+}
+
+.collab2{
+  color: white;
+  font-size: 20px;
+  margin: 30px 0px 57.4px 121px;
+  text-decoration:none;
+
+}
+
+#foot {
+  background-color: #e4e4dd;
+  margin-bottom: 0px;
 }
 
 .v-progress-circular {

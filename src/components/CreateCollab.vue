@@ -13,6 +13,7 @@
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
               <v-text-field
+              color="#28cd3d"
                 name="title"
                 label="Title"
                 id="title"
@@ -27,6 +28,23 @@
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
           <div style="color:red" v-show="error">{{error}}</div>
+            </v-flex>
+          </v-layout>
+
+          <v-layout row>
+            <v-flex xs12 sm6 offset-sm3>
+              <v-text-field
+              color="#28cd3d"
+                class="email"
+                name="email"
+                id="email"
+                filled
+                rounded
+                dense
+                label="Email"
+                v-model="email"
+                required
+              ></v-text-field>
             </v-flex>
           </v-layout>
           
@@ -66,6 +84,7 @@
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
               <v-text-field
+              color="#28cd3d"
                 class="location"
                 name="location"
                 id="location"
@@ -90,7 +109,7 @@
                 id="image-url"
                 v-model="imageUrl"
                 required></v-text-field> -->
-              <v-btn raised class="primary" fab x-large dark @click="onPickFile"
+              <v-btn raised color="#28cd3d" fab x-large dark @click="onPickFile"
                 ><i class="fas fa-images fa-2x"></i
               ></v-btn>
               <input
@@ -104,12 +123,14 @@
           </v-layout>
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-              <img :src="imageUrl" height="150" />
+              <img class="image" :src="imageUrl" height="150" />
             </v-flex>
           </v-layout>
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
               <v-textarea
+              color="#28cd3d"
+                class="description"
                 name="description"
                 label="Description"
                 id="description"
@@ -129,17 +150,17 @@
           </v-layout>
           <v-layout row class="mb-2">
             <v-flex xs12 sm6 offset-sm3>
-              <v-date-picker v-model="picker"></v-date-picker>
+              <v-date-picker color="#28cd3d" v-model="picker"></v-date-picker>
             </v-flex>
           </v-layout>
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-              <v-time-picker v-model="time" format="24hr"></v-time-picker>
+              <v-time-picker color="#28cd3d" v-model="time" format="24hr"></v-time-picker>
             </v-flex>
           </v-layout>
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-              <v-btn class="primary" :disabled="!formIsValid" type="submit"
+              <v-btn style="color:white" color="#28cd3d" :disabled="!formIsValid" type="submit"
                 >Create Meetup</v-btn
               >
               {{ submittableDateTime }}
@@ -160,6 +181,7 @@ export default {
   data() {
     return {
       loading: false,
+      email: "",
       title: "",
       error: "",
       location: "",
@@ -243,10 +265,12 @@ export default {
       }
       const meetupData = {
         title: this.title,
+        email: this.email,
         location: this.location,
         image: this.image,
         description: this.description,
         date: this.submittableDateTime,
+        userName: this.$store.state.userProfile.name
       };
       this.$store.dispatch("createMeetup", meetupData);
       this.$router.push("/collabs");
@@ -270,3 +294,21 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+*{
+  font-family: 'Nunito', sans-serif;
+
+}
+
+
+
+.description{
+  margin-top:40px;
+}
+
+.image{
+  margin-top:20px;
+}
+
+</style>

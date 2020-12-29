@@ -11,7 +11,7 @@
               Climate Change
             </p>
             <hr />   
-            <h4>Here are your recent activities!</h4>
+            <h4>What's happening?</h4>
           </div>
           <div class="col-md-6">
             <img
@@ -25,6 +25,29 @@
         <!-- heading -->
         
       </div>
+      <div class="recent-post">Recently Posted Meetup</div>
+      <v-flex xs12 sm10 md5>
+        <v-card outlined elevation="0">
+          <v-container>
+            <v-layout row>
+              <v-flex xs7 sm8 md9>
+                <v-card-title primary-title>
+                  <div>
+                    <h5>{{ meetups[meetups.length-1].title }}</h5>
+                    <div>{{ meetups[meetups.length-1].date | date }}</div>
+                  </div>
+                </v-card-title>
+                <v-card-actions class="view-button">
+                  <v-btn class="white--text" color="#28cd3d" rounded  flat :to="'/collabs/' + meetups[meetups.length-1].id">
+                  <i class="fas fa-eye"></i>
+                    View Meetup
+                  </v-btn>
+                </v-card-actions>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-card>
+      </v-flex>
     </div>
   </div>
 </template>
@@ -36,12 +59,15 @@ export default {
 
   data: () => {
     return {
-      
+      date: new Date()
     };
   },
   
 
-  methods: {
+  computed: {
+    meetups(){
+      return this.$store.getters.loadedMeetups
+    },
   }
   
 };
@@ -55,6 +81,9 @@ export default {
   margin-left: 100px;
 }
 
+.recent-post{
+  font-size: 20px;
+}
 .col-md-6{
   margin-top: -20px;
 }

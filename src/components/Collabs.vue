@@ -6,23 +6,23 @@
           >
     <ForumNav></ForumNav>
     
-    <v-text-field rounded filled type="text" v-model="search" placeholder="search meetups"></v-text-field>
-    <v-layout row wrap v-for="meetup in filteredMeetUps" :key="meetup.id" class="mb-2">
+    <v-text-field rounded filled type="text" v-model="search" placeholder="Search Meetups..."></v-text-field>
+    <v-layout row wrap v-for="meetup in filteredMeetUps.reverse()" :key="meetup.id" class="mb-2">
       <v-flex xs12 sm10 md8 offset-sm1 offset-md2>
-        <v-card class="info">
-          <v-container fluid>
+        <v-card elevation="0" outlined>
+          <v-container>
             <v-layout row>
               <v-flex xs7 sm8 md9>
                 <v-card-title primary-title>
                   <div>
-                    <h5 class="white--text mb-0">{{ meetup.title }}</h5>
+                    <h5>{{ meetup.title }}</h5>
                     <div>{{ meetup.date | date }}</div>
                   </div>
                 </v-card-title>
                 <v-card-actions class="view-button">
-                  <v-btn  flat :to="'/collabs/' + meetup.id">
+                  <v-btn class="white--text" color="#28cd3d" rounded flat :to="'/collabs/' + meetup.id">
                   <i class="fas fa-eye"></i>
-                    View Meetup
+                    <b>View Meetup</b>
                   </v-btn>
                 </v-card-actions>
               </v-flex>
@@ -67,6 +67,13 @@
 </script>
 
 <style scoped>
+@import url('https://use.fontawesome.com/releases/v5.7.2/css/all.css');
+
+*{
+  font-family: 'Nunito', sans-serif;
+
+}
+
 
 .meetuppic{
   padding-left: 60px;

@@ -62,7 +62,7 @@ export const store = new Vuex.Store({
     }
   },
   actions: {
-    loadMeetups({commit}){
+    loadMeetups({commit}){ // actions to fetch from the database
       commit('setLoading', true)
       fb.database().ref('meetups').once('value')
       .then((data) => {
@@ -75,6 +75,8 @@ export const store = new Vuex.Store({
             description: obj[key].description,
             imageUrl: obj[key].imageUrl,
             date: obj[key].date,
+            email: obj[key].email,
+            userName: obj[key].userName,
             location: obj[key].location,
             creatorId: obj[key].creatorId    
           })
@@ -89,12 +91,15 @@ export const store = new Vuex.Store({
         }
       )
     },
-    createMeetup ({commit}, payload) {
+    createMeetup ({commit, state}, payload) {
       const meetup = {
         title: payload.title,
+        email: payload.email,
         location: payload.location,
         description: payload.description,
         date: payload.date.toISOString(), 
+        userName: state.userProfile.name
+
         // creatorId:
       }
       // Reach out to firebase and store it
@@ -110,11 +115,9 @@ export const store = new Vuex.Store({
         const ext = filename.slice(filename.lastIndexOf('.'))
         return fb.storage().ref('meetups/' + key + '.' + ext).put(payload.image)
       })
-      .then(fileData => {
-        return fileData.ref.getDownloadURL()
-          .then(imageUrl => {
-            return fb.database().ref('meetups').child(key).update({ imageUrl: imageUrl })
-   })
+      .then(async fileData => {
+        const imageUrl = await fileData.ref.getDownloadURL();
+        return await fb.database().ref('meetups').child(key).update({ imageUrl: imageUrl });
       })
       .then(() => {
         commit('createMeetup', {

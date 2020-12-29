@@ -6,16 +6,18 @@
         <v-card>
           <v-card-title>
             <h6 class="primary--text">{{ meetup.title }}</h6>
-            <app-edit-meetup-details-dialog :meetup="meetup"></app-edit-meetup-details-dialog>
+            <!-- <app-edit-meetup-details-dialog :meetup="meetup"></app-edit-meetup-details-dialog> -->
           </v-card-title>
           <v-img
             :src="meetup.imageUrl"
             height="400px"
           ></v-img>      
           <v-card-text>
+            <div>Host: {{meetup.userName}}</div>
+            <div>Email: {{meetup.email}}</div>
             <div class="info--text">{{ meetup.date | date }} - {{ meetup.location }}</div>
            
-            <div>{{ meetup.description }}</div>
+            <div>Description: {{ meetup.description }}</div>
 
           </v-card-text>
           <v-card-actions>
@@ -42,3 +44,8 @@ import ForumNav from './ForumNav.vue'
     }
   }
 </script>
+
+
+<style scoped>
+
+</style>

@@ -68,6 +68,7 @@ export default {
   color:#28cd3d;
   font-weight: bold;
   margin-top: 9px;
+  text-decoration: none;
 
 
 }
