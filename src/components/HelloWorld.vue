@@ -83,7 +83,7 @@
                           </v-card-text>
                           <v-card-actions>
                             <v-spacer></v-spacer>
-                            <v-btn rounded href="/signup" color="green darken-1" text dark>Sign up</v-btn>
+                            <v-btn class="signup" rounded href="/signup" color="green darken-1" text dark>Sign up</v-btn>
                             <v-btn rounded color="green darken-1" text @click="dialog = false">Close</v-btn>
                           </v-card-actions>
                         </v-card>
@@ -285,7 +285,7 @@
           >
           <h3><b>Ryosuke Hayashi</b></h3>
           <div style="  color: #28cd3d;">Designer</div>
-          ここでの体験を通して、皆さんの気候変動に対する意識を高めてみてください。
+          このウェブサイトでの体験を通して、皆さんの気候変動に対する意識を高めてみてください。それぞれの小さな一歩が、いずれ大きな一歩になるのです。          
           </v-responsive>
 
          
@@ -299,43 +299,11 @@
         <div class="py-12"></div>
       </section>
 
-      <v-footer style="height: 150px" id="foot" padless>
-      <v-row id="foot" justify="center" no-gutters>
-        <v-btn
-         text 
-         rounded
-         class="my-2"
-        >
-          <v-icon size="24px">
-            mdi-facebook
-          </v-icon>
-        </v-btn>
-         <v-btn
-         text 
-         rounded
-         class="my-2"
-        >
-          <v-icon size="24px">
-            mdi-twitter
-          </v-icon>
-        </v-btn>
-
-        <v-col class="py-4 text-center black--text" cols="12">
-          <strong style="font-size:20px" class="font-weight-black">
-            ©{{ new Date().getFullYear() }} ClimateTalk</strong
-          >
-        </v-col>
-      </v-row>
-    </v-footer>
-
       
-      
-
-     
+    <Footer></Footer>
       
 </section>
 
-    
 </template>
 
 
@@ -470,6 +438,10 @@ import * as firebase from 'firebase'
   letter-spacing: normal;
   text-align: left;
   color: #000000;
+}
+
+.signup{
+  text-decoration: none;
 }
 
 h3, template, div, section{

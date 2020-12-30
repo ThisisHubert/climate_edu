@@ -16,7 +16,7 @@
         Forum
       </v-btn>
       <v-btn text href="/collabhome"  class="font-weight-child">   
-        Meetups
+        Meetup
       </v-btn>
        <v-btn text href="/donation"  class="font-weight-child">
         Donation
@@ -25,25 +25,17 @@
       <v-btn class="ma-2"
       depressed
       color="error" @click="logOut()">
-        Log out
+       <b> Log out</b>
       </v-btn>
     </v-row>
   </v-app-bar>
 </template>
 
 <script>
-import firebase from "firebase";
 export default {
   name: "ForumNav",
   components: {},
-  created() {
-    this.user = firebase.auth().currentUser;
-    if (this.user != null) {
-      this.name = this.user.name;
-      this.email = this.user.email;
-      this.photo = this.user.photoURL;
-    }
-  },
+  
   methods: {
      logOut(){
             this.$store.dispatch('logout')           

@@ -5,7 +5,7 @@
     <section>
       
       <div class="col1">
-        <div class="discussion">Discussion</div>
+        <div class="discussion">Forum</div>
         <div class="profile">
           
           <div class="create-post">
@@ -55,7 +55,7 @@
 
       <template v-slot:action="{ attrs }">
         <v-btn
-          color="blue"
+          color="white"
           text
           v-bind="attrs"
           @click="snackbar = false"

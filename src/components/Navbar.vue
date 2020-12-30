@@ -32,7 +32,7 @@
         Our Services
       </v-btn>
       <v-btn text href="#about-me" class="font-weight-child">
-        About me       
+        About us       
       </v-btn>
     </v-row>      
   </v-app-bar> 
@@ -62,6 +62,7 @@ export default {
   color:#28cd3d;
   font-weight: bold;
   padding-top: 18px;
+  text-decoration: none;
 
 
 }

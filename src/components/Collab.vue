@@ -13,7 +13,7 @@
             height="400px"
           ></v-img>      
           <v-card-text>
-            <div>Host: {{meetup.userName}}</div>
+            <div>Created By {{meetup.userName}}</div>
             <div>Email: {{meetup.email}}</div>
             <div class="info--text">{{ meetup.date | date }} - {{ meetup.location }}</div>
            

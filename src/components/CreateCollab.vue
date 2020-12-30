@@ -1,4 +1,5 @@
 <template>
+  <div>
   <v-container>
     <title>Create Meetup</title>
     <ForumNav></ForumNav>
@@ -68,12 +69,12 @@
 
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-              <v-btn rounded color="primary" dark outlined>
+              <v-btn rounded color="green" dark outlined>
                 Go
               </v-btn>
 
               <v-btn @click="locatorButtonPressed"  :loading="loading"
-                :disabled="loading" class="ma-2" outlined small fab color="indigo">
+                :disabled="loading" class="ma-2" outlined small fab color="green">
                 <v-icon>mdi-crosshairs-gps</v-icon>
               </v-btn>
 
@@ -150,12 +151,12 @@
           </v-layout>
           <v-layout row class="mb-2">
             <v-flex xs12 sm6 offset-sm3>
-              <v-date-picker color="#28cd3d" v-model="picker"></v-date-picker>
+              <v-date-picker width="500px" color="#28cd3d" v-model="picker"></v-date-picker>
             </v-flex>
           </v-layout>
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-              <v-time-picker color="#28cd3d" v-model="time" format="24hr"></v-time-picker>
+              <v-time-picker class="timepicker" width="500px" color="#28cd3d" v-model="time" format="24hr"></v-time-picker>
             </v-flex>
           </v-layout>
           <v-layout row>
@@ -170,6 +171,8 @@
       </v-flex>
     </v-layout>
   </v-container>
+    <Footer></Footer>
+  </div>
 </template>
 
 <script>
@@ -301,7 +304,9 @@ export default {
 
 }
 
-
+.timepicker{
+  margin-bottom: 50px;
+}
 
 .description{
   margin-top:40px;
