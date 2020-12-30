@@ -25,8 +25,11 @@
         <!-- heading -->
         
       </div>
+        <div class="row h-100 justify-content-center align-items-center">
+
+      <div class="postedmeetup col-md-10">
       <div class="recent-post">Recently Posted Meetup</div>
-      <v-flex xs12 sm10 md5>
+      <v-flex xs12 sm10 md10>
         <v-card outlined elevation="0">
           <v-container>
             <v-layout row>
@@ -34,12 +37,13 @@
                 <v-card-title primary-title>
                   <div>
                     <h5>{{ meetups[meetups.length-1].title }}</h5>
-                    <div>{{ meetups[meetups.length-1].date | date }}</div>
                   </div>
                 </v-card-title>
+                <v-card-text>
+                    <div>{{ meetups[meetups.length-1].date | date }}</div>
+                </v-card-text>
                 <v-card-actions class="view-button">
-                  <v-btn class="white--text" color="#28cd3d" rounded  flat :to="'/collabs/' + meetups[meetups.length-1].id">
-                  <i class="fas fa-eye"></i>
+                  <v-btn class="buttons" outlined color="#28cd3d" rounded  flat :to="'/collabs/' + meetups[meetups.length-1].id">
                     View Meetup
                   </v-btn>
                 </v-card-actions>
@@ -48,11 +52,42 @@
           </v-container>
         </v-card>
       </v-flex>
+      </div>
+
+      <div class="postedmeetup col-md-10">
+      <div class="recent-post">Recently Posted Forum</div>
+      <v-flex xs12 sm10 md10>
+        <v-card outlined elevation="0">
+          <v-container>
+            <v-layout row>
+              <v-flex xs7 sm8 md9>
+                <v-card-title primary-title>
+                  <div>
+                    <h5>{{ posts[0].title }}</h5>
+                  </div>
+                </v-card-title>
+                <v-card-text>
+                    <div>{{ posts[0].content }}</div>
+                </v-card-text>
+                <v-card-actions class="view-button">
+                  <v-btn class="buttons" outlined color="#28cd3d" rounded  flat :to="'/forum'">
+                    View Forum
+                  </v-btn>
+                </v-card-actions>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-card>
+      </v-flex>
+      </div>
+    </div>
+
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 // import firebase from "firebase";
 export default {
   name: "Overview",
@@ -65,6 +100,7 @@ export default {
   
 
   computed: {
+    ...mapState(["userProfile","posts"]),
     meetups(){
       return this.$store.getters.loadedMeetups
     },
@@ -81,11 +117,26 @@ export default {
   margin-left: 100px;
 }
 
+.buttons{
+  text-decoration: none;
+}
+
+.postedmeetup{
+  margin-top:60px;
+  margin-bottom: 20px;
+}
+
+
 .recent-post{
   font-size: 20px;
+  font-weight: bold;
+  color: #28cd3d;
 }
 .col-md-6{
   margin-top: -20px;
+}
+h5{
+  font-weight: bold;
 }
 
 .search-box .search-bar {

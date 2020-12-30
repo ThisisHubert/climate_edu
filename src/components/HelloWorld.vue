@@ -285,7 +285,7 @@
           >
           <h3><b>Ryosuke Hayashi</b></h3>
           <div style="  color: #28cd3d;">Designer</div>
-          このウェブサイトでの体験を通して、皆さんの気候変動に対する意識を高めてみてください。それぞれの小さな一歩が、いずれ大きな一歩になるのです。          
+          A 3rd year INIAD Student Design Major. I work as the designer of this whole project and initial idea planner, Japanese translation, and front-end design. We believe the world will change by using this website service.          
           </v-responsive>
 
          

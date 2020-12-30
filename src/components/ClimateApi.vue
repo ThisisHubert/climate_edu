@@ -282,16 +282,13 @@ export default {
       fetchSearchNews() {
         // if(this.searchword !== '')
         // {
-          this.apiUrl = 'https://newsapi.org/v2/everything?q=' + '気候変動' +
+          this.apiUrl = 'https://newsapi.org/v2/everything?q=' + 'climate change' +
                         '&pageSize=' + this.maxPerPage +
                         '&apiKey=' + this.apiKey;
           this.isBusy = true;
           this.resetData();
           this.fetchData();
-        // }
-        // else {
-        //   this.fetchTopNews();
-        // }
+        
       },
       fetchTopNews() {
         this.apiUrl = 'https://newsapi.org/v2/top-headlines?country=' + this.country +

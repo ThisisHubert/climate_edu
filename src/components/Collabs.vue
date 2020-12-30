@@ -81,6 +81,10 @@
   border-radius: 5%;
 }
 
+.white--text{
+  text-decoration: none;
+}
+
 .view-button{
   padding-left: 20px;
 }
