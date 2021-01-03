@@ -1,20 +1,11 @@
 <template>
   <v-container>
     <ForumNav></ForumNav>
-     <v-layout row wrap v-if="loading">
-      <v-flex xs12 class="text-xs-center">
-        <v-progress-circular
-          indeterminate
-          class="primary--text"
-          :width="7"
-          :size="70"></v-progress-circular>
-      </v-flex>
-    </v-layout>
-    <v-layout row wrap v-else>
+    <v-layout row wrap>
       <v-flex xs12>
         <v-card>
           <v-card-title>
-            <h6 class="primary--text">{{ meetup.title }}</h6>
+            <h6><b>{{ meetup.title }}</b></h6>
             <template v-if="userIsCreator">
               <v-spacer></v-spacer>
             <app-edit-meetup-details-dialog :meetup="meetup"></app-edit-meetup-details-dialog>
@@ -28,11 +19,18 @@
             <v-chip class="chippast" color="red" v-if="meetup.date < currentDate">
                   Past Event
             </v-chip>
-            <div>Created By {{meetup.userName}}</div>
-            <div>Email: {{meetup.email}}</div>
-            <div class="info--text">{{ meetup.date | date }} - {{ meetup.location }}</div>
-
-            <div>Description: {{ meetup.description }}</div>
+            <div>Created By <b>{{meetup.userName}}</b></div>
+            <div><b>Email:</b> {{meetup.email}}</div>
+            <div> <b>Time/Place:</b> {{ meetup.date | date }} - {{ meetup.location }}</div>
+            <div>
+              <app-edit-meetup-date-dialog
+                :meetup="meetup" v-if="userIsCreator">
+              </app-edit-meetup-date-dialog>
+              <app-edit-meetup-time-dialog
+                :meetup="meetup" v-if="userIsCreator">
+              </app-edit-meetup-time-dialog>
+            </div>
+            <div><b>Description:</b> {{ meetup.description }}</div>
 
           </v-card-text>
          
@@ -84,6 +82,10 @@ import ForumNav from './ForumNav.vue'
   color:white;
   text-decoration: none;
 }
+
+
+
+
 
 .green{
   color:white;

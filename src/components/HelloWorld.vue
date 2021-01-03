@@ -13,7 +13,7 @@
                 </h1>
                 
                 <div class="hero-btn mt-5">
-                    <v-dialog v-model="dialog" persistent max-width="600px">
+                    <v-dialog class="dialogbox" v-model="dialog" persistent max-width="600px">
                    <template v-slot:activator="{ on, attrs }">
                       <v-btn
                         x-large
@@ -33,8 +33,9 @@
                   </template>
                     <!-- login -->
 
-                        <v-card>
-                          <v-card-title class="headline">
+                        <v-card style="height:500px">
+                          <div>
+                          <v-card-title class="headline1">
                             Login
                           </v-card-title>
                           <v-card-text>
@@ -46,9 +47,13 @@
                                   <v-layout row>
                                     <v-flex xs12>
                                       <v-text-field
+                                      class="textfields"
+                                      rounded
+                                      filled
+                                      color="green"
                                         v-model.trim="email"
                                         name="email"
-                                        label="Mail"
+                                        label="E-mail"
                                         id="email"     
                                         v-model="email"
                                         type="email"
@@ -58,7 +63,11 @@
                                   <v-layout row>
                                     <v-flex xs12>
                                       <v-text-field
+                                      class="textfields"
                                         v-model.trim="password"
+                                        rounded
+                                      filled
+                                      color="green"
                                         name="password"
                                         label="Password"
                                         id="password"
@@ -72,8 +81,10 @@
                                   <v-layout row>
                                     <v-card-actions>
                                       <v-spacer></v-spacer>
+                                      <div class="buttons">
                                       <v-btn rounded outlined  @click="onSignin()" :loading="loading" :disabled="loading" class="ma-2" color="green" dark type="submit">Sign in</v-btn>
                                       <v-btn rounded outlined class="ma-2" color="green" dark @click="socialLogin()" type="submit"><v-icon left>mdi-email</v-icon>Sign in with Google</v-btn>
+                                      </div>
                                     </v-card-actions>
                                   </v-layout>
                                 </form>
@@ -83,9 +94,10 @@
                           </v-card-text>
                           <v-card-actions>
                             <v-spacer></v-spacer>
-                            <v-btn class="signup" rounded href="/signup" color="green darken-1" text dark>Sign up</v-btn>
-                            <v-btn rounded color="green darken-1" text @click="dialog = false">Close</v-btn>
+                            <v-btn class="signup" rounded href="/signup" color="#28cd3d" text dark>Sign up</v-btn>
+                            <v-btn rounded color="#28cd3d" class="green-darken-1" text @click="dialog = false">Close</v-btn>
                           </v-card-actions>
+                          </div>
                         </v-card>
                       <!-- login -->
                   </v-dialog>  
@@ -256,8 +268,8 @@
           >
           <h3><b>Hubertus Setiawan</b></h3>
           <div style="  color: #28cd3d;">Engineer</div>
-          A 3rd year INIAD Student Engineering Major, responsible for full stack development of the website
-          Front-end, Back-end, Database, etc. Wishing the world to be a better place to live through the swift growth of deep technology.
+          A 3rd year INIAD Student Engineering Major, responsible for full stack development of the website.
+       Wishing the world a better place to live through the swift growth of deep technology.
           </v-responsive>
 
          
@@ -442,6 +454,7 @@ import * as firebase from 'firebase'
 
 .signup{
   text-decoration: none;
+  font-weight: bold;
 }
 
 h3, template, div, section{
@@ -454,11 +467,33 @@ h3, template, div, section{
 
 }
 
-.headline{
-  font-family: Comfortaa;
-    color:green;
+.textfields{
+  margin-top: 20px;
+}
+
+.dialogbox{
+  min-height: 900px;
+}
+
+.green-darken-1{
+  text-decoration: none;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+
+
+.headline1{
+  font-family: 'Nunito', sans-serif;
+    color:#28cd3d;
+    font-weight: bold;
+    font-size: 30px;
   
   
+}
+
+.buttons{
+  margin-top:30px;
 }
 
 v-card-text.servicetext{

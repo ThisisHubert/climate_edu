@@ -4,8 +4,9 @@
     <v-btn 
     v-bind="attrs"
     v-on="on"
+  color="#28cd3d"
     fab accent slot="activator">
-        <v-icon>mdi-pencil</v-icon>
+        <v-icon color="white">mdi-pencil</v-icon>
     </v-btn>
     </template>
     <v-card>
@@ -15,23 +16,28 @@
             <v-card-title>Edit Meetup</v-card-title>
           </v-flex>
         </v-layout>
-        <v-divider></v-divider>
         <v-layout row wrap>
           <v-flex xs12>
             <v-card-text>
               <v-text-field
+              filled
+              rounded
+              color="#28cd3d"
                 name="title"
                 label="Title"
                 id="title"
                 v-model="editedTitle"
                 required></v-text-field>
-              <v-text-field
+              <v-textarea
+                filled
+                rounded
+              color="#28cd3d"
                 name="description"
                 label="Description"
                 id="description"
                 multi-line
                 v-model="editedDescription"
-                required></v-text-field>
+                required></v-textarea>
             </v-card-text>
           </v-flex>
         </v-layout>
@@ -59,7 +65,9 @@
       return {
         editDialog: false,
         editedTitle: this.meetup.title,
-        editedDescription: this.meetup.description
+        editedDescription: this.meetup.description,
+        editableDate: null
+
       }
     },
     methods: {

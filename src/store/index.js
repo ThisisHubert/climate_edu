@@ -42,6 +42,20 @@ export const store = new Vuex.Store({
     setLoadedMeetups(state,payload){
       state.loadedMeetups = payload
     },
+    updateMeetup(state,payload){
+      const meetup = state.loadedMeetups.find(meetup =>{
+        return meetup.id === payload.id
+      })
+      if(payload.title){
+        meetup.title = payload.title
+      }
+      if(payload.description){
+        meetup.description = payload.description
+      }
+      if(payload.date){
+        meetup.date = payload.date
+      }
+    },
     createMeetup (state, payload) {
       state.loadedMeetups.push(payload)
     },
@@ -130,6 +144,29 @@ export const store = new Vuex.Store({
         console.log(error)
       })
     },
+
+    updateMeetupData({commit}, payload){
+      commit('setLoading', true)
+      const updateObj = {}
+      if (payload.title){
+        updateObj.title = payload.title
+      }
+      if(payload.description){
+        updateObj.description = payload.description
+      }
+      if (payload.date){
+        updateObj.date = payload.date
+      }
+      fb.database().ref('meetups').child(payload.id).update(updateObj)
+      .then(() => {
+        commit('setLoading', false)
+        commit('updateMeetup', payload)
+      }).catch(error => {
+        console.log(error)
+        commit('setLoading', false) 
+      })
+    },
+
     async createPost({ state}, post) {    // sth wrong with this
       await firebase.postsCollection.add({
         createdOn: new Date(),       
@@ -235,7 +272,7 @@ export const store = new Vuex.Store({
       dispatch('setLoading', false)
       dispatch('setError', error)
       console.log(error)
-      alert("Wrong Password")
+      alert("Wrong Email or Password")    
     }
       // user.catch(
       //   error => {
