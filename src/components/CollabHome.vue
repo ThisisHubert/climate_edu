@@ -36,28 +36,7 @@
     </v-layout>
     
   </v-container>
-   <v-footer id="foot" padless>
-      <v-row id="foot" justify="center" no-gutters>
-        <v-btn
-          v-for="icon in icons"
-          :key="icon"
-          color="black"
-          text
-          rounded
-          class="my-2"
-        >
-          <v-icon size="24px">
-            {{ icon }}
-          </v-icon>
-        </v-btn>
-
-        <v-col class="py-4 text-center black--text" cols="12">
-          <strong class="font-weight-black">
-            ©{{ new Date().getFullYear() }} ClimateTalk</strong
-          >
-        </v-col>
-      </v-row>
-    </v-footer>
+  <Footer></Footer>
 </div>
 </template>
 
@@ -123,10 +102,7 @@ import { mapState } from 'vuex'
 
 }
 
-#foot {
-  background-color: #e4e4dd;
-  margin-bottom: 0px;
-}
+
 
 .v-progress-circular {
   margin: 1rem;

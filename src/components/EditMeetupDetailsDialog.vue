@@ -1,8 +1,13 @@
 <template>
   <v-dialog width="350px" persistent v-model="editDialog">
-    <v-btn fab accent slot="activator">
+    <template v-slot:activator="{on,attrs}">
+    <v-btn 
+    v-bind="attrs"
+    v-on="on"
+    fab accent slot="activator">
         <v-icon>mdi-pencil</v-icon>
     </v-btn>
+    </template>
     <v-card>
       <v-container>
         <v-layout row wrap>
@@ -63,8 +68,8 @@
           return
         }
         this.editDialog = false
-        this.$store.dispatch('updateMeetupData', {
-          id: this.meetup.id,
+        this.$store.dispatch('updateMeetupData', {  // send to update MeetupData 
+          id: this.meetup.id,  
           title: this.editedTitle,
           description: this.editedDescription
         })

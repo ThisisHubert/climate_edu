@@ -98,9 +98,9 @@ export const store = new Vuex.Store({
         location: payload.location,
         description: payload.description,
         date: payload.date.toISOString(), 
-        userName: state.userProfile.name
-
-        // creatorId:
+        userName: state.userProfile.name,
+        creatorId: firebase.auth.currentUser.uid,
+        
       }
       // Reach out to firebase and store it
       let imageUrl 

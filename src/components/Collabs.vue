@@ -7,7 +7,7 @@
     <ForumNav></ForumNav>
     
     <v-text-field rounded filled type="text" v-model="search" placeholder="Search Meetups..."></v-text-field>
-    <v-layout row wrap v-for="meetup in filteredMeetUps.reverse()" :key="meetup.id" class="mb-2">
+    <v-layout row wrap v-for="meetup in filteredMeetUps" :key="meetup.id" class="mb-2">
       <v-flex xs12 sm10 md8 offset-sm1 offset-md2>
         <v-card elevation="0" outlined>
           <v-container>
@@ -19,6 +19,9 @@
                     <div>{{ meetup.date | date }}</div>
                   </div>
                 </v-card-title>
+                <v-chip class="chippast" color="red" v-if="meetup.date < currentDate">
+                  Past Event
+                </v-chip>
                 <v-card-actions class="view-button">
                   <v-btn class="white--text" color="#28cd3d" rounded flat :to="'/collabs/' + meetup.id">
                   <i class="fas fa-eye"></i>
@@ -46,15 +49,18 @@
   export default {
     data(){
       return{
-        search:""
+        search:"",
+        currentDate: new Date().toISOString(),
       }
     },
     created() {
     document.title = "Meetups"; // to set title
   },
     computed: {
+      
       meetups () {
-        return this.$store.getters.loadedMeetups
+        let get = this.$store.getters.loadedMeetups
+        return get
       },
       filteredMeetUps: function(){
         return this.meetups.filter((meetups) =>{
@@ -74,6 +80,10 @@
 
 }
 
+.chippast{
+  color: white;
+  margin-left: 20px;
+}
 
 .meetuppic{
   padding-left: 60px;

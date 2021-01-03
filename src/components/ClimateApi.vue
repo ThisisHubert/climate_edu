@@ -20,7 +20,7 @@
         </div>
 
 
-
+        <!-- <a href="https://twitter.com/intent/tweet?button_hashtag=climatechange&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">Tweet #climatechange</a> -->
 
       <!-- news api  -->
         <div class="container">
