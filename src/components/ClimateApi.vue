@@ -18,9 +18,8 @@
             />
           </div>
         </div>
-
-
-        <!-- <a href="https://twitter.com/intent/tweet?button_hashtag=climatechange&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">Tweet #climatechange</a> -->
+      <!-- 1345958765489655808 -->
+      <Tweet style="margin-left:100px" id="1345958765489655808"></Tweet>
 
       <!-- news api  -->
         <div class="container">
@@ -215,7 +214,6 @@
       
     </div>
 </template>
-
 <script>
 import firebase from 'firebase'   
 export default {

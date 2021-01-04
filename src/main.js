@@ -10,18 +10,19 @@ import Widgets from 'fusioncharts/fusioncharts.widgets';
 import PowerCharts from 'fusioncharts/fusioncharts.powercharts';
 import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
 import VueFusionCharts from 'vue-fusioncharts';
-import { KinesisContainer, KinesisElement } from 'vue-kinesis'
 import { auth } from './firebase'
 import Trend from 'vuetrend'
 import DateFilter from '@/filter/date'
+import { Tweet, Moment, Timeline } from 'vue-tweet-embed'
 
 
 Vue.filter('date', DateFilter)
 Vue.use(Trend)
-// import VueKinesis from 'vue-kinesis'
-// Vue.use(VueKinesis)
-Vue.component('kinesis-container', KinesisContainer)
-Vue.component('kinesis-element', KinesisElement)
+Vue.component('Tweet', Tweet)
+Vue.component('Moment', Moment)
+Vue.component('Timeline', Timeline)
+
+
 
 Vue.use(VueFusionCharts, FusionCharts);
 

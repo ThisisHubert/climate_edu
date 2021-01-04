@@ -49,12 +49,15 @@
       }
     },
     computed: {
-      userIsRegistered () {
-         return this.$store.getters.user.registeredMeetups.findIndex(meetupId => {
-          return meetupId === this.meetupId
-        }) >= 0
+    
+
+      // userIsRegistered () {
+      //    return this.$store.getters.user.registeredMeetups.findIndex(meetupId =>{
+      //      return meetupId === this.meetupId
+      //    }) >= 0
+         
       
-      }
+      // }
     },
     methods: {
       onAgree () {

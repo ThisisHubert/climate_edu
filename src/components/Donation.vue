@@ -34,11 +34,11 @@
           </v-btn>
         </template>
         <v-card>
-          <v-toolbar dark color="primary">
+          <v-toolbar color="#28cd3d">
             <v-btn icon dark @click="dialog = false">
               <v-icon>mdi-close</v-icon>
             </v-btn>
-            <v-toolbar-title>Payment Checkout</v-toolbar-title>
+            <v-toolbar-title style="color:white">Payment Checkout</v-toolbar-title>
             <v-spacer></v-spacer>
           </v-toolbar>
           <v-list three-line subheader>
@@ -1010,28 +1010,7 @@
     </v-container>
 
     <!-- New arrival -->
-    <v-footer id="foot" padless>
-      <v-row id="foot" justify="center" no-gutters>
-        <v-btn
-          v-for="icon in icons"
-          :key="icon"
-          color="black"
-          text
-          rounded
-          class="my-2"
-        >
-          <v-icon size="24px">
-            {{ icon }}
-          </v-icon>
-        </v-btn>
-
-        <v-col class="py-4 text-center black--text" cols="12">
-          <strong class="font-weight-black">
-            ©{{ new Date().getFullYear() }} ClimateTalk</strong
-          >
-        </v-col>
-      </v-row>
-    </v-footer>
+    <Footer></Footer>
   </div>
 </template>
 
@@ -1101,6 +1080,9 @@ export default {
         this.cardMonth = "";
       }
     },
+  },
+  created() {
+    document.title = "Donation"; // to set title
   },
 
   methods: {

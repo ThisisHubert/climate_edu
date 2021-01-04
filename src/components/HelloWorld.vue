@@ -345,6 +345,9 @@ import * as firebase from 'firebase'
         
       }
     },
+    created() {
+    document.title = "ClimateTalk"; // to set title
+  },
     computed: {
       user () {
         return this.$store.getters.user  
