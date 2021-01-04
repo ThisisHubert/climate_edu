@@ -51,6 +51,7 @@ Vue.component('ForumNav', require('./components/ForumNav.vue').default)
 Vue.component('app-edit-meetup-details-dialog', require('./components/EditMeetupDetailsDialog.vue').default)
 Vue.component('Signupbar', require('./components/SignUpNav.vue').default)
 Vue.component('Footer', require('./components/Footer.vue').default)
+Vue.component('app-meetup-register-dialog', require('./components/RegisterDialog.vue').default)
 
 
 

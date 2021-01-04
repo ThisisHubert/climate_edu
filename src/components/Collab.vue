@@ -38,7 +38,9 @@
             <v-spacer></v-spacer>
             <v-btn to="/collabs" class="black" color="red">Back</v-btn>
 
-            <v-btn class="green">Register</v-btn>
+            <!-- <v-btn class="green">Register</v-btn> -->
+            <app-meetup-register-dialog
+              :meetupId="meetup.id"></app-meetup-register-dialog>
           </v-card-actions>
         </v-card>
       </v-flex>

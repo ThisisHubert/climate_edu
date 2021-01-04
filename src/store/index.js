@@ -199,25 +199,25 @@ export const store = new Vuex.Store({
       })
     },
 
-    async signup ({dispatch}, payload) {  // sign up function 
+    async signup ({dispatch,commit}, payload) {  // sign up function 
     try{
-      dispatch('setLoading',true)
-      dispatch('clearError')
+      commit('setLoading',true)
+      commit('clearError')
       const { user } = await firebase.auth.createUserWithEmailAndPassword(payload.email, payload.password)
       await firebase.usersCollection.doc(user.uid).set({
         name: payload.name,
         email: payload.email
       })
-      dispatch('setLoading',false)
+      commit('setLoading',false)
       const newUser = {
         id: user.uid,
         registeredMeetups: []
       }
       dispatch('fetchUserProfile', user)
-      dispatch('setUser', newUser)
+      commit('setUser', newUser)
     }catch(error){
-      dispatch('setLoading', false)
-      dispatch('setError', error)
+      commit('setLoading', false)
+      commit('setError', error)
       console.log(error)
       alert('Oops! Something wrong!')
     }
@@ -256,21 +256,21 @@ export const store = new Vuex.Store({
         //   }
         // )
     },
-    async onSignin ({dispatch}, payload) {   // sign in function  
+    async onSignin ({dispatch,commit}, payload) {   // sign in function  
     try{
-      dispatch('setLoading',true)
-      dispatch('clearError')
+      commit('setLoading',true)
+      commit('clearError')
       const { user } = await firebase.auth.signInWithEmailAndPassword(payload.email, payload.password)
-      dispatch('setLoading',false)
+      commit('setLoading',false)
       const newUser = {
         id: user.uid,
         registeredMeetups: []  // for registered meetups empty array 
       }
       dispatch('fetchUserProfile', user)    
-      dispatch('setUser', newUser) 
+      commit('setUser', newUser) 
     }catch(error){
-      dispatch('setLoading', false)
-      dispatch('setError', error)
+      commit('setLoading', false)
+      commit('setError', error)
       console.log(error)
       alert("Wrong Email or Password")    
     }
