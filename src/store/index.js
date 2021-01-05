@@ -213,6 +213,7 @@ export const store = new Vuex.Store({
         id: user.uid,
         registeredMeetups: []
       }
+      alert("Sign up Successfully")
       dispatch('fetchUserProfile', user)
       commit('setUser', newUser)
     }catch(error){
@@ -221,40 +222,7 @@ export const store = new Vuex.Store({
       console.log(error)
       alert('Oops! Something wrong!')
     }
-      // user.catch(
-      //   error => {
-      //     dispatch('setLoading', false)
-      //     dispatch('setError', error)
-      //     console.log(error) 
-      //   }
-      // )
-      // .then(
-        //   user => {
-        //     const newUser = {
-        //       id: user.uid,
-        //       registeredMeetups: []
-        //     }
-
-        //     firebase.usersCollection.doc(newUser.uid).set({
-        //       name: payload.name,
-        //       email: payload.email
-        //     })
-           
-        //     dispatch('fetchUserProfile', newUser)
-        //   }
-        // )
-        // .catch(
-        //   error => {
-        //     var errorCode = error.code;
-        //     var errorMessage = error.message; 
-        //     if(errorCode == 'auth/weak-password'){
-        //       alert('The password is too weak.');
-        //     }else{
-        //       alert(errorMessage);     
-        //     }
-        //     console.log(error)
-        //   }
-        // )
+      
     },
     async onSignin ({dispatch,commit}, payload) {   // sign in function  
     try{
@@ -266,6 +234,7 @@ export const store = new Vuex.Store({
         id: user.uid,
         registeredMeetups: []  // for registered meetups empty array 
       }
+      alert("Sign in Successfully")
       dispatch('fetchUserProfile', user)    
       commit('setUser', newUser) 
     }catch(error){
@@ -274,27 +243,7 @@ export const store = new Vuex.Store({
       console.log(error)
       alert("Wrong Email or Password")    
     }
-      // user.catch(
-      //   error => {
-      //     dispatch('setLoading', false)
-      //     dispatch('setError', error)
-      //     console.log(error) 
-      //   }
-      // )
-        // .then(
-        //   user => {
-        //     const newUser = {
-        //       id: user.uid,
-        //       registeredMeetups: []
-        //     }
-        //     dispatch('fetchUserProfile', newUser)
-        //   }
-        // )
-        // .catch(
-        //   error => {
-        //     console.log(error)
-        //   }
-        // )
+      
     },
 
     async logout({ commit }) {

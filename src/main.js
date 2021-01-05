@@ -14,8 +14,9 @@ import { auth } from './firebase'
 import Trend from 'vuetrend'
 import DateFilter from '@/filter/date'
 import { Tweet, Moment, Timeline } from 'vue-tweet-embed'
+import CommentGrid from 'vue-comment-grid'
 
-
+Vue.use(CommentGrid)
 Vue.filter('date', DateFilter)
 Vue.use(Trend)
 Vue.component('Tweet', Tweet)

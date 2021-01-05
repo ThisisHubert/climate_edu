@@ -43,7 +43,7 @@
                     <div>{{ meetups[meetups.length-1].date | date }}</div>
                 </v-card-text>
                 <v-card-actions class="view-button">
-                  <v-btn class="buttons" outlined color="#28cd3d" rounded  flat :to="'/collabs/' + meetups[meetups.length-1].id">
+                  <v-btn class="buttons" color="#28cd3d" rounded  flat :to="'/collabs/' + meetups[meetups.length-1].id">
                     View Meetup
                   </v-btn>
                 </v-card-actions>
@@ -70,7 +70,7 @@
                     <div>{{ posts[0].content }}</div>
                 </v-card-text>
                 <v-card-actions class="view-button">
-                  <v-btn class="buttons" outlined color="#28cd3d" rounded  flat :to="'/forum'">
+                  <v-btn class="buttons" color="#28cd3d" rounded  flat :to="'/forum'">
                     View Forum
                   </v-btn>
                 </v-card-actions>
@@ -119,6 +119,8 @@ export default {
 
 .buttons{
   text-decoration: none;
+  color:white;
+  font-weight: bold;
 }
 
 .postedmeetup{

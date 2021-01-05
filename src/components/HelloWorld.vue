@@ -82,8 +82,8 @@
                                     <v-card-actions>
                                       <v-spacer></v-spacer>
                                       <div class="buttons">
-                                      <v-btn rounded outlined  @click="onSignin()" :loading="loading" :disabled="loading" class="ma-2" color="green" dark type="submit">Sign in</v-btn>
-                                      <v-btn rounded outlined class="ma-2" color="green" dark @click="socialLogin()" type="submit"><v-icon left>mdi-email</v-icon>Sign in with Google</v-btn>
+                                      <v-btn rounded  @click="onSignin()" :loading="loading" :disabled="loading" class="ma-2" color="green" dark type="submit">Sign in</v-btn>
+                                      <v-btn rounded class="ma-2" color="green" dark @click="socialLogin1()" type="submit"><v-icon left>mdi-email</v-icon>Sign in with Google</v-btn>
                                       </div>
                                     </v-card-actions>
                                   </v-layout>
@@ -363,20 +363,14 @@ import * as firebase from 'firebase'
     methods: {
       onSignin () {  // function for sign in
         this.loading = !this.loading
-        setTimeout(() => (this.loading = false), 3000); // end of loading
+        setTimeout(() => (this.loading = false), 2000); // end of loading
         this.$store.dispatch('onSignin', {email: this.email, password: this.password})
 
       },
-      socialLogin(){     
-        const provider = new firebase.auth.GoogleAuthProvider();
-        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(
-        firebase.auth().signInWithPopup(provider).then((result) => {
-          this.$router.replace('./dashboard/overview');   
-          console.log(result);   
-        }).catch((err) => {
-          alert('Oops. ' +  err.message)
-        }));
-      }
+      socialLogin1(){     
+        alert('Google Sign in Coming Soon');
+      },
+      
       
       
 
@@ -497,6 +491,7 @@ h3, template, div, section{
 
 .buttons{
   margin-top:30px;
+  margin-left: 10px;
 }
 
 v-card-text.servicetext{
