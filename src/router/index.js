@@ -21,6 +21,14 @@ const router = new Router({
             component: ()=> import('../components/HelloWorld'),
         },
         {
+            path: '/freepost',
+            name: 'freepost',
+            component: ()=> import('../components/FreePost'),
+            meta:{
+                requiresAuth: true  
+            }
+        },
+        {
             path: '/forum',
             name: 'forum',
             component:  ()=> import('../components/Forum'),

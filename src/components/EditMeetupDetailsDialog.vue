@@ -28,6 +28,15 @@
                 id="title"
                 v-model="editedTitle"
                 required></v-text-field>
+                 <v-text-field
+              filled
+              rounded
+              color="#28cd3d"
+                name="location"
+                label="Location"
+                id="location"
+                v-model="editedLocation"
+                required></v-text-field>
               <v-textarea
                 filled
                 rounded
@@ -70,6 +79,7 @@
         editDialog: false,
         editedTitle: this.meetup.title,
         editedDescription: this.meetup.description,
+        editedLocation: this.meetup.location,
         editableDate: null,
         editableTime: null,
 
@@ -89,13 +99,14 @@
         const minutes = this.editableTime.match(/:(\d+)/)[1]
         newDate.setHours(hours)
         newDate.setMinutes(minutes)
-        newDate.setUTCDate(newDay)
-        newDate.setUTCMonth(newMonth)
-        newDate.setUTCFullYear(newYear)
+        newDate.setDate(newDay)
+        newDate.setMonth(newMonth)
+        newDate.setFullYear(newYear)
         // date
         this.editDialog = false
         this.$store.dispatch('updateMeetupData', {  // send to update MeetupData 
           id: this.meetup.id,  
+          location: this.editedLocation,
           title: this.editedTitle,
           date: newDate,
           description: this.editedDescription

@@ -55,6 +55,9 @@ export const store = new Vuex.Store({
       if(payload.date){
         meetup.date = payload.date
       }
+      if(payload.location){
+        meetup.location = payload.location
+      }
     },
     createMeetup (state, payload) {
       state.loadedMeetups.push(payload)
@@ -156,6 +159,9 @@ export const store = new Vuex.Store({
       }
       if (payload.date){
         updateObj.date = payload.date
+      }
+      if(payload.location){
+        updateObj.location = payload.location
       }
       fb.database().ref('meetups').child(payload.id).update(updateObj)
       .then(() => {

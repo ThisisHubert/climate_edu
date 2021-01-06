@@ -18,10 +18,33 @@
             />
           </div>
         </div>
+        <v-divider class="divider"></v-divider>
+      <v-card-title class="twittertitle">ClimateTalk Twitter</v-card-title>
+        <v-container >
+    <v-row no-gutters>
+      <template>
+        <v-col>
+      <Tweet style="margin-left:100px; margin-top:50px" id="1346048594873257986"></Tweet>
+      <Tweet style="margin-left:100px; margin-top:50px" id="1346048309912244231"></Tweet>
+        </v-col>
+        <v-col>
+      <Tweet style="margin-left:100px; margin-top:50px" id="1346047965043990534"></Tweet>
+      <Tweet style="margin-left:100px; margin-top:50px" id="1346047914859065348"></Tweet>
+      
+        </v-col>
+        
+      </template>
+    </v-row>
+  </v-container>
       <!-- 1345958765489655808 -->
-      <Tweet style="margin-left:100px" id="1345958765489655808"></Tweet>
-
+      <!-- 1346048309912244231 -->
+      <!-- 1346047914859065348 -->
+        <v-divider class="divider"></v-divider>
+      
       <!-- news api  -->
+      <v-card outlined class="newscard" max-width="1420px">
+      <v-card-title><b>News API</b></v-card-title>
+
         <div class="container">
           <div class="searchbar">
            
@@ -39,7 +62,7 @@
                 class="fas fa-search"
                 @click="fetchSearchNews"
                 
-              >気候変動を検索</v-chip>    
+              >気候変動</v-chip>    
               <!-- <i v-else class="fas fa-spinner fa-spin"></i> -->
               <i class="fas fa-times" @click="fetchTopNews"></i>
               
@@ -70,7 +93,9 @@
             <i v-if="showloader" class="fas fa-spinner fa-spin"></i>
           </div>
         </div>
+      </v-card>
         <!-- news api -->
+        <v-divider class="divider"></v-divider>
       
       <!-- insert here for test API  -->
     <div class="search-box">
@@ -398,6 +423,24 @@ export default {
 
 // css for news
 
+
+.divider{
+  width: auto;
+  margin-left: auto;
+}
+
+.newscard{
+  margin-left: auto;
+  margin-right:auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.twittertitle{
+  font-weight: bold;
+  margin-left: 120px;
+}
+
 .container {
     position: relative;
 
@@ -436,6 +479,9 @@ export default {
     }
     .result-list {
       padding-top: 60px;
+      padding-left:-50px;
+      margin-left:-80px;
+      width: 1300px;
     }
     article {
       display: grid;

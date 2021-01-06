@@ -23,6 +23,9 @@
        <v-btn text href="/donation"  class="font-weight-child">
         Donation
       </v-btn>
+       <v-btn text href="/freepost" class="font-weight-child">   
+        FreeTalk (New)
+      </v-btn>
        
       <v-btn class="ma-2"
       depressed

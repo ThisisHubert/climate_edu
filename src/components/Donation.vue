@@ -45,7 +45,14 @@
             <v-list-item>
               <v-list-item-content>
                 <v-list-item-subtitle>Total Amount</v-list-item-subtitle>
-                <v-list-item-title>¥4,000</v-list-item-title>
+                <v-list-item-title>¥{{formatPrice(total)}} <v-btn
+                      depressed
+                      color="error"
+                      style="margin-left:100px"
+                      @click="empty()"
+                    >
+                      Reset 
+                    </v-btn> </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
             <v-list-item>
@@ -424,7 +431,7 @@
           <v-col :cols="6" class="mx-auto1" align-self="left">
             <v-card style="height: 550px" max-width="550">
               <v-img
-                src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+                src="https://files.globalgiving.org/pfil/10973/pict_grid7.jpg?m=1345042661000"
                 height="413px"
               ></v-img>
 
@@ -439,18 +446,16 @@
                   /¥50,000
                 </div>
               </v-card-subtitle>
-              <v-progress-linear v-model="skill" color="blue-grey" height="25">
-                <template v-slot="{ value }">
-                  <strong>{{ Math.ceil(value) }}%</strong>
-                </template>
-              </v-progress-linear>
+              <v-btn @click="calculate10()" style="color:white" color="#28cd3d" width="550">Donate ¥10,000</v-btn>
+
+             
             </v-card>
           </v-col>
 
           <v-col :cols="6" class="mx-auto1" align-self="left">
             <v-card style="height: 550px" max-width="550">
               <v-img
-                src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+                src="https://files.globalgiving.org/pfil/2650/pict_grid7.jpg?m=1238022418000"
                 height="413px"
               ></v-img>
 
@@ -465,18 +470,15 @@
                   /¥50,000
                 </div>
               </v-card-subtitle>
-              <v-progress-linear v-model="skill" color="blue-grey" height="25">
-                <template v-slot="{ value }">
-                  <strong>{{ Math.ceil(value) }}%</strong>
-                </template>
-              </v-progress-linear>
+                <v-btn @click="calculate10()" style="color:white" color="#28cd3d" width="550">Donate ¥10,000</v-btn>
+
             </v-card>
           </v-col>
 
           <v-col :cols="3">
             <v-card class="mx-auto" style="height: 320px" max-width="250">
               <v-img
-                src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+                src="https://files.globalgiving.org/pfil/36296/pict_grid7.jpg?m=1540907113000"
                 height="150px"
               ></v-img>
 
@@ -491,18 +493,15 @@
                   /¥50,000
                 </div>
               </v-card-subtitle>
-              <v-progress-linear v-model="skill" color="blue-grey" height="25">
-                <template v-slot="{ value }">
-                  <strong>{{ Math.ceil(value) }}%</strong>
-                </template>
-              </v-progress-linear>
+             <v-btn @click="calculate10()" style="color:white" color="#28cd3d" width="250">Donate ¥10,000</v-btn>
+
             </v-card>
           </v-col>
 
           <v-col cols="3">
             <v-card class="mx-auto" style="height: 320px" max-width="250">
               <v-img
-                src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+                src="https://files.globalgiving.org/pfil/22098/pict_grid7.jpg?m=1446488912000"
                 height="150px"
               ></v-img>
 
@@ -517,18 +516,15 @@
                   /¥50,000
                 </div>
               </v-card-subtitle>
-              <v-progress-linear v-model="skill" color="blue-grey" height="25">
-                <template v-slot="{ value }">
-                  <strong>{{ Math.ceil(value) }}%</strong>
-                </template>
-              </v-progress-linear>
+              <v-btn @click="calculate10()" style="color:white" color="#28cd3d" width="250">Donate ¥10,000</v-btn>
+
             </v-card>
           </v-col>
 
           <v-col :cols="3">
             <v-card class="mx-auto" style="height: 320px" max-width="250">
               <v-img
-                src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+                src="https://files.globalgiving.org/pfil/8690/pict_grid7.jpg?m=1311719085000"
                 height="150px"
               ></v-img>
 
@@ -543,18 +539,15 @@
                   /¥50,000
                 </div>
               </v-card-subtitle>
-              <v-progress-linear v-model="skill" color="blue-grey" height="25">
-                <template v-slot="{ value }">
-                  <strong>{{ Math.ceil(value) }}%</strong>
-                </template>
-              </v-progress-linear>
+                <v-btn @click="calculate10()" style="color:white" color="#28cd3d" width="250">Donate ¥10,000</v-btn>
+
             </v-card>
           </v-col>
 
           <v-col :cols="3">
             <v-card class="mx-auto" style="height: 320px" max-width="250">
               <v-img
-                src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+                src="https://files.globalgiving.org/pfil/37985/pict_grid7.jpg?m=1547093030000"
                 height="150px"
               ></v-img>
 
@@ -569,11 +562,8 @@
                   /¥50,000
                 </div>
               </v-card-subtitle>
-              <v-progress-linear v-model="skill" color="blue-grey" height="25">
-                <template v-slot="{ value }">
-                  <strong>{{ Math.ceil(value) }}%</strong>
-                </template>
-              </v-progress-linear>
+                           <v-btn @click="calculate10()" style="color:white" color="#28cd3d" width="250">Donate ¥10,000</v-btn>
+
             </v-card>
           </v-col>
         </v-row>
@@ -588,7 +578,7 @@
         <v-col>
           <v-card class="mx-auto" style="height: 320px" max-width="250">
             <v-img
-              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+              src="https://files.globalgiving.org/pfil/37985/pict_grid7.jpg?m=1547093030000"
               height="150px"
             ></v-img>
 
@@ -603,18 +593,15 @@
                 /¥50,000
               </div>
             </v-card-subtitle>
-            <v-progress-linear v-model="skill" color="blue-grey" height="25">
-              <template v-slot="{ value }">
-                <strong>{{ Math.ceil(value) }}%</strong>
-              </template>
-            </v-progress-linear>
+                         <v-btn @click="calculate20()" style="color:white" color="#28cd3d" width="250">Donate ¥20,000</v-btn>
+
           </v-card>
         </v-col>
 
         <v-col>
           <v-card class="mx-auto" style="height: 320px" max-width="250">
             <v-img
-              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+              src="https://files.globalgiving.org/pfil/44038/ph_grid7_44038_169087.jpg?m=1574777841000"
               height="150px"
             ></v-img>
 
@@ -629,17 +616,14 @@
                 /¥50,000
               </div>
             </v-card-subtitle>
-            <v-progress-linear v-model="skill" color="blue-grey" height="25">
-              <template v-slot="{ value }">
-                <strong>{{ Math.ceil(value) }}%</strong>
-              </template>
-            </v-progress-linear>
+              <v-btn @click="calculate20()" style="color:white" color="#28cd3d" width="250">Donate ¥20,000</v-btn>
+
           </v-card>
         </v-col>
         <v-col>
           <v-card class="mx-auto" style="height: 320px" max-width="250">
             <v-img
-              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+              src="https://files.globalgiving.org/pfil/23759/pict_grid7.jpg?m=1459851686000"
               height="150px"
             ></v-img>
 
@@ -654,17 +638,14 @@
                 /¥50,000
               </div>
             </v-card-subtitle>
-            <v-progress-linear v-model="skill" color="blue-grey" height="25">
-              <template v-slot="{ value }">
-                <strong>{{ Math.ceil(value) }}%</strong>
-              </template>
-            </v-progress-linear>
+          <v-btn @click="calculate20()" style="color:white" color="#28cd3d" width="250">Donate ¥20,000</v-btn>
+
           </v-card>
         </v-col>
         <v-col>
           <v-card class="mx-auto" style="height: 320px" max-width="250">
             <v-img
-              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+              src="https://files.globalgiving.org/pfil/10651/pict_grid7.jpg?m=1339690131000"
               height="150px"
             ></v-img>
 
@@ -679,11 +660,8 @@
                 /¥50,000
               </div>
             </v-card-subtitle>
-            <v-progress-linear v-model="skill" color="blue-grey" height="25">
-              <template v-slot="{ value }">
-                <strong>{{ Math.ceil(value) }}%</strong>
-              </template>
-            </v-progress-linear>
+                                     <v-btn @click="calculate20()" style="color:white" color="#28cd3d" width="250">Donate ¥20,000</v-btn>
+
           </v-card>
         </v-col>
       </v-row>
@@ -694,7 +672,7 @@
         <v-col>
           <v-card class="mx-auto" style="height: 320px" max-width="250">
             <v-img
-              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+              src="https://files.globalgiving.org/pfil/50248/pict_grid7.jpg?m=1605892081000"
               height="150px"
             ></v-img>
 
@@ -709,11 +687,30 @@
                 /¥50,000
               </div>
             </v-card-subtitle>
-            <v-progress-linear v-model="skill" color="blue-grey" height="25">
-              <template v-slot="{ value }">
-                <strong>{{ Math.ceil(value) }}%</strong>
-              </template>
-            </v-progress-linear>
+              <v-btn @click="calculate20()" style="color:white" color="#28cd3d" width="250">Donate ¥20,000</v-btn>
+
+          </v-card>
+        </v-col>
+        <v-col>
+          <v-card class="mx-auto" style="height: 320px" max-width="250">
+            <v-img
+              src="https://files.globalgiving.org/pfil/49742/pict_grid7.jpg?m=1603968970000"
+              height="150px"
+            ></v-img>
+
+            <v-card-title>
+              【 EMERGENCY! 】 To protect our planet!
+            </v-card-title>
+
+            <v-card-subtitle style="font-size:15px">
+              <div class="goal">Goal</div>
+              <div class="subs">
+                <div style="font-size: 25px"><b>¥4000</b></div>
+                /¥50,000
+              </div>
+            </v-card-subtitle>
+              <v-btn @click="calculate20()" style="color:white" color="#28cd3d" width="250">Donate ¥20,000</v-btn>
+
           </v-card>
         </v-col>
         <v-col>
@@ -734,17 +731,14 @@
                 /¥50,000
               </div>
             </v-card-subtitle>
-            <v-progress-linear v-model="skill" color="blue-grey" height="25">
-              <template v-slot="{ value }">
-                <strong>{{ Math.ceil(value) }}%</strong>
-              </template>
-            </v-progress-linear>
+                                     <v-btn @click="calculate20()" style="color:white" color="#28cd3d" width="250">Donate ¥20,000</v-btn>
+
           </v-card>
         </v-col>
         <v-col>
           <v-card class="mx-auto" style="height: 320px" max-width="250">
             <v-img
-              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+              src="https://files.globalgiving.org/pfil/49821/pict_grid7.jpg?m=1604481455000"
               height="150px"
             ></v-img>
 
@@ -759,36 +753,8 @@
                 /¥50,000
               </div>
             </v-card-subtitle>
-            <v-progress-linear v-model="skill" color="blue-grey" height="25">
-              <template v-slot="{ value }">
-                <strong>{{ Math.ceil(value) }}%</strong>
-              </template>
-            </v-progress-linear>
-          </v-card>
-        </v-col>
-        <v-col>
-          <v-card class="mx-auto" style="height: 320px" max-width="250">
-            <v-img
-              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-              height="150px"
-            ></v-img>
+                                    <v-btn @click="calculate20()" style="color:white" color="#28cd3d" width="250">Donate ¥20,000</v-btn>
 
-            <v-card-title>
-              【 EMERGENCY! 】 To protect our planet!
-            </v-card-title>
-
-            <v-card-subtitle style="font-size:15px">
-              <div class="goal">Goal</div>
-              <div class="subs">
-                <div style="font-size: 25px"><b>¥4000</b></div>
-                /¥50,000
-              </div>
-            </v-card-subtitle>
-            <v-progress-linear v-model="skill" color="blue-grey" height="25">
-              <template v-slot="{ value }">
-                <strong>{{ Math.ceil(value) }}%</strong>
-              </template>
-            </v-progress-linear>
           </v-card>
         </v-col>
       </v-row>
@@ -804,7 +770,7 @@
         <v-col>
           <v-card class="mx-auto" style="height: 320px" max-width="250">
             <v-img
-              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+              src="https://files.globalgiving.org/pfil/50158/pict_grid7.jpg?m=1605787780000"
               height="150px"
             ></v-img>
 
@@ -819,11 +785,8 @@
                 /¥50,000
               </div>
             </v-card-subtitle>
-            <v-progress-linear v-model="skill" color="blue-grey" height="25">
-              <template v-slot="{ value }">
-                <strong>{{ Math.ceil(value) }}%</strong>
-              </template>
-            </v-progress-linear>
+                                    <v-btn @click="calculate30()" style="color:white" color="#28cd3d" width="250">Donate ¥30,000</v-btn>
+
           </v-card>
         </v-col>
         <v-col>
@@ -844,11 +807,8 @@
                 /¥50,000
               </div>
             </v-card-subtitle>
-            <v-progress-linear v-model="skill" color="blue-grey" height="25">
-              <template v-slot="{ value }">
-                <strong>{{ Math.ceil(value) }}%</strong>
-              </template>
-            </v-progress-linear>
+                                     <v-btn  @click="calculate30()" style="color:white" color="#28cd3d" width="250">Donate ¥30,000</v-btn>
+
           </v-card>
         </v-col>
         <v-col>
@@ -869,11 +829,8 @@
                 /¥50,000
               </div>
             </v-card-subtitle>
-            <v-progress-linear v-model="skill" color="blue-grey" height="25">
-              <template v-slot="{ value }">
-                <strong>{{ Math.ceil(value) }}%</strong>
-              </template>
-            </v-progress-linear>
+                                    <v-btn  @click="calculate30()" style="color:white" color="#28cd3d" width="250">Donate ¥30,000</v-btn>
+
           </v-card>
         </v-col>
         <v-col>
@@ -894,11 +851,8 @@
                 /¥50,000
               </div>
             </v-card-subtitle>
-            <v-progress-linear v-model="skill" color="blue-grey" height="25">
-              <template v-slot="{ value }">
-                <strong>{{ Math.ceil(value) }}%</strong>
-              </template>
-            </v-progress-linear>
+                                   <v-btn  @click="calculate30()" style="color:white" color="#28cd3d" width="250">Donate ¥30,000</v-btn>
+
           </v-card>
         </v-col>
       </v-row>
@@ -924,11 +878,8 @@
                 /¥50,000
               </div>
             </v-card-subtitle>
-            <v-progress-linear v-model="skill" color="blue-grey" height="25">
-              <template v-slot="{ value }">
-                <strong>{{ Math.ceil(value) }}%</strong>
-              </template>
-            </v-progress-linear>
+                <v-btn style="color:white" color="#28cd3d" width="250" @click="calculate30()">Donate ¥30,000</v-btn>
+
           </v-card>
         </v-col>
         <v-col>
@@ -949,11 +900,8 @@
                 /¥50,000
               </div>
             </v-card-subtitle>
-            <v-progress-linear v-model="skill" color="blue-grey" height="25">
-              <template v-slot="{ value }">
-                <strong>{{ Math.ceil(value) }}%</strong>
-              </template>
-            </v-progress-linear>
+              <v-btn  @click="calculate30()" style="color:white" color="#28cd3d" width="250">Donate ¥30,000</v-btn>
+
           </v-card>
         </v-col>
         <v-col>
@@ -974,11 +922,8 @@
                 /¥50,000
               </div>
             </v-card-subtitle>
-            <v-progress-linear v-model="skill" color="blue-grey" height="25">
-              <template v-slot="{ value }">
-                <strong>{{ Math.ceil(value) }}%</strong>
-              </template>
-            </v-progress-linear>
+                <v-btn  @click="calculate30()" style="color:white" color="#28cd3d" width="250">Donate ¥30,000</v-btn>
+
           </v-card>
         </v-col>
         <v-col>
@@ -999,11 +944,8 @@
                 /¥50,000
               </div>
             </v-card-subtitle>
-            <v-progress-linear v-model="skill" color="blue-grey" height="25">
-              <template v-slot="{ value }">
-                <strong>{{ Math.ceil(value) }}%</strong>
-              </template>
-            </v-progress-linear>
+                                              <v-btn  @click="calculate30()" style="color:white" color="#28cd3d" width="250">Donate ¥30,000</v-btn>
+
           </v-card>
         </v-col>
       </v-row>
@@ -1039,6 +981,10 @@ export default {
     isCardFlipped: false,
     focusElementStyle: null,
     isInputFocused: false,
+    donate10:0,
+    donate20:0,
+    donate30:0,
+    total:0
   }),
 
   mounted() {
@@ -1086,6 +1032,30 @@ export default {
   },
 
   methods: {
+     formatPrice(value) {
+        let val = (value/1).toFixed(2).replace('.', ',')
+        return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+    },
+    empty(){
+      this.total = 0;
+    },
+    calculate10(){
+      this.total += 10000;
+      alert("¥10,000 added to cart")
+    },
+    calculate20(){
+      this.total += 20000;
+      alert("¥20,000 added to cart")
+
+
+    },
+    calculate30(){
+      this.total += 30000;
+      alert("¥30,000 added to cart")
+
+
+    },
+    
     flipCard(status) {
       this.isCardFlipped = status;
     },

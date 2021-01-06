@@ -22,15 +22,8 @@
             <div>Created By <b>{{meetup.userName}}</b></div>
             <div><b>Email:</b> {{meetup.email}}</div>
             <div> <b>Time/Place:</b> {{ meetup.date | date }} - {{ meetup.location }}</div>
-            <!-- <div>
-              <app-edit-meetup-date-dialog
-                :meetup="meetup" v-if="userIsCreator">
-              </app-edit-meetup-date-dialog>
-              <app-edit-meetup-time-dialog
-                :meetup="meetup" v-if="userIsCreator">
-              </app-edit-meetup-time-dialog>
-            </div> -->
-            <div><b>Description:</b> {{ meetup.description }}</div>
+          
+            <div><b>Description:</b> <br> {{ meetup.description }}</div>
 
           </v-card-text>
          
