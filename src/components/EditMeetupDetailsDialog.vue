@@ -113,7 +113,7 @@
         })
       }
     },
-    created(){
+    created(){ // create date
       let date = new Date(this.meetup.date)
       let day = date.getUTCDate()
       let month = date.getUTCMonth()
@@ -121,7 +121,7 @@
       let hours = date.getHours();
       let minutes = date.getMinutes();
       this.editableTime = hours+":"+minutes;
-      this.editDate = year+"-"+month+"-"+day  
+      this.editDate = year+"-"+month+"-"+day   
     }
   }
 </script>
