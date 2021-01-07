@@ -5,10 +5,10 @@ import vuetify from './plugins/vuetify';
 import Vuetify from 'vuetify';
 import {store} from './store';
 import FusionCharts from 'fusioncharts';
-import Charts from 'fusioncharts/fusioncharts.charts';
-import Widgets from 'fusioncharts/fusioncharts.widgets';
-import PowerCharts from 'fusioncharts/fusioncharts.powercharts';
-import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
+// import Charts from 'fusioncharts/fusioncharts.charts';
+// import Widgets from 'fusioncharts/fusioncharts.widgets';
+// import PowerCharts from 'fusioncharts/fusioncharts.powercharts';
+// import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
 import VueFusionCharts from 'vue-fusioncharts';
 import { auth } from './firebase'
 import Trend from 'vuetrend'
@@ -28,10 +28,10 @@ Vue.component('Timeline', Timeline)
 Vue.use(VueFusionCharts, FusionCharts);
 
 // Resolve the dependencies
-Charts(FusionCharts);
-PowerCharts(FusionCharts);
-Widgets(FusionCharts);
-FusionTheme(FusionCharts);
+// Charts(FusionCharts);
+// PowerCharts(FusionCharts);
+// Widgets(FusionCharts);
+// FusionTheme(FusionCharts);
 
 import jQuery from 'jquery';
 window.$ = window.jQuery = jQuery;
