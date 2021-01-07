@@ -33,7 +33,7 @@
                   </template>
                     <!-- login -->
 
-                        <v-card style="height:500px">
+                        <v-card style="height:420px">
                           <div>
                           <v-card-title class="headline1">
                             Login

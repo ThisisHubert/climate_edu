@@ -1525,7 +1525,7 @@ body {
   &--info {
     color: #fff;
     width: $full-dimensions;
-    max-width: calc($full-dimensions - 85px);
+    max-width: calc(#{$full-dimensions} - 85px);
     padding: 10px 15px;
     font-weight: 500;
     display: block;
