@@ -24,7 +24,6 @@ Vue.component('Moment', Moment)
 Vue.component('Timeline', Timeline)
 
 
-
 Vue.use(VueFusionCharts, FusionCharts);
 
 // Resolve the dependencies

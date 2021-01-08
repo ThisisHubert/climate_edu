@@ -62,10 +62,12 @@
                name="gmap"
                v-model="address"
               classname="form-control"
-              placeholder="Check with Google Map">
+              placeholder="Check your address with Google Map">
             </vue-google-autocomplete>
             </v-flex>
           </v-layout>
+
+         
 
 
           <v-layout row>
@@ -76,13 +78,15 @@
               </v-btn>
 
               <v-btn @click="locatorButtonPressed"  :loading="loading"
-                :disabled="loading" class="ma-2" outlined small fab color="green">
-                <v-icon>mdi-crosshairs-gps</v-icon>
+                :disabled="loading" class="ma-2" outlined rounded color="green">
+                <v-icon style="margin-left:-5px; margin-right:7px;">mdi-crosshairs-gps</v-icon>
+                    Current Location
               </v-btn>
               </div>
               <div style="color: red">*Fill in the Full address in the text box below*</div>
             </v-flex>
           </v-layout>
+
 
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
@@ -153,12 +157,12 @@
           </v-layout>
           <v-layout row class="mb-2">
             <v-flex xs12 sm6 offset-sm3>
-              <v-date-picker class="datepicker" width="500px" color="#28cd3d" v-model="picker"></v-date-picker>
+              <v-date-picker class="datepicker" width="580px" color="#28cd3d" v-model="picker"></v-date-picker>
             </v-flex>
           </v-layout>
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-              <v-time-picker class="timepicker" width="500px" color="#28cd3d" v-model="time" format="24hr"></v-time-picker>
+              <v-time-picker class="timepicker" width="580px" color="#28cd3d" v-model="time" format="24hr"></v-time-picker>
             </v-flex>
           </v-layout>
           <v-layout row>
@@ -178,7 +182,6 @@
 </template>
 
 <script>
-// import * as google from 'google'
 import VueGoogleAutocomplete from 'vue-google-autocomplete'
 import axios from 'axios'
 export default {
@@ -225,19 +228,14 @@ export default {
       return date;
     },
   },
-  mounted(){ // this doesn't work lets change to vue google autocomplete 
-    // new google.maps.places.Autocomplete(
-    //   document.getElementById("autocomplete")
-    // )
-  },
-
+  
   methods: {
     locatorButtonPressed(){
       this.loading = !this.loading // start loading 
 
       if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(position =>{
-          this.getAddressFrom(position.coords.latitude, position.coords.longitude)
+          this.getAddressFrom(position.coords.latitude, position.coords.longitude);
         },
         error => {
           this.error = error.message;
@@ -249,6 +247,7 @@ export default {
       setTimeout(() => (this.loading = false), 3000); // end of loading
 
     },
+    
     getAddressFrom(lat,long){
       axios.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + long + "&key=AIzaSyAs2-Y8hzL2FEb8VQ79o2cEw2cYXAc2IxY").then(response =>{
         if (response.data.error_message){
@@ -324,6 +323,12 @@ export default {
 
 .title{
   margin-top:35px;
+}
+
+
+#map{
+  height: 80px;
+  width: 80px;
 }
 
 .submitbutton{
