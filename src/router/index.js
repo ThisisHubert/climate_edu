@@ -12,8 +12,8 @@ const router = new Router({
     routes : [
         {
             path: '/',
-            name: 'loader',
-            component: ()=> import('../components/PageLoader'),
+            name: 'home',
+            component: ()=> import('../components/HelloWorld'),
         },
         {
             path: '/home',

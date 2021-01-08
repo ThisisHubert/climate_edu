@@ -17,6 +17,7 @@
               color="#28cd3d"
                 name="title"
                 label="Title"
+                class="title"
                 id="title"
                 v-model="title"
                 filled
@@ -69,6 +70,7 @@
 
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
+              <div class="buttons">
               <v-btn rounded color="green" dark outlined>
                 Go
               </v-btn>
@@ -77,7 +79,7 @@
                 :disabled="loading" class="ma-2" outlined small fab color="green">
                 <v-icon>mdi-crosshairs-gps</v-icon>
               </v-btn>
-
+              </div>
               <div style="color: red">*Fill in the Full address in the text box below*</div>
             </v-flex>
           </v-layout>
@@ -151,7 +153,7 @@
           </v-layout>
           <v-layout row class="mb-2">
             <v-flex xs12 sm6 offset-sm3>
-              <v-date-picker width="500px" color="#28cd3d" v-model="picker"></v-date-picker>
+              <v-date-picker class="datepicker" width="500px" color="#28cd3d" v-model="picker"></v-date-picker>
             </v-flex>
           </v-layout>
           <v-layout row>
@@ -160,7 +162,7 @@
             </v-flex>
           </v-layout>
           <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
+            <v-flex class="submitbutton" xs12 sm6 offset-sm3>
               <v-btn style="color:white" color="#28cd3d" :disabled="!formIsValid" type="submit"
                 >Create Meetup</v-btn
               >
@@ -308,8 +310,32 @@ export default {
   margin-bottom: 50px;
 }
 
+.datepicker{
+  margin-top: 20px;
+}
+
 .description{
   margin-top:40px;
+}
+
+.location{
+  margin-top: 15px;
+}
+
+.title{
+  margin-top:35px;
+}
+
+.submitbutton{
+  margin-bottom: 25px;
+}
+
+.email{
+  margin-top:15px;
+}
+
+.buttons{
+  margin-top:15px;
 }
 
 .image{

@@ -9,7 +9,7 @@
     <v-text-field rounded filled type="text" v-model="search" placeholder="Search Meetups..."></v-text-field>
     <v-layout row wrap v-for="meetup in filteredMeetUps" :key="meetup.id" class="mb-2">
       <v-flex xs12 sm10 md8 offset-sm1 offset-md2>
-        <v-card elevation="0" outlined>
+        <v-card class="cards" elevation="0" outlined>
           <v-container>
             <v-layout row>
               <v-flex xs7 sm8 md9>
@@ -85,7 +85,12 @@
   margin-left: 20px;
 }
 
+.cards{
+  margin-top: 20px;
+}
+
 .meetuppic{
+  margin-top: 8px;
   padding-left: 60px;
   width: 180px;
   border-radius: 5%;
