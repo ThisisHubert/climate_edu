@@ -82,7 +82,7 @@
                                     <v-card-actions>
                                       <v-spacer></v-spacer>
                                       <div class="buttons">
-                                      <v-btn rounded  @click="onSignin()" :loading="loading" :disabled="loading" class="ma-2" color="green" dark type="submit">Sign in</v-btn>
+                                      <v-btn rounded  @click="onSignin()" class="ma-2" color="green" dark type="submit">Sign in</v-btn>
                                       <v-btn rounded class="ma-2" color="green" dark @click="socialLogin1()" type="submit"><v-icon left>mdi-email</v-icon>Sign in with Google</v-btn>
                                       </div>
                                     </v-card-actions>
@@ -106,7 +106,7 @@
             </div>
             <div class="col-md-7">
                 <div class="graphic">
-                    <img src="../assets/hang_out.svg" style="width:600px; height:600px; padding-right:3px; margin-left:50px;" alt="">
+                    <img class="hidden-sm-down" src="../assets/hang_out.svg" style="width:600px; height:600px; padding-right:3px; margin-left:50px;" alt="">
                 </div>
             </div>
           </div>
@@ -127,21 +127,15 @@
         <v-container class="text-center">
           <h2 class="whatwedo display-2 font-weight-bold mb-3">What we do?</h2>
 
-           <v-responsive
-            class="mx-auto mb-12"
-            width="56"
-          >
-            
-          </v-responsive>
           
-          <v-row class="wedotext">
-            We provide a place for you to join the fight against climate <br>
-            change with other people around the world through the power of <br>
+         
+          <v-responsive height="450px" class="wedotext">
+            We provide a place for you to join the fight against climate
+            change with other people around the world through the power of
             discussion, collaboration, and donation! 
-          </v-row>
+          </v-responsive>
            
         </v-container>
-        <!-- </v-responsive> -->
 
 
         <div class="py-12"></div>
@@ -337,7 +331,6 @@ import * as firebase from 'firebase'
       return {
         // name: '',
         email: '',
-        loading: false,
         password: '',
        icons: ["mdi-facebook", "mdi-twitter"],
 
@@ -362,8 +355,6 @@ import * as firebase from 'firebase'
     },
     methods: {
       onSignin () {  // function for sign in
-        this.loading = !this.loading
-        setTimeout(() => (this.loading = false), 2000); // end of loading
         this.$store.dispatch('onSignin', {email: this.email, password: this.password})
 
       },
@@ -420,6 +411,7 @@ import * as firebase from 'firebase'
 } */
 
 .whatwedo{
+  margin-top: 60px;
   width: 477px;
   height: 150px;
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
@@ -436,6 +428,7 @@ import * as firebase from 'firebase'
 }
 
 .wedotext{
+  margin-top: 60px;
   width: 1500px;
   height: 300px;
   font-family: YuGothic;

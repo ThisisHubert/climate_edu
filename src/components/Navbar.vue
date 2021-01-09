@@ -24,7 +24,9 @@
           ClimateTalk
         </v-toolbar-title>
         <v-spacer></v-spacer>
-    <v-row align="right" justify="space-around">
+    <v-row v-if="$vuetify.breakpoint.width < 768" align="right" justify="space-around">
+    </v-row>
+    <v-row v-else align="right" justify="space-around">
       <v-btn text href="#whatwedo" class="font-weight-child">
         What we do
       </v-btn>
@@ -40,10 +42,15 @@
 
 <script>
 export default {
+     data: () => {
+      return {
+      }
+    },
     name: "Navbar",
     props: {
         msg:String
-    }
+    },
+    
 };
 </script>
 
