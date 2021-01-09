@@ -23,6 +23,7 @@
         <v-container >
     <v-row no-gutters>
       <template>
+
         <v-col>
       <Tweet style="margin-left:100px; margin-top:50px" id="1346048594873257986"></Tweet>
       <Tweet style="margin-left:100px; margin-top:50px" id="1346048309912244231"></Tweet>
@@ -30,7 +31,7 @@
         <v-col>
       <Tweet style="margin-left:100px; margin-top:50px" id="1346047965043990534"></Tweet>
       <Tweet style="margin-left:100px; margin-top:50px" id="1346047914859065348"></Tweet>
-      
+       
         </v-col>
         
       </template>
@@ -42,7 +43,7 @@
         <v-divider class="divider"></v-divider>
       
       <!-- news api  -->
-      <v-card outlined class="newscard" max-width="1420px">
+      <v-card outlined class="newscard" max-width="1000px">
       <v-card-title><b>News API</b></v-card-title>
 
         <div class="container">
@@ -76,11 +77,12 @@
               @click="navTo(article.url)"
             >
               <header>
-                <img
+                <v-img 
+                  class="newspic"
                   v-if="article.urlToImage"
                   :src="article.urlToImage"
                   alt=""
-                />
+                ></v-img>
                 <i v-else class="fas fa-image"></i>
               </header>
               <section v-html="article.title"></section>
@@ -441,6 +443,10 @@ export default {
   margin-left: 120px;
 }
 
+.newspic{
+  border-radius: 5%;
+}
+
 .container {
     position: relative;
 
@@ -479,9 +485,9 @@ export default {
     }
     .result-list {
       padding-top: 60px;
-      padding-left:-50px;
-      margin-left:-80px;
-      width: 1300px;
+      padding-left:-40px;
+      margin-left:30px;
+      width: 900px;
     }
     article {
       display: grid;

@@ -433,7 +433,7 @@ import * as firebase from 'firebase'
   height: 300px;
   font-family: YuGothic;
   font-size: 40px;
-  font-weight: 500;
+  font-weight: 550;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.6;
