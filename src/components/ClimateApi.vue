@@ -70,19 +70,40 @@
               </v-chip-group>
             </div>
           </div>
-          <div class="result-list">
+          <div class="result-list-break" v-if="$vuetify.breakpoint.width < 768">
+               <article
+              v-for="(article, index) in articles"
+              :key="index"
+              @click="navTo(article.url)"
+            >
+              <header>
+                <img 
+                  class="newspic"
+                  v-if="article.urlToImage"
+                  :src="article.urlToImage"
+                  alt=""
+                >
+                <i v-else class="fas fa-image"></i>
+              </header>
+              <section v-html="article.title"></section>
+              <footer>
+                <i class="fas fa-chevron-right"></i>
+              </footer>
+            </article>
+          </div>
+          <div v-else class="result-list">
             <article
               v-for="(article, index) in articles"
               :key="index"
               @click="navTo(article.url)"
             >
               <header>
-                <v-img 
+                <img 
                   class="newspic"
                   v-if="article.urlToImage"
                   :src="article.urlToImage"
                   alt=""
-                ></v-img>
+                >
                 <i v-else class="fas fa-image"></i>
               </header>
               <section v-html="article.title"></section>
@@ -119,7 +140,110 @@
         <v-col
          
         >
-    <div class="card">
+     <div class="card-break" v-if="$vuetify.breakpoint.width < 768">
+        <h2><i class="fas fa-map-marker-alt"></i>  {{weather.city.name}}, {{weather.city.country}}</h2>
+        <h3><b>lat: </b>{{weather.city.coord.lat}} <b>lon: </b>{{weather.city.coord.lon}}</h3>
+        <h1>{{ Math.round(weather.list[1].main.temp) }}°</h1>
+        <h3><i class="far fa-calendar"></i>  {{ dateBuilder() }}</h3>
+        <h3><b>{{ weather.list[1].weather[0].main }}</b><span>Wind {{ Math.round(weather.list[1].wind.speed) }}m/s <span class="dot">•</span> Humidity {{ Math.round(weather.list[1].main.humidity) }}%</span></h3>
+        <h3><i class="fas fa-temperature-high"></i> {{ Math.round(weather.list[1].main.temp_max) }}°c</h3>
+        <h3><i class="fas fa-temperature-low"></i> {{ Math.round(weather.list[1].main.temp_min) }}°c</h3>
+        <h3><b>Precipitation:</b> {{weather.list[1].pop*100}}%</h3>
+        <h3><b>Last Update:</b> {{weather.list[1].dt_txt.slice(-8,-3)}}</h3>
+        <h3><b>Feels like:</b> {{Math.round(weather.list[1].main.feels_like)}}°</h3>
+       
+        <table>
+            <tr>
+                <td><b>{{weather.list[5].dt_txt.slice(5,10).replace(/-/g, '/')}}</b></td>
+                <td><b>{{weather.list[12].dt_txt.slice(5,10).replace(/-/g, '/')}}</b></td>
+                <td><b>{{weather.list[20].dt_txt.slice(5,10).replace(/-/g, '/')}}</b></td>
+                <td><b>{{weather.list[28].dt_txt.slice(5,10).replace(/-/g, '/')}}</b></td>
+                <td><b>{{weather.list[36].dt_txt.slice(5,10).replace(/-/g, '/')}}</b></td>
+            </tr>
+            <tr>
+                <td>{{ Math.round(weather.list[5].main.temp_max) }}°</td>
+                <td>{{ Math.round(weather.list[12].main.temp_max) }}°</td>
+                <td>{{ Math.round(weather.list[20].main.temp_max) }}°</td>
+                <td>{{ Math.round(weather.list[28].main.temp_max) }}°</td>
+                <td>{{ Math.round(weather.list[36].main.temp_max) }}°</td>
+            </tr>
+        </table>
+        <trend
+        :data="[ Math.round(weather.list[5].main.temp_max) , Math.round(weather.list[12].main.temp_max), Math.round(weather.list[20].main.temp_max), Math.round(weather.list[28].main.temp_max), Math.round(weather.list[36].main.temp_max)]"
+        :gradient="['#6fa8dc', '#42b983', '#2c3e50']"
+        auto-draw
+        smooth
+              >
+      </trend>
+      <div>
+      <v-list-item>
+      <v-list-item-content>
+        <i class="fas fa-users fa-2x"></i>
+        <v-list-item-title>Population</v-list-item-title>
+       <v-list-item-subtitle>{{weather.city.population.toLocaleString()}}</v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+    <v-divider inset></v-divider>
+
+    <v-list-item two-line>
+      <v-list-item-content>  
+        <i class="fas fa-eye fa-2x"></i>    
+        <v-list-item-title>Air Visibility</v-list-item-title>
+        <v-list-item-subtitle>{{weather.list[1].visibility}}</v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+
+    <v-divider inset></v-divider>
+
+    <v-list-item three-line>
+      <v-list-item-content>
+        <i class="fas fa-water fa-2x"></i>
+        <v-list-item-title>Atmospheric Pressure at sea level</v-list-item-title>
+        <v-list-item-subtitle>
+          {{weather.list[1].main.sea_level}} hPa
+        </v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+
+    <v-divider inset></v-divider>
+
+    <v-list-item three-line>
+      <v-list-item-content>
+        <i class="fas fa-leaf fa-2x"></i>
+        <v-list-item-title>Atmospheric Pressure at ground level</v-list-item-title>
+        <v-list-item-subtitle>
+          {{weather.list[1].main.grnd_level}} hPa
+        </v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+
+    <v-divider inset></v-divider>
+
+    <v-list-item three-line>
+      <v-list-item-content>
+        <i class="fas fa-cloud fa-2x"></i>
+        <v-list-item-title>Cloudiness</v-list-item-title>
+        <v-list-item-subtitle>
+          {{weather.list[1].clouds.all}} %
+        </v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+
+    <v-divider inset></v-divider>
+
+    <v-list-item three-line>
+      <v-list-item-content>
+        <i class="fas fa-cloud-moon fa-2x"></i>
+        <v-list-item-title>Part of the day (n - night, d - day)</v-list-item-title>
+        <v-list-item-subtitle>
+          {{weather.list[1].sys.pod}}
+        </v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+      </div>
+    </div>   
+        <!-- card -->
+    <div v-else class="card">
 
         <h2><i class="fas fa-map-marker-alt"></i>  {{weather.city.name}}, {{weather.city.country}}</h2>
         <h3><b>lat: </b>{{weather.city.coord.lat}} <b>lon: </b>{{weather.city.coord.lon}}</h3>
@@ -228,6 +352,7 @@
       </v-list-item-content>
     </v-list-item>
       </div>
+      <!-- card -->
     </div>
   </v-col>
 
@@ -489,6 +614,12 @@ export default {
       margin-left:30px;
       width: 900px;
     }
+    .result-list-break {
+      padding-top: 60px;
+      padding-left:-20px;
+      margin-left:-40px;
+      width: 600px;
+    }
     article {
       display: grid;
       grid-template-columns: 200px auto 40px;
@@ -651,10 +782,24 @@ body {
 .card {
     margin: 0 auto;
     margin-top: 1%;
-    margin-left: 10%;
+    margin-left: 20%;
     margin-bottom: 10%;
     padding: 5px 30px 20px;
     width: 950px;
+    height: 1800px;
+    border-radius: 3px;
+    background-color: #fff;
+    box-shadow: 1px 2px 10px rgba(0, 0, 0, .2);
+    -webkit-animation: open 1s cubic-bezier(.39, 0, .38, 1);
+}
+
+.card-break{
+  margin: 0 auto;
+    margin-top: 1%;
+    margin-left: 10%;
+    margin-bottom: 10%;
+    padding: 5px 30px 20px;
+    width: 500px;
     height: 1800px;
     border-radius: 3px;
     background-color: #fff;

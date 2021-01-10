@@ -2,7 +2,19 @@
 <div>
   <v-container>
       <ForumNav></ForumNav>
-    <v-layout row wrap>
+      <v-layout v-if="$vuetify.breakpoint.width < 768" column wrap>
+        
+      <v-flex  xs12 sm12 class="text-xs-center text-sm-right">
+        <v-btn  rounded color="#28cd3d" large router to="/collabs" class="collab1">Explore Meetups</v-btn>
+      </v-flex>
+          
+      <v-flex xs12 sm12 class="text-xs-center text-sm-left">
+        <v-btn rounded color="#28cd3d" large router to="/collab/new" class="collab2">Organize Meetup</v-btn>
+      </v-flex>
+          
+    </v-layout>
+
+    <v-layout v-else row wrap>
       <v-flex xs12 sm6 class="text-xs-center text-sm-right">
         <v-btn rounded color="#28cd3d" large router to="/collabs" class="collab1">Explore Meetups</v-btn>
       </v-flex>
@@ -36,7 +48,7 @@
     </v-layout>
     
   </v-container>
-  <Footer></Footer>
+  <Footer class="footer"></Footer>
 </div>
 </template>
 
@@ -85,6 +97,10 @@ import { mapState } from 'vuex'
   transition: 0.15s;
 
   
+}
+
+.footer{
+  margin-top: 20px;
 }
 
 .collab1{

@@ -11,6 +11,7 @@
           <div class="create-post">
 
           <form @submit.prevent style="position:fixed">
+            <v-responsive>
           <v-card outlined class="form-card">
           <h3 class="username">Create a Post</h3>
               <v-text-field
@@ -41,6 +42,7 @@
               </button>
               
             </v-card>
+            </v-responsive>
             </form>
           </div>
         </div>
@@ -67,7 +69,9 @@
     <!-- snackbar -->
       </div>
 
-      <div class="col2">
+
+
+       <div v-if="$vuetify.breakpoint.width < 768" class="col2-break">
         <div v-if="posts.length">
           <v-card outlined v-for="post in filteredPosts" :key="post.id" class="post">
             <v-card-title>{{ post.title }}</v-card-title>
@@ -136,6 +140,81 @@
           <p class="no-results">There are currently no posts</p>
         </div>
       </div>
+
+
+
+      <div v-else class="col2">
+        <div v-if="posts.length">
+          <v-card outlined v-for="post in filteredPosts" :key="post.id" class="post">
+            <v-card-title>{{ post.title }}</v-card-title>
+
+            <v-card-subtitle>{{ post.createdOn | formatDate }} by {{ post.userName }}</v-card-subtitle>
+            <v-card-text>{{ post.content | trimLength }}</v-card-text>
+            
+            <v-card-text>
+            <v-chip-group>
+              <v-chip>
+                <a @click="toggleCommentModal(post)"
+                ><i style="color:#28cd3d" class="fas fa-plus"></i><i style="color:#28cd3d; margin-left:4px" class="fas fa-comment"></i></a
+                >
+              </v-chip>
+              <v-chip>
+                <a @click.once="viewPost(post)"
+                  ><i style="color:#28cd3d" class="fas fa-comment"></i> {{ post.comments }}</a
+                >
+              </v-chip>
+              <v-chip>
+                <a @click="likePost(post.id, post.likes)"
+                  ><i style="color:#28cd3d" class="fas fa-thumbs-up"></i> {{ post.likes }}</a
+                >
+              </v-chip>
+              
+
+          <!-- </v-card> -->
+              <!-- </v-dialog> -->
+            </v-chip-group>
+            </v-card-text>
+          <div v-show="postComments.length" class="comments">
+
+            <div
+              v-for="comment in sortedComments"
+              :key="comment.id"
+              class="comments"
+            >
+            <v-card
+            class="comment-card"
+            color="grey lighten-4"
+            elevation="0"
+            >
+
+            <div v-if="comment.postId == post.id">
+              <p><b>{{ comment.userName }}</b> {{ comment.createdOn | formatDate }}</p>
+
+
+              <p>"{{ comment.content }}"</p>
+              
+            </div>
+            </v-card>
+
+            </div>
+
+          </div>
+            <transition name="fade">
+              <CommentModal
+                v-if="showCommentModal"
+                :post="selectedPost"
+                @close="toggleCommentModal()"
+              ></CommentModal>
+            </transition>
+          </v-card>
+        </div>
+        <div v-else>
+          <p class="no-results">There are currently no posts</p>
+        </div>
+      </div>
+
+
+
     </section>
 
      
@@ -385,6 +464,10 @@ section {
 
 .col2{
   margin-top: 140px;
+}
+
+.col2-break{
+  margin-top: 600px;
 }
 
 

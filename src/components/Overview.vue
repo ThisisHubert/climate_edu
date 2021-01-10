@@ -30,7 +30,7 @@
       <div class="recent-post">Your Meetup</div>
       <v-flex v-for="meetup in meetups" :key="meetup.id" xs12 sm10 md10>
         <div v-if="meetup.userName == userProfile.name">
-        <v-card outlined elevation="0">
+        <v-card class="createdmp" outlined elevation="0">
           <v-container>
             <v-layout row>
               <v-flex xs7 sm8 md9>
@@ -59,7 +59,7 @@
       <div class="postedmeetup col-md-10">
       <div class="recent-post">Newest Meetup</div>
       <v-flex xs12 sm10 md10>
-        <v-card outlined elevation="0">
+        <v-card class="createdmp" outlined elevation="0">
           <v-container>
             <v-layout row>
               <v-flex xs7 sm8 md9>
@@ -86,7 +86,7 @@
       <div class="postedforum col-md-10">
       <div class="recent-post">Newest Post in Forum</div>
       <v-flex xs12 sm10 md10>
-        <v-card outlined elevation="0">
+        <v-card class="createdmp" outlined elevation="0">
           <v-container>
             <v-layout row>
               <v-flex xs7 sm8 md9>
@@ -164,6 +164,9 @@ export default {
   margin-bottom: 20px;
 }
 
+.createdmp{
+  margin-top:10px;
+}
 
 .recent-post{
   font-size: 20px;

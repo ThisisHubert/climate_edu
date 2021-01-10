@@ -1,7 +1,62 @@
 <template>
 <div>
+        <div v-if="$vuetify.breakpoint.width < 768">
+            <v-app-bar app color="black" dark elevation="0">
+            <v-app-bar-nav-icon @click.stop="sidebarMenu = !sidebarMenu"></v-app-bar-nav-icon>
+             <div>{{userProfile.name}}</div>
+            <v-spacer></v-spacer>
+           
+            <v-btn class="ma"
+      color="error" @click="logOut()">
+       <b> Log out</b>
+      </v-btn>
+        </v-app-bar>
+        <v-navigation-drawer 
+            v-model="sidebarMenu" 
+            app
+            floating
+            :permanent="sidebarMenu"
+            :mini-variant.sync="mini"
+            >
+            <v-list dense color="black" dark>
+                <v-list-item>
+                    <v-list-item-action>
+                        <v-icon @click.stop="sidebarMenu = !sidebarMenu">mdi-chevron-left</v-icon>
+                    </v-list-item-action>
+                    
+                </v-list-item>
+            </v-list>
+            <v-list-item class="px-2" @click="toggleMini = !toggleMini">
+                <v-list-item-avatar>
+                    <v-icon>mdi-account-outline</v-icon>
+                </v-list-item-avatar>
+                <v-list-item-content class="text-truncate">
+                    {{userProfile.name}}
+                </v-list-item-content>
+                <v-btn icon small>
+                    <v-icon>mdi-chevron-left</v-icon>
+                </v-btn>
+            </v-list-item>
+            <v-divider></v-divider>
+            <v-list>
+                <v-list-item v-for="item in items" :key="item.title" link :to="item.href">
+                    <v-list-item-icon>
+                        <v-icon color="green">{{ item.icon }}</v-icon>
 
-     <div class="dashboard">
+                    </v-list-item-icon>
+                    
+                    <v-list-item-content>
+                        <v-list-item-title class="primary--text">{{ item.title }}</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+            </v-list>
+        </v-navigation-drawer>
+         <main class="page-content pt-2">
+            <router-view/>
+        </main>
+     </div>
+     
+     <div v-else class="dashboard">
 
         <div class="page-wrapper default-theme sidebar-bg bg1" :class="{'toggled':!closeSidebar}">
         <nav id="sidebar" class="sidebar-wrapper">
@@ -17,18 +72,13 @@
                 </div>
                 <!-- sidebar-header  -->
                 <div class="sidebar-item sidebar-header d-flex flex-nowrap">
-                    <!-- <div class="user-pic">
-                        <img class="img-responsive img-rounded" src="../assets/user1.png" alt="User picture">
-                    </div> -->
+                   
                     <div class="user-info">
                         <span class="user-name">
                            <b>{{userProfile.name}}</b>
                         </span>
                         <span class="user-role">{{userProfile.email}}</span>
-                        <span class="user-status">
-                            <i class="fa fa-circle"></i>
-                            <span>Online</span>
-                        </span>
+                       
                     </div>
                 </div>
                 <!-- sidebar-search  -->
@@ -58,7 +108,7 @@
                         </li>
                         <li>
                             <router-link to="/dashboard/climateapi">
-                                <i class="fa fa-cloud"></i>
+                                <i class="fa fa-chart-area"></i>
                                 <span class="menu-text">Climate Open Data</span>
                             </router-link>
                         </li>
@@ -80,6 +130,13 @@
                             <a href="/donation">
                                 <i class="fa fa-money"></i>
                                 <span class="menu-text">Donation</span>
+                            </a>
+                            
+                        </li>
+                        <li>
+                            <a href="/freepost">
+                                <i class="fab fa-rocketchat"></i>
+                                <span class="menu-text">FreeTalk (New!)</span>
                             </a>
                             
                         </li>
@@ -116,7 +173,7 @@
             <router-view/>
         </main>
         <!-- page-content" -->
-    </div> -->
+    </div> 
     <!-- page-wrapper -->
         
 
@@ -135,22 +192,34 @@
 <script>     
 // import firebase from 'firebase'   
 import { mapState } from 'vuex'
-// import LineChart from './Charts/LineChart';
-// import BarChart from './Charts/BarChart';
-// import SocialTrafficTable from './Dashboard/SocialTrafficTable';
-// import PageVisitsTable from './Dashboard/PageVisitsTable';
 
 export default {
     name: "dashboard",
     components:{
-        // LineChart,
-        // BarChart,
-        // SocialTrafficTable,
-        // PageVisitsTable
+        
+    },
+    data(){
+        return{
+            sidebarMenu: true,
+      toggleMini: false,
+      items: [
+        { title:"Activities", href:"/dashboard/overview", icon:"mdi-web" },
+        { title:"opendata", href:"/dashboard/climateapi", icon:"mdi-chart-bar" },
+        { title:"Collaborate", href:"/collabhome", icon:"mdi-account-multiple" },
+        { title:"Forum", href:"/forum", icon:"mdi-tooltip-outline" },
+        { title:"Donation", href:"/donation", icon:"mdi-cash" },
+        { title:"Freepost", href:"/freepost", icon:"mdi-weather-cloudy" },
+        { title:"Settings", href:"/dashboard/settings", icon:"mdi-account-key" },
+
+      ],
+        }
     },
 
      computed: {
-    ...mapState(['userProfile'])
+    ...mapState(['userProfile']),
+    mini() {
+        return (this.$vuetify.breakpoint.smAndDown) || this.toggleMini
+    },
   },
   created(){
         document.title = "Dashboard"; // to set title 

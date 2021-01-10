@@ -10,7 +10,36 @@
       ClimateTalk
     </v-toolbar-title>
     <v-spacer></v-spacer>
-    <v-row align="right" justify="space-around">
+    <v-row v-if="$vuetify.breakpoint.width < 768" align="right" justify="space-around">
+    <v-menu
+    transition="slide-y-transition"
+    bottom>
+    <template v-slot:activator="{ on, attrs }">
+     <v-btn
+     v-bind="attrs"
+      v-on="on"
+      icon
+     >
+    <v-app-bar-nav-icon style="margin-right: -40px; margin-bottom:10px"></v-app-bar-nav-icon>
+     </v-btn>
+    </template>
+      <v-list>
+          <v-list-item
+            v-for="(item, index) in items"
+          :key="index"
+          link :to="item.href"
+        >
+          <v-list-item-title>{{ item.title }}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
+     <v-btn class="ma"
+      color="error" @click="logOut()">
+       <b> Log out</b>
+      </v-btn>
+
+    </v-row>
+    <v-row v-else align="right" justify="space-around">
       <v-btn text to="/dashboard/overview" class="font-weight-child">
         Dashboard
       </v-btn>
@@ -33,6 +62,7 @@
        <b> Log out</b>
       </v-btn>
     </v-row>
+
   </v-app-bar>
 </template>
 
@@ -40,6 +70,17 @@
 export default {
   name: "ForumNav",
   components: {},
+  data() {
+    return{
+      items: [
+        { title: 'Dashboard', href:"/dashboard/overview"},
+        { title: 'Forum', href:"/forum"},
+        { title: 'Meetup', href:"/collabhome" },
+        { title: 'Donation', href:"donation" },
+        { title: 'FreeTalk (New)', href:"/freepost"},
+
+      ],
+    }},
   
   methods: {
      logOut(){
