@@ -11,7 +11,9 @@
 
 <script>
 export default {
-
+created() {
+    document.title = "Freetalk"; // to set title
+  },
 }
 </script>
 

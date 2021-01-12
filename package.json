@@ -23,6 +23,7 @@
     "google-map": "^1.1.0",
     "google-maps": "^4.3.3",
     "jquery": "^3.5.1",
+    "moment": "^2.29.1",
     "moment-timezone": "^0.5.31",
     "popper.js": "^1.16.1",
     "vanta": "^0.5.21",

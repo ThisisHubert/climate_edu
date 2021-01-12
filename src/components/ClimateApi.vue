@@ -3,10 +3,11 @@
       <div class="row h-100 justify-content-center align-items-center">
           <div class="col-md-6 groupapi">
             <h2 class="datatitle">Climate Open Data </h2>
+            <hr style="width: 400px; margin-left:100px">
+
             <p class="datatitle">
               All necessary data related to climate change can be found here<br>
             </p>
-            <hr />
             <!-- <h4 class="datatitle">Check it out!</h4> -->
           </div>
           <div class="col-md-6">
@@ -37,8 +38,7 @@
       </template>
     </v-row>
   </v-container>
-      <!-- 1345958765489655808 -->
-      <!-- 1346048309912244231 -->
+     
       <!-- 1346047914859065348 -->
         <v-divider class="divider"></v-divider>
       
@@ -782,7 +782,7 @@ body {
 .card {
     margin: 0 auto;
     margin-top: 1%;
-    margin-left: 20%;
+    margin-left: 8%;
     margin-bottom: 10%;
     padding: 5px 30px 20px;
     width: 950px;

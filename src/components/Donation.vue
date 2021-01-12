@@ -45,14 +45,50 @@
             <v-list-item>
               <v-list-item-content>
                 <v-list-item-subtitle>Total Amount</v-list-item-subtitle>
-                <v-list-item-title>¥{{formatPrice(total)}} <v-btn
+                <v-list-item-title>¥{{formatPrice(total)}} 
+                  <v-dialog
+                    v-model="dialogAgree"
+                    persistent
+                    max-width="300"
+                  >
+                    <template v-slot:activator="{ on, attrs }">
+                  <v-btn
                       depressed
+                      v-bind="attrs"
+                      v-on="on"
                       color="error"
                       style="margin-left:100px"
-                      @click="empty()"
+                      
                     >
                       Reset 
-                    </v-btn> </v-list-item-title>
+                    </v-btn> 
+                    </template>
+                    <v-card>
+        <v-card-title class="headline">
+          Are you sure?
+        </v-card-title>
+        <v-card-text>*You haven't been charged anything*</v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="green darken-1"
+            text
+            @click="dialogAgree = false"
+          >
+            Close
+          </v-btn>
+          <v-btn
+            color="green darken-1"
+            text
+            @click="empty()"
+          >
+            Yes
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+                  </v-dialog>
+
+                    </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
             <v-list-item>
@@ -414,7 +450,7 @@
                 </div>
                 <!-- END .card__form--row -->
 
-                <button class="card__form--button">Submit</button>
+                <button class="card__form--button">Pay</button>
               </div>
               <!-- END .card__form--inner -->
             </div>
@@ -965,6 +1001,7 @@ export default {
     alignments_second: ["center", "center"],
     icons: ["mdi-facebook", "mdi-twitter"],
     dialog: false,
+    dialogAgree: false, // Reset button dialog
     notifications: false,
     sound: true,
     widgets: false,
@@ -1037,6 +1074,7 @@ export default {
         return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
     },
     empty(){
+      this.dialogAgree = false;
       this.total = 0;
     },
     calculate10(){

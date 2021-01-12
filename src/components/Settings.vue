@@ -4,11 +4,12 @@
           <div class="intro h-100">
             <div class="row h-100 justify-content-center align-items-center">
               <div class="col-md-6">
-                 <h2><b>Profile Settings </b></h2>
-                 <p>
+                 <h2 class="datatitle"><b>Profile Settings </b></h2>
+                  <hr style="width: 400px; margin-left:100px">
+
+                 <p class="datatitle">
                    Change Your Profile Settings Here 
                  </p>
-                 <hr>
               </div>
               <div class="col-md-6">
                   <img src="../assets/settings.svg" alt="" class="img-fluid" width="500">
@@ -39,6 +40,9 @@ export default {
 <style scoped lang="scss">
 
 
+.datatitle{
+  padding-left: 100px;
+}
 
 
 .search-box {

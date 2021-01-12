@@ -4,14 +4,15 @@
       <div class="intro h-100">
         <!-- heading -->
         <div class="row h-100 justify-content-center align-items-center">
+         
           <div class="col-md-6">
-            <h2><b>Welcome to Climate Talk! </b></h2>
-            <p>
+            <h2 class="datatitle"><b>Welcome to Climate Talk! </b></h2>
+            <hr style="width: 400px; margin-left:100px">
+            <p class="datatitle">
               Your primary resource for searching the right information about
               Climate Change
             </p>
-            <hr />   
-            <h4>What's happening?</h4>
+            <h4 class="datatitle">What's happening?</h4>
           </div>
           <div class="col-md-6">
             <img
@@ -151,6 +152,11 @@ export default {
   width: 80%;
   margin-bottom: 30px;
   margin-left: 100px;
+}
+
+
+.datatitle{
+  padding-left: 100px;
 }
 
 .buttons{
