@@ -4,12 +4,12 @@ import App from './App.vue';
 import vuetify from './plugins/vuetify';
 import Vuetify from 'vuetify';
 import {store} from './store';
-import FusionCharts from 'fusioncharts';
+// import FusionCharts from 'fusioncharts';
 // import Charts from 'fusioncharts/fusioncharts.charts';
 // import Widgets from 'fusioncharts/fusioncharts.widgets';
 // import PowerCharts from 'fusioncharts/fusioncharts.powercharts';
 // import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
-import VueFusionCharts from 'vue-fusioncharts';
+// import VueFusionCharts from 'vue-fusioncharts';
 import { auth } from './firebase'
 import Trend from 'vuetrend'
 import DateFilter from '@/filter/date'
@@ -24,7 +24,7 @@ Vue.component('Moment', Moment)
 Vue.component('Timeline', Timeline)
 
 
-Vue.use(VueFusionCharts, FusionCharts);
+// Vue.use(VueFusionCharts, FusionCharts);
 
 // Resolve the dependencies
 // Charts(FusionCharts);

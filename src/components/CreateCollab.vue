@@ -4,7 +4,7 @@
     <title>Create Meetup</title>
     <ForumNav></ForumNav>
     <v-layout row>
-      <v-flex xs12 sm6 offset-sm3>
+      <v-flex xs12 sm12 offset-sm3>
         <h4>Create a new Meetup</h4>
       </v-flex>
     </v-layout>
@@ -12,7 +12,7 @@
       <v-flex xs12>
         <form @submit.prevent="onCreateMeetup">
           <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
+            <v-flex xs12 sm7 offset-sm3>
               <v-text-field
               color="#28cd3d"
                 name="title"
@@ -28,13 +28,13 @@
             </v-flex>
           </v-layout>
           <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
+            <v-flex xs12 sm7 offset-sm3>
           <div style="color:red" v-show="error">{{error}}</div>
             </v-flex>
           </v-layout>
 
           <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
+            <v-flex xs12 sm7 offset-sm3>
               <v-text-field
               color="#28cd3d"
                 class="email"
@@ -52,7 +52,7 @@
           
           
           <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
+            <v-flex xs12 sm7 offset-sm3>
             <vue-google-autocomplete
              filled
              rounded
@@ -71,11 +71,11 @@
 
 
           <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
+            <v-flex xs12 sm7 offset-sm3>
               <div class="buttons">
-              <v-btn rounded color="green" dark outlined>
+              <!-- <v-btn rounded color="green" dark outlined>
                 Go
-              </v-btn>
+              </v-btn> -->
 
               <v-btn @click="locatorButtonPressed"  :loading="loading"
                 :disabled="loading" class="ma-2" outlined rounded color="green">
@@ -89,7 +89,7 @@
 
 
           <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
+            <v-flex xs12 sm7 offset-sm3>
               <v-text-field
               color="#28cd3d"
                 class="location"
@@ -106,10 +106,10 @@
           </v-layout>
 
           <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
+            <v-flex xs12 sm7 offset-sm3>
               <h5>Upload Image</h5>
             </v-flex>
-            <v-flex xs12 sm6 offset-sm3>
+            <v-flex xs12 sm7 offset-sm3>
               <!-- <v-text-field
                 name="imageUrl"
                 label="Image URL"
@@ -129,12 +129,12 @@
             </v-flex>
           </v-layout>
           <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
+            <v-flex xs12 sm7 offset-sm3>
               <img class="image" :src="imageUrl" height="150" />
             </v-flex>
           </v-layout>
           <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
+            <v-flex xs12 sm7 offset-sm3>
               <v-textarea
               color="#28cd3d"
                 class="description"
@@ -151,22 +151,22 @@
           </v-layout>
 
           <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
+            <v-flex xs12 sm7 offset-sm3>
               <h4>Choose a Data & Time</h4>
             </v-flex>
           </v-layout>
           <v-layout row class="mb-2">
-            <v-flex xs12 sm6 offset-sm3>
-              <v-date-picker class="datepicker" width="580px" color="#28cd3d" v-model="picker"></v-date-picker>
+            <v-flex xs12 sm12 offset-sm3>
+              <v-date-picker class="datepicker" width="450px" color="#28cd3d" v-model="picker"></v-date-picker>
             </v-flex>
           </v-layout>
           <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
-              <v-time-picker class="timepicker" width="580px" color="#28cd3d" v-model="time" format="24hr"></v-time-picker>
+            <v-flex xs12 sm12 offset-sm3>
+              <v-time-picker class="timepicker" width="450px" color="#28cd3d" v-model="time" format="24hr"></v-time-picker>
             </v-flex>
           </v-layout>
           <v-layout row>
-            <v-flex class="submitbutton" xs12 sm6 offset-sm3>
+            <v-flex class="submitbutton" xs12 sm7 offset-sm3>
               <v-btn style="color:white" color="#28cd3d" :disabled="!formIsValid" type="submit"
                 >Create Meetup</v-btn
               >
