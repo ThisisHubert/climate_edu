@@ -1,7 +1,7 @@
 <template>
-  <v-dialog persistent v-model="registerDialog">
+  <v-dialog v-model="registerDialog">
     <template v-slot:activator="{on,attrs}">
-    <v-btn primary accent  v-bind="attrs"
+    <v-btn style="color:white"   v-bind="attrs"
     v-on="on"
   color="#28cd3d" slot="activator">
       {{ userIsRegistered ? 'Unregister' : 'Register' }}
@@ -9,15 +9,14 @@
     </template>
     <v-card>
       <v-container>
-        <v-layout row wrap>
-          <v-flex xs12>
+        <v-layout row>
+          <v-flex xs12 sm7>
             <v-card-title v-if="userIsRegistered">Unregister from Meetup?</v-card-title>
             <v-card-title v-else>Register for Meetup?</v-card-title>
           </v-flex>
         </v-layout>
-        <v-divider></v-divider>
-        <v-layout row wrap>
-          <v-flex xs12>
+        <v-layout row wrap> 
+          <v-flex xs12 sm7>
             <v-card-text>You can always change your decision later on.</v-card-text>
           </v-flex>
         </v-layout>
@@ -25,11 +24,13 @@
           <v-flex xs12>
             <v-card-actions>
               <v-btn
-                class="red--text darken-1"
+                color="#28cd3d"
+                style="color:white"
                 flat
                 @click="registerDialog = false">Cancel</v-btn>
               <v-btn
-                class="green--text darken-1"
+              color="#28cd3d"
+              style="color:white"
                 flat
                 @click="onAgree">Confirm</v-btn>
             </v-card-actions>
@@ -42,30 +43,22 @@
 
 <script>
   export default {
-    props: ['meetupId'],
     data () {
       return {
         registerDialog: false
       }
     },
     computed: {
-    
 
-      // userIsRegistered () {
-      //    return this.$store.getters.user.registeredMeetups.findIndex(meetupId =>{
-      //      return meetupId === this.meetupId
-      //    }) >= 0
-         
       
-      // }
     },
     methods: {
       onAgree () {
-        if (this.userIsRegistered) {
-          this.$store.dispatch('unregisterUserFromMeetup', this.meetupId)
-        } else {
-          this.$store.dispatch('registerUserForMeetup', this.meetupId)
-        }
+        
+        alert("You are registered");
+        this.registerDialog = false; 
+        // this.$store.dispatch("registeredPeople",{id, registeredCount});
+
       }
     }
   }

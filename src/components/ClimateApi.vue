@@ -92,7 +92,7 @@
             </article>
           </div>
           <div v-else class="result-list">
-            <article
+            <article 
               v-for="(article, index) in articles"
               :key="index"
               @click="navTo(article.url)"
@@ -613,6 +613,7 @@ export default {
       padding-left:-40px;
       margin-left:30px;
       width: 900px;
+      margin-top:10px;
     }
     .result-list-break {
       padding-top: 60px;

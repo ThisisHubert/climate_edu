@@ -24,12 +24,11 @@
             <div> <b>Time/Place:</b> {{ meetup.date | date }} - {{ meetup.location }}</div>
           
             <div><b>Description:</b> <br> {{ meetup.description }}</div>
-
           </v-card-text>
          
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn to="/collabs" class="black" color="red">Back</v-btn>
+            <v-btn to="/collabs" style="margin-right: 10px; color: white; text-decoration:none;" color="#28cd3d">Back</v-btn>
 
             <!-- <v-btn class="green">Register</v-btn> -->
             <app-meetup-register-dialog
@@ -47,7 +46,7 @@ import ForumNav from './ForumNav.vue'
   export default {
     data(){
       return{
-      currentDate: new Date().toISOString()
+      currentDate: new Date().toISOString(),
       }
     },
   components: { ForumNav },
@@ -56,6 +55,7 @@ import ForumNav from './ForumNav.vue'
       meetup () {
         return this.$store.getters.loadedMeetup(this.id)
       },
+      
       userIsAuthenticated () {
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
       },

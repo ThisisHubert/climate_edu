@@ -249,7 +249,8 @@ export default {
       selectedPost: {},
       // showPostModal: true,
       fullPost: {},
-      postComments: []
+      postComments: [],
+      
     };
   },
   
