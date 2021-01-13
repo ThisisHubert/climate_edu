@@ -4,6 +4,8 @@ import App from './App.vue';
 import vuetify from './plugins/vuetify';
 import Vuetify from 'vuetify';
 import {store} from './store';
+import Charts from 'vue2-frappe';
+Vue.use(Charts);
 // import FusionCharts from 'fusioncharts';
 // import Charts from 'fusioncharts/fusioncharts.charts';
 // import Widgets from 'fusioncharts/fusioncharts.widgets';

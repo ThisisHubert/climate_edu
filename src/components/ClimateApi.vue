@@ -20,6 +20,21 @@
           </div>
         </div>
         <v-divider class="divider"></v-divider>
+        <vue-frappe
+            id="test"
+            :labels="[
+                '1960', '1965', '1970', '1975','1980','1985','1990',
+                '1995', '2000', '2005', '2010','2015','2018'
+            ]"
+            title="Global Carbon Budget"
+            type="line"
+            :height="300"
+            :colors="['black', 'light-blue']"
+            :dataSets="this.data">
+        </vue-frappe>
+        <div style="margin-left:10px;">source: https://github.com/openclimatedata/global-carbon-budget/blob/master/data/global-carbon-budget.csv </div>
+        <v-divider class="divider"></v-divider>
+
       <v-card-title class="twittertitle">ClimateTalk Twitter</v-card-title>
         <v-container >
     <v-row no-gutters>
@@ -372,6 +387,15 @@ export default {
     name: "ClimateApi",
      data() {
     return {
+      data: [{
+                    name: "Fossil-Fuel-And-Industry", chartType: 'line',
+                    values: [2.550, 3.079, 4.050, 4.618, 5.292, 5.498, 6.200, 6.379, 6.865, 8.024, 9.048,9.618,9.982]
+                },
+                {
+                    name: "Atmospheric Growth", chartType: 'line',
+                    values: [1.512, 2.343, 2.407, 2.620, 3.621, 3.451, 2.492, 4.153, 2.620, 5.197, 5.176, 6.326, 5.140]
+                },
+               ],
       apiUrl: "",
       apiKey: "d9045a056465436bb7864f5007d27c22",
       isBusy: false,
