@@ -49,9 +49,6 @@
       <v-btn text href="/collabhome"  class="font-weight-child">   
         Meetup
       </v-btn>
-       <v-btn text href="/donation"  class="font-weight-child">
-        Donation
-      </v-btn>
        <v-btn text href="/freepost" class="font-weight-child">   
         FreeTalk (New)
       </v-btn>
@@ -76,7 +73,6 @@ export default {
         { title: 'Dashboard', href:"/dashboard/overview"},
         { title: 'Forum', href:"/forum"},
         { title: 'Meetup', href:"/collabhome" },
-        { title: 'Donation', href:"donation" },
         { title: 'FreeTalk (New)', href:"/freepost"},
 
       ],

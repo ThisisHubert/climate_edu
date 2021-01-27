@@ -127,13 +127,6 @@
                             
                         </li>
                         <li>
-                            <a href="/donation">
-                                <i class="fa fa-money"></i>
-                                <span class="menu-text">Donation</span>
-                            </a>
-                            
-                        </li>
-                        <li>
                             <a href="/freepost">
                                 <i class="fab fa-rocketchat"></i>
                                 <span class="menu-text">FreeTalk (New!)</span>
@@ -207,7 +200,6 @@ export default {
         { title:"opendata", href:"/dashboard/climateapi", icon:"mdi-chart-bar" },
         { title:"Collaborate", href:"/collabhome", icon:"mdi-account-multiple" },
         { title:"Forum", href:"/forum", icon:"mdi-tooltip-outline" },
-        { title:"Donation", href:"/donation", icon:"mdi-cash" },
         { title:"Freepost", href:"/freepost", icon:"mdi-weather-cloudy" },
         { title:"Settings", href:"/dashboard/settings", icon:"mdi-account-key" },
 
