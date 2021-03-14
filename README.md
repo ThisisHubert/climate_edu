@@ -28,3 +28,14 @@ Feature of the app:
 - Forum for Climate Interests 
 - Public Data API (Weather, Carbon footprint data, etc.)
 - Donation (Connect with Stripe) 
+
+Web Demonstration: https://youtu.be/TuVOm9juGz8
+
+Front-end: 
+- Vue JS 
+- Vuetify, Bootstrap
+
+Back-end & DB: 
+- Cloud Firestore 
+- Real-time Database 
+- Firebase Auth 
