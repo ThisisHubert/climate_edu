@@ -22,3 +22,9 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+Feature of the app:
+- Forum for Climate Interests 
+- Public Data API (Weather, Carbon footprint data, etc.)
+- Donation (Connect with Stripe) 
